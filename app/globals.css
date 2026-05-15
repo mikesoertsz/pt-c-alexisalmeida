@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* ─── Brand primitives ────────────────────────────────────────────────────────
+   Fixed hues that never change between style modes.
+   Source of truth — see brand-colors.md for context.
+─────────────────────────────────────────────────────────────────────────────── */
+:root {
+  --brand-dusty-white:  #FDFCF3;
+  --brand-granite:      #2C2D27;
+  --brand-foggy-gray:   #646661;
+  --brand-alarm-yellow: #FFD63D;
+}
+
+/* ─── Fine-line theme (default / light — "yellow base") ──────────────────────
+   Ivory canvas + alarm-yellow accent + granite text.
+   NO pure black anywhere.
+─────────────────────────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --surface:       var(--brand-dusty-white);
+  --surface-muted: color-mix(in oklab, var(--brand-dusty-white) 88%, var(--brand-alarm-yellow));
+  --surface-wash:  color-mix(in oklab, var(--brand-dusty-white) 93%, var(--brand-alarm-yellow));
+  --fg:            var(--brand-granite);
+  --fg-muted:      var(--brand-foggy-gray);
+  --accent:        var(--brand-alarm-yellow);
+  --accent-secondary: color-mix(in oklab, var(--brand-granite) 82%, var(--brand-alarm-yellow));
+  --on-accent:     var(--brand-granite);
+  --border:        color-mix(in oklab, var(--brand-foggy-gray) 45%, var(--brand-dusty-white));
+  --border-subtle: color-mix(in oklab, var(--brand-foggy-gray) 22%, transparent);
+  --card:          color-mix(in oklab, var(--brand-dusty-white) 90%, var(--brand-alarm-yellow));
+  --card-alt:      color-mix(in oklab, var(--brand-dusty-white) 95%, var(--brand-alarm-yellow));
+  --hero-void:     var(--brand-granite);
+  --inverse-fg:    var(--brand-dusty-white);
+  --background: var(--surface);
+  --foreground: var(--fg);
+}
+
+/* ─── Blackwork theme (dark — "granite base") ────────────────────────────────
+   Dark granite canvas + alarm-yellow accent + dusty-white text.
+   NO pure black (#000, #0a0a0a, #111, etc.) anywhere.
+─────────────────────────────────────────────────────────────────────────────── */
+:root[data-artist-style="blackwork"] {
+  color-scheme: dark;
+  --surface:       var(--brand-granite);
+  --surface-muted: color-mix(in oklab, var(--brand-granite) 72%, var(--brand-foggy-gray));
+  --surface-wash:  color-mix(in oklab, var(--brand-granite) 82%, var(--brand-foggy-gray));
+  --fg:            var(--brand-dusty-white);
+  --fg-muted:      color-mix(in oklab, var(--brand-foggy-gray) 80%, var(--brand-dusty-white));
+  --accent:        var(--brand-alarm-yellow);
+  --accent-secondary: color-mix(in oklab, var(--brand-alarm-yellow) 75%, var(--brand-foggy-gray));
+  --on-accent:     var(--brand-granite);
+  --border:        color-mix(in oklab, var(--brand-foggy-gray) 40%, var(--brand-granite));
+  --border-subtle: color-mix(in oklab, var(--brand-foggy-gray) 18%, transparent);
+  --card:          color-mix(in oklab, var(--brand-granite) 80%, var(--brand-foggy-gray));
+  --card-alt:      color-mix(in oklab, var(--brand-granite) 88%, var(--brand-foggy-gray));
+  --hero-void:     var(--brand-granite);
+  --inverse-fg:    var(--brand-granite);
+  --background: var(--surface);
+  --foreground: var(--fg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.artist-style-transition,
+  html.artist-style-transition body {
+    transition:
+      background-color 300ms ease,
+      color 300ms ease;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Semantic tokens */
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-card-alt: var(--card-alt);
+  --color-hero-void: var(--hero-void);
+
+  /* Brand primitives (accessible as Tailwind utilities) */
+  --color-brand-dusty-white:  var(--brand-dusty-white);
+  --color-brand-granite:      var(--brand-granite);
+  --color-brand-foggy-gray:   var(--brand-foggy-gray);
+  --color-brand-yellow:       var(--brand-alarm-yellow);
+
+  /* Legacy aliases — point to new palette */
+  --color-bronze: var(--accent);
+  --color-pewter: var(--fg-muted);
+  --color-bone: var(--surface-muted);
+  --color-graphite: var(--brand-granite);
+  --color-obsidian: var(--brand-granite);
+  --color-ivory: var(--surface);
+
+  --color-brand-licorice: var(--fg);
+  --color-brand-p2: var(--brand-granite);
+  --color-brand-cta: var(--accent);
+  --color-brand-secondary: var(--fg-muted);
+  --color-brand-light-blue: var(--surface-muted);
+
+  --color-ink: var(--fg);
+  --color-mist: var(--surface);
+  --color-terracotta: var(--accent);
+  --color-blush: var(--surface-muted);
+  --color-olive: var(--accent-secondary);
+  --color-sage: var(--border);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--brand-alarm-yellow) 2%, transparent) 0%,
+    transparent 28%
+  );
+}
