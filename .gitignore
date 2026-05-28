@@ -37,7 +37,7 @@ yarn-error.log*
 .vercel
 
 # Raw source videos (multi-GB); keep on disk for editing, never commit or deploy
-public/img/process 
+public/img/process-raw/
 
 # typescript
 *.tsbuildinfo
