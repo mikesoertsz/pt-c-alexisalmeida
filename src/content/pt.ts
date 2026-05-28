@@ -183,7 +183,7 @@ export const pt = {
   },
 
   bookingSection: {
-    headline: "Marcar uma consulta.",
+    headline: "Comece a conversa.",
     note: "Trabalho personalizado apenas. Por marcação.",
     cta: "Marcar consulta",
     openCalInNewTab: "Abrir Cal.com num novo separador",

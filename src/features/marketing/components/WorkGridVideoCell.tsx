@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useSyncExternalStore } from "react";
+import { videoSrc } from "@/lib/video";
 
 interface WorkGridVideoCellProps {
   src: string;
@@ -57,7 +58,7 @@ export default function WorkGridVideoCell({
       aria-label={alt}
     >
       <video
-        src={src}
+        src={videoSrc(src)}
         autoPlay
         muted
         loop

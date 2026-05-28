@@ -1,6 +1,7 @@
 import { TitleBlock } from "@/components/molecules/TitleBlock/TitleBlock";
 import { studioMapsEmbedUrl, studioMapsOpenUrl } from "@/config/studio";
 import type { ContentSchema } from "@/content/schema";
+import { AnimateIn } from "@/components/atoms/AnimateIn/AnimateIn";
 
 interface ContactSectionProps {
   slice: ContentSchema["contact"];
@@ -13,7 +14,7 @@ export function ContactSection({ slice }: ContactSectionProps) {
       className="w-full scroll-mt-16 bg-brand-cotton border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12"
     >
       <div className="mx-auto flex max-w-[1440px] flex-col gap-10 lg:flex-row lg:justify-between lg:gap-16">
-        <div className="max-w-xl lg:shrink-0">
+        <AnimateIn className="max-w-xl lg:shrink-0">
           <TitleBlock
             theme="light"
             orientation="left"
@@ -21,9 +22,9 @@ export function ContactSection({ slice }: ContactSectionProps) {
             heading={slice.heading}
             body={slice.lead}
           />
-        </div>
+        </AnimateIn>
 
-        <div className="flex min-w-0 flex-1 flex-col gap-8 font-body text-sm text-brand-black/70">
+        <AnimateIn delay={0.15} className="flex min-w-0 flex-1 flex-col gap-8 font-body text-sm text-brand-black/70">
           <div className="flex flex-col gap-3">
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-brand-black">
               {slice.addressLabel}
@@ -56,7 +57,7 @@ export function ContactSection({ slice }: ContactSectionProps) {
               ))}
             </ul>
           </div>
-        </div>
+        </AnimateIn>
       </div>
     </section>
   );

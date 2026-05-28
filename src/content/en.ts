@@ -183,7 +183,7 @@ export const en = {
   },
 
   bookingSection: {
-    headline: "Book a Consultation.",
+    headline: "Start the conversation.",
     note: "Custom work only. By appointment.",
     cta: "Book a Consultation",
     openCalInNewTab: "Open Cal.com in a new tab",
@@ -241,10 +241,6 @@ export const en = {
     openInGoogleMaps: "Open in Google Maps",
     items: [
       {
-        q: "Does it hurt?",
-        a: "There is sensation, but it is manageable for most people. Placement, session length, and your own pain threshold all play a role. We work in a calm pace and can schedule breaks for longer pieces.",
-      },
-      {
         q: "How should I prepare for my session?",
         a: "Rest well, eat beforehand, stay hydrated, and avoid alcohol the day before. Wear comfortable clothing that gives clear access to the placement area. If you are unwell, reschedule. Your skin and immune system should be in good shape.",
       },
@@ -263,10 +259,6 @@ export const en = {
       {
         q: "What is your deposit policy?",
         a: "A 30% deposit is required to confirm a booking. Deposits are non-refundable but can be moved to a new date when rescheduled with reasonable notice, subject to studio policy. Full payment details are confirmed when you book.",
-      },
-      {
-        q: "Do you tattoo minors?",
-        a: "No. Services are 18+ only. Valid photo ID is required for your first session.",
       },
       {
         q: "Which languages can we use?",

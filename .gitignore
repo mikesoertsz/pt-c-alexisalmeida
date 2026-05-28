@@ -39,6 +39,11 @@ yarn-error.log*
 # Raw source videos (multi-GB); keep on disk for editing, never commit or deploy
 public/img/process-raw/
 
+# Gallery and process videos — hosted on Cloudinary (drifter / Portugal Tattoo/alexis-almeida), not in git
+# Upload via the Cloudinary dashboard or CLI: cloudinary uploader upload <file> folder="Portugal Tattoo/alexis-almeida"
+public/img/gallery/*.mp4
+public/video/*.mp4
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

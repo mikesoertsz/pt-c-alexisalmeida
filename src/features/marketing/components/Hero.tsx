@@ -1,9 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import type { ContentSchema } from "@/content/schema";
+import type { Locale } from "@/lib/locale";
+import { localizedPath } from "@/lib/locale";
 import ButtonStyled from "@/components/atoms/ButtonStyled/ButtonStyled";
 import { trackEvent } from "@/lib/analytics";
+
+const ease = [0.25, 0.1, 0.25, 1] as const;
+const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 
 const HERO_IMAGE_SRC = "/img/shortlist/mask-oni-front.jpg";
 const HERO_IMAGE_ALT =
@@ -11,9 +17,10 @@ const HERO_IMAGE_ALT =
 
 interface HeroProps {
   hero: ContentSchema["hero"];
+  locale: Locale;
 }
 
-export function Hero({ hero }: HeroProps) {
+export function Hero({ hero, locale }: HeroProps) {
   return (
     <section className="relative isolate w-full min-h-dvh overflow-hidden bg-brand-black flex flex-col justify-center md:justify-end pb-20 md:pb-28 px-6 md:px-12 lg:px-20 border-b-2 border-brand-black">
       <div className="absolute inset-0 -z-10" aria-hidden>
@@ -33,19 +40,37 @@ export function Hero({ hero }: HeroProps) {
       />
 
       <div className="relative z-10 max-w-[1440px] mx-auto w-full">
-        <p className="font-mono text-xs text-white/60 drop-shadow-lg uppercase tracking-[0.12em] mb-8 md:mb-12">
+        <motion.p
+          className="font-mono text-xs text-white/60 drop-shadow-lg uppercase tracking-[0.12em] mb-8 md:mb-12"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.55, ease, delay: 0.1 }}
+        >
           [ {hero.preheading} ]
-        </p>
+        </motion.p>
 
-        <h1 className="font-display font-black uppercase text-white drop-shadow-lg leading-[0.9] tracking-tighter mb-0">
+        <motion.h1
+          className="font-display font-black uppercase text-white drop-shadow-lg leading-[0.9] tracking-tighter mb-0"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.65, ease, delay: 0.2 }}
+        >
           {hero.headlineLines.map((line) => (
             <span key={line} className="block text-[clamp(3.5rem,12vw,11rem)]">
               {line}
             </span>
           ))}
-        </h1>
+        </motion.h1>
 
-        <div className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <motion.div
+          className="mt-8 md:mt-12 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.55, ease, delay: 0.4 }}
+        >
           <div className="flex flex-col gap-4">
             <div className="w-16 h-0.5 bg-white/60" />
             <p className="font-display font-black uppercase text-white drop-shadow-lg text-2xl md:text-3xl lg:text-4xl tracking-tighter leading-[0.9]">
@@ -58,7 +83,7 @@ export function Hero({ hero }: HeroProps) {
 
           <div className="flex flex-col items-start md:items-end gap-3">
             <ButtonStyled
-              href="#booking"
+              href={localizedPath(locale, "/booking")}
               className="bg-white border-white text-brand-black hover:bg-brand-tangerine hover:border-brand-tangerine hover:text-white"
               onClick={() =>
                 trackEvent("cta_click", { event_category: "engagement", event_label: "hero_primary" })
@@ -70,7 +95,7 @@ export function Hero({ hero }: HeroProps) {
               [ {hero.appointmentNote} ]
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

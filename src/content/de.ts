@@ -183,7 +183,7 @@ export const de = {
   },
 
   bookingSection: {
-    headline: "Eine Beratung buchen.",
+    headline: "Starten Sie das Gespräch.",
     note: "Nur Custom-Arbeit. Nur nach Termin.",
     cta: "Beratung anfragen",
     openCalInNewTab: "Cal.com in neuem Tab öffnen",

@@ -2,6 +2,7 @@
 
 import { TitleBlock } from "@/components/molecules/TitleBlock/TitleBlock";
 import type { ContentSchema } from "@/content/schema";
+import { AnimateIn } from "@/components/atoms/AnimateIn/AnimateIn";
 
 interface FAQProps {
   slice: ContentSchema["faq"];
@@ -16,9 +17,12 @@ export function FAQ({ slice }: FAQProps) {
       className="w-full scroll-mt-16 border-t-2 border-brand-black bg-brand-linen py-20 md:py-28 px-6 md:px-12"
     >
       <div className="mx-auto flex max-w-[1440px] flex-col gap-12 md:gap-14">
-        <TitleBlock theme="light" orientation="left" preheading={`[ ${slice.preheading} ]`} heading={slice.heading} />
+        <AnimateIn>
+          <TitleBlock theme="light" orientation="left" preheading={`[ ${slice.preheading} ]`} heading={slice.heading} />
+        </AnimateIn>
 
         {hasItems ? (
+          <AnimateIn>
           <div className="flex max-w-3xl flex-col gap-px bg-brand-black border-2 border-brand-black">
             {slice.items.map((item, index) => (
               <details
@@ -38,6 +42,7 @@ export function FAQ({ slice }: FAQProps) {
               </details>
             ))}
           </div>
+          </AnimateIn>
         ) : (
           <p className="font-body text-sm text-brand-muted">FAQ updates are on the way.</p>
         )}

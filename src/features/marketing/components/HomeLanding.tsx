@@ -9,6 +9,7 @@ import { Process } from "./Process";
 import { Promotions } from "./Promotions";
 import { Testimonials } from "./Testimonials";
 import { FAQ } from "./FAQ";
+import { VideoGallery } from "./VideoGallery";
 import { ContactSection } from "./ContactSection";
 import { BookingSection } from "./BookingSection";
 import type { Locale } from "@/lib/locale";
@@ -81,16 +82,17 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
         logoHref={localizedPath(locale, "/")}
       />
       <main>
-        <Hero hero={content.hero} />
+        <Hero hero={content.hero} locale={locale} />
         <PhilosophyStrip slice={content.philosophyStrip} />
         <WorkGrid slice={content.workGrid} />
         <AboutArtist slice={content.about} />
         <Process slice={content.process} />
         <Promotions />
         <Testimonials slice={content.testimonials} />
+        <VideoGallery />
         <FAQ slice={content.faq} />
         <ContactSection slice={content.contact} />
-        <BookingSection slice={content.bookingSection} />
+        <BookingSection slice={content.bookingSection} locale={locale} />
       </main>
       <SiteFooter footer={content.footer} locale={locale} />
       <CookieConsentBanner

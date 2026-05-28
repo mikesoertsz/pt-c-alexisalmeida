@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 import type { Locale } from "@/lib/locale";
+import { localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
 import { LanguageSwitcher } from "@/components/molecules/LanguageSwitcher/LanguageSwitcher";
 import ButtonStyled from "@/components/atoms/ButtonStyled/ButtonStyled";
@@ -67,7 +68,7 @@ export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
           <Link href="#about" className={navLinkClass}>{nav.about ?? "About"}</Link>
           <Link href="#faq" className={navLinkClass}>{nav.faq}</Link>
           <Link href="#contact" className={navLinkClass}>{nav.contact}</Link>
-          <Link href="#booking" className={navLinkClass} onClick={onBookClick}>{nav.booking}</Link>
+          <Link href={localizedPath(locale, "/booking")} className={navLinkClass} onClick={onBookClick}>{nav.booking}</Link>
         </nav>
 
         <div className="hidden md:flex items-center gap-5 shrink-0">
@@ -82,7 +83,7 @@ export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
             <FaInstagram className="h-5 w-5" aria-hidden />
           </a>
           <ButtonStyled
-            href="#booking"
+            href={localizedPath(locale, "/booking")}
             onClick={onBookClick}
             className="px-5 py-2"
           >
@@ -142,7 +143,7 @@ export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
               {nav.contact}
             </Link>
             <Link
-              href="#booking"
+              href={localizedPath(locale, "/booking")}
               onClick={() => {
                 onBookClick();
                 setOpen(false);
@@ -161,7 +162,7 @@ export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
               Instagram
             </a>
             <ButtonStyled
-              href="#booking"
+              href={localizedPath(locale, "/booking")}
               onClick={() => {
                 onBookClick();
                 setOpen(false);
