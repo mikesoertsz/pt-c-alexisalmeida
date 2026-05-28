@@ -1,14 +1,14 @@
-# 09 — Go-Live Checklist
+# 09, Go-Live Checklist
 
 **Nothing ships without every item in Section 1 checked.**
 
 Work through this document top to bottom. If any Section 1 item cannot be
-checked, the launch is blocked. Do not negotiate exceptions — these are
+checked, the launch is blocked. Do not negotiate exceptions, these are
 minimum viable requirements, not a wish list.
 
 ---
 
-## Section 1 — Hard blockers (launch cannot proceed)
+## Section 1, Hard blockers (launch cannot proceed)
 
 ### Content
 
@@ -77,7 +77,7 @@ minimum viable requirements, not a wish list.
 
 ---
 
-## Section 2 — Should be done at launch (not hard blockers)
+## Section 2, Should be done at launch (not hard blockers)
 
 - [ ] Google Search Console property created and sitemap submitted
 - [ ] Vercel Analytics enabled in Vercel dashboard
@@ -92,7 +92,7 @@ minimum viable requirements, not a wish list.
 
 ---
 
-## Section 3 — Post-launch (within first 2 weeks)
+## Section 3, Post-launch (within first 2 weeks)
 
 - [ ] Verify Google Search Console has no crawl errors after first crawl
 - [ ] Check Vercel Analytics is recording visits

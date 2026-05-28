@@ -1,4 +1,4 @@
-# Brand Colours — Aléxis "Lex" Almeida Tattoo
+# Brand Colours, Aléxis "Lex" Almeida Tattoo
 
 Source of truth for all visual tokens. CSS implementation lives in [`app/globals.css`](app/globals.css).
 
@@ -17,7 +17,7 @@ Source of truth for all visual tokens. CSS implementation lives in [`app/globals
 
 ## Style themes
 
-### Fine-line (default — `data-artist-style="fine-line"`)
+### Fine-line (default, `data-artist-style="fine-line"`)
 
 Yellow-forward light mode. Canvas is dusty white with a subtle alarm-yellow tint.
 
@@ -27,8 +27,8 @@ Yellow-forward light mode. Canvas is dusty white with a subtle alarm-yellow tint
 | `--fg` | `#2C2D27` (granite) |
 | `--fg-muted` | `#646661` (foggy gray) |
 | `--accent` | `#FFD63D` (alarm yellow) |
-| `--on-accent` | `#2C2D27` (granite — text/icons on yellow buttons) |
-| `--hero-void` | `#2C2D27` (granite — darkest section background) |
+| `--on-accent` | `#2C2D27` (granite, text/icons on yellow buttons) |
+| `--hero-void` | `#2C2D27` (granite, darkest section background) |
 | `--surface-muted`, `--card`, `--card-alt` | Dusty white + small yellow tint via `color-mix` |
 | `--border` | Foggy gray blended with surface |
 
@@ -41,8 +41,8 @@ Granite dark mode. Canvas is granite with foggy-gray elevation; same alarm-yello
 | `--surface` | `#2C2D27` (granite) |
 | `--fg` | `#FDFCF3` (dusty white) |
 | `--fg-muted` | foggy gray + dusty white blend |
-| `--accent` | `#FFD63D` (alarm yellow — consistent across both modes) |
-| `--on-accent` | `#2C2D27` (granite — always dark on yellow) |
+| `--accent` | `#FFD63D` (alarm yellow, consistent across both modes) |
+| `--on-accent` | `#2C2D27` (granite, always dark on yellow) |
 | `--hero-void` | `#2C2D27` (granite) |
 | `--surface-muted`, `--card`, `--card-alt` | Granite + foggy-gray blend (elevated) |
 
@@ -68,6 +68,6 @@ bg-brand-yellow     bg-brand-foggy-gray
 
 ## Do not use
 
-- `text-white` on `bg-accent` — use `text-on-accent` instead.
+- `text-white` on `bg-accent`, use `text-on-accent` instead.
 - `#000`, `#000000`, `#0a0a0a`, `#111`, `#111111`, `#0d0d0d`, `#050505`, `bg-black`.
-- Raw `bg-ink` for theme-invariant dark bands — use `bg-brand-granite` so the band stays dark in both modes.
+- Raw `bg-ink` for theme-invariant dark bands, use `bg-brand-granite` so the band stays dark in both modes.

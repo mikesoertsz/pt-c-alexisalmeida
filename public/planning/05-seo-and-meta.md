@@ -1,4 +1,4 @@
-# 05 — SEO and Meta
+# 05, SEO and Meta
 
 **Basic SEO is included in the Starter Package.** This document defines
 exactly what that means and what must be in place before launch.
@@ -25,10 +25,10 @@ ongoing optimisation. Those are Growth tier deliverables.
 ## Page title
 
 **Template:**  
-`[Studio Name] — Custom Tattoo Studio in [City], Portugal`
+`[Studio Name], Custom Tattoo Studio in [City], Portugal`
 
 **Example (Aura):**  
-`Aura Tattoo & Meaning — Custom Tattoo Studio in Albufeira, Portugal`
+`Aura Tattoo & Meaning, Custom Tattoo Studio in Albufeira, Portugal`
 
 Rules:
 - Maximum 60 characters
@@ -45,13 +45,13 @@ Confirm it matches the client's actual name and location before launch.
 ## Meta description
 
 **Template:**  
-`Custom tattoo designs crafted with intention. Book your free consultation at [Studio Name] — a boutique studio in [City] specialising in [top 2–3 styles].`
+`Custom tattoo designs crafted with intention. Book your free consultation at [Studio Name], a boutique studio in [City] specialising in [top 2–3 styles].`
 
 **Rules:**
 - 140–160 characters
 - Includes city name
 - Mentions the booking CTA ("Book your free consultation")
-- Lists the studio's actual specialties — do not use generic terms
+- Lists the studio's actual specialties, do not use generic terms
 - No duplicate of the title
 
 **Current state:** Set in `app/page.tsx` and `app/layout.tsx`. Update with
@@ -83,7 +83,7 @@ openGraph: {
 ## Canonical URL and hreflang
 
 Set in `app/[locale]/page.tsx` via `generateMetadata`. All three locale routes
-are implemented at launch — English at `/`, Portuguese at `/pt`, German at `/de`:
+are implemented at launch, English at `/`, Portuguese at `/pt`, German at `/de`:
 
 ```ts
 alternates: {
@@ -188,7 +188,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 ```
 
 Add legal pages to the sitemap once they exist. Do not include `/legal/gdpr`
-and `/legal/cookies` — these are supporting pages, not indexable content.
+and `/legal/cookies`, these are supporting pages, not indexable content.
 
 ---
 
@@ -216,7 +216,7 @@ Every image on the site must have a descriptive `alt` attribute.
 
 | Image | Alt text pattern |
 |---|---|
-| Gallery images | Describe the tattoo: style, subject, placement — e.g. "Fine line botanical tattoo on inner forearm" |
+| Gallery images | Describe the tattoo: style, subject, placement, e.g. "Fine line botanical tattoo on inner forearm" |
 | Artist photos | "[Artist name], tattoo artist at [Studio name]" |
 | Studio photos | "[Studio name] interior, Albufeira, Portugal" |
 | OG image | Not applicable (meta tag, not an `<img>`) |
@@ -270,4 +270,4 @@ The most valuable search queries for a tattoo studio in Portugal are local:
 The page title, meta description, structured data address, and alt text on
 portfolio images are the main on-page signals for these terms. The Google
 Business Profile (claimed and verified) is the most important off-page signal
-— this is not part of the site build but must be in place at launch.
+,  this is not part of the site build but must be in place at launch.

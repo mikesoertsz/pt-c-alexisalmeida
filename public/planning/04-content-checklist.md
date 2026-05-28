@@ -1,4 +1,4 @@
-# 04 — Content Checklist
+# 04, Content Checklist
 
 **Everything needed from the client before the site can go live.**
 
@@ -42,7 +42,7 @@ All images must be:
 - Taken by or owned by the client
 - Not watermarked
 - Not sourced from other artists' portfolios
-- Consistent in quality — do not mix phone snapshots and professional shots
+- Consistent in quality, do not mix phone snapshots and professional shots
 
 ---
 
@@ -90,7 +90,7 @@ For each artist (duplicate this block):
 |---|---|---|
 | Years of experience | Current template: 8+ | |
 | Clients tattooed | Current template: 2,000+ | |
-| Review score | Current template: 4.9★ — must be real or removed | |
+| Review score | Current template: 4.9★, must be real or removed | |
 | Languages | Current template: EN·PT·ES | |
 
 ### Testimonials

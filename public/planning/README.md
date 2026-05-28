@@ -1,4 +1,4 @@
-# PT Starter Package — Site Delivery Reference
+# PT Starter Package, Site Delivery Reference
 
 **Template:** pt-c-aura-web  
 **Package:** Starter (€840/year)  
@@ -23,10 +23,10 @@ relevant document and the live site reflects the behaviour described.
 | `06-legal-pages.md` | Required legal pages and what each must contain |
 | `07-analytics.md` | Vercel Analytics, GA4, Google Search Console |
 | `08-env-and-deployment.md` | All environment variables and Vercel project config |
-| `09-go-live-checklist.md` | Final gate before launch — nothing ships without this clear |
+| `09-go-live-checklist.md` | Final gate before launch, nothing ships without this clear |
 | `10-i18n.md` | Route-based i18n (EN/PT/DE), middleware, content system, LanguageSwitcher |
 | `11-analytics-tracking.md` | GA4 setup, cookie consent, CTA event tracking, thank-you page |
-| `TASKS.md` | Cursor implementation checklist — work through phases in order |
+| `TASKS.md` | Cursor implementation checklist, work through phases in order |
 
 ---
 
@@ -42,7 +42,7 @@ Taken directly from portugaltattoo.com at time of writing:
 - Basic SEO
 
 **Booking and scheduling**
-- AI booking (booking form — AI layer deferred to phase 2)
+- AI booking (booking form, AI layer deferred to phase 2)
 - 24/7 availability via Cal.com
 - Deposit and confirmation flow
 - Multi-artist or studio calendar

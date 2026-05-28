@@ -1,4 +1,4 @@
-# Portugal Tattoo — Starter: Complete Supabase Schema
+# Portugal Tattoo, Starter: Complete Supabase Schema
 
 This document contains the full Supabase (PostgreSQL) schema for the Starter project, including all tables, indexes, RLS policies, functions, and triggers. Run migrations in order.
 
@@ -89,7 +89,7 @@ create policy "Admin update settings"
   on site_settings for update
   using (auth.role() = 'authenticated');
 
--- Seed one row — the platform will always have exactly one row
+-- Seed one row, the platform will always have exactly one row
 insert into site_settings (studio_name) values ('My Studio');
 ```
 
@@ -165,7 +165,7 @@ create policy "Admin update bookings"
   on bookings for update
   using (auth.role() = 'authenticated');
 
--- Service role (webhooks) can insert and update — service role bypasses RLS by default
+-- Service role (webhooks) can insert and update, service role bypasses RLS by default
 -- No public policy: bookings are never readable by anonymous users
 ```
 
@@ -275,7 +275,7 @@ $$;
 Disabled by default. Enable if you need to review chatbot conversations for quality improvement. Do not store personally identifiable information.
 
 ```sql
--- 007_chat_logs.sql (optional — disabled in Starter by default)
+-- 007_chat_logs.sql (optional, disabled in Starter by default)
 
 create table chat_logs (
   id           uuid primary key default gen_random_uuid(),
@@ -323,7 +323,7 @@ create table availability_cache (
 create index idx_cache_key     on availability_cache(cache_key);
 create index idx_cache_expires on availability_cache(expires_at);
 
--- Cleanup function — call via pg_cron or on each request
+-- Cleanup function, call via pg_cron or on each request
 create or replace function clear_expired_cache()
 returns void language sql as $$
   delete from availability_cache where expires_at < now();
@@ -331,7 +331,7 @@ $$;
 
 -- RLS: service role only
 alter table availability_cache enable row level security;
--- No public policy — accessed via service role only
+-- No public policy, accessed via service role only
 ```
 
 ---
@@ -416,7 +416,7 @@ enabled = true
 
 [auth]
 enabled = true
-# Site URL — set to your Vercel deployment URL in production
+# Site URL, set to your Vercel deployment URL in production
 site_url = "http://localhost:3000"
 additional_redirect_urls = ["https://yourdomain.com"]
 jwt_expiry = 3600
@@ -424,7 +424,7 @@ enable_refresh_token_rotation = true
 refresh_token_reuse_interval = 10
 
 [auth.email]
-enable_signup = false   # Only admin — no public sign-ups
+enable_signup = false   # Only admin, no public sign-ups
 double_confirm_changes = true
 enable_confirmations = true
 ```
@@ -458,13 +458,13 @@ import type { Database } from '@/types/database.types'
 insert into knowledge_base (title, content, language, category) values
   (
     'Pricing overview',
-    'Consultations are free. All tattoos start at a minimum of €100. Custom designs are priced by size and complexity — we provide a quote after the consultation.',
+    'Consultations are free. All tattoos start at a minimum of €100. Custom designs are priced by size and complexity, we provide a quote after the consultation.',
     'en',
     'pricing'
   ),
   (
     'Preço e orçamentos',
-    'As consultas são gratuitas. Todas as tatuagens têm um preço mínimo de €100. Os designs personalizados têm preço conforme o tamanho e complexidade — fornecemos um orçamento após a consulta.',
+    'As consultas são gratuitas. Todas as tatuagens têm um preço mínimo de €100. Os designs personalizados têm preço conforme o tamanho e complexidade, fornecemos um orçamento após a consulta.',
     'pt',
     'pricing'
   ),

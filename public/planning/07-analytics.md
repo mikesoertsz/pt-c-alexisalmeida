@@ -1,4 +1,4 @@
-# 07 — Analytics
+# 07, Analytics
 
 **Basic analytics is included in the Starter Package.**
 
@@ -72,7 +72,7 @@ organic search performance.
 ## Google Analytics 4
 
 GA4 is included in the Starter Package. It requires a cookie consent banner
-because GA4 uses analytics cookies (`_ga`, `_ga_*`) — consent is required
+because GA4 uses analytics cookies (`_ga`, `_ga_*`), consent is required
 under the ePrivacy Directive before any GA4 cookie is set.
 
 See `11-analytics-tracking.md` for the full implementation.
@@ -83,7 +83,7 @@ See `11-analytics-tracking.md` for the full implementation.
 2. Copy the Measurement ID (starts with `G-`)
 3. Add `NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX` to `.env.local` and Vercel env vars
 4. The `GoogleAnalytics` component from `@next/third-parties/google` is loaded
-   conditionally — only after the visitor accepts analytics cookies
+   conditionally, only after the visitor accepts analytics cookies
 5. The `CookieConsentBanner` component handles consent collection
 
 ### CTA event tracking

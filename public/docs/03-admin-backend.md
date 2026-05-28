@@ -1,4 +1,4 @@
-# Portugal Tattoo — Starter: Admin Backend
+# Portugal Tattoo, Starter: Admin Backend
 
 The admin backend is a protected section of the Next.js app (not a separate service). It is accessible at `/admin` and requires Supabase Auth authentication. It is not indexed by search engines.
 
@@ -116,7 +116,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-sm">
         <CardHeader>
           <h1 className="text-base font-semibold text-foreground">Admin login</h1>
-          <p className="text-xs text-muted-foreground">Portugal Tattoo — Starter</p>
+          <p className="text-xs text-muted-foreground">Portugal Tattoo, Starter</p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -202,7 +202,7 @@ import { createServerClient } from '@/lib/supabase/server'
 import { AdminNav } from '@/components/admin/AdminNav'
 
 export const metadata = {
-  title: 'Admin — Portugal Tattoo',
+  title: 'Admin, Portugal Tattoo',
   robots: { index: false, follow: false },
 }
 
@@ -827,7 +827,7 @@ export async function DELETE(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  // Soft delete — set status to cancelled
+  // Soft delete, set status to cancelled
   return PATCH(_request, { params })
 }
 ```

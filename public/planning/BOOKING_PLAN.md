@@ -1,4 +1,4 @@
-# Aura Tattoo — Booking System Implementation Plan
+# Aura Tattoo, Booking System Implementation Plan
 
 **Project:** pt-c-aura-web  
 **Scope:** Booking system, multi-step form, email flows, WhatsApp integration  
@@ -15,7 +15,7 @@ The immediate scope (pre-AI) is:
 
 - Multi-step booking form embedded in the landing page as the primary CTA
 - Cal.com API v2 integration for consultation and tattoo session slot selection
-- WhatsApp floating button (already scaffolded — requires env var)
+- WhatsApp floating button (already scaffolded, requires env var)
 - HTML email templates for all booking lifecycle events
 - Server-side API routes to proxy Cal.com and trigger emails
 
@@ -28,11 +28,11 @@ The immediate scope (pre-AI) is:
 | Area | Status |
 |---|---|
 | Landing page components (Hero, Nav, Gallery, Pricing, etc.) | Done |
-| `WhatsAppFloatingButton` component | Done — needs `NEXT_PUBLIC_WHATSAPP_URL` set |
+| `WhatsAppFloatingButton` component | Done, needs `NEXT_PUBLIC_WHATSAPP_URL` set |
 | `app/content/en.ts` content system | Done |
 | Brand tokens (terracotta, sage, blush, olive, ink, mist) | Done |
 | Fonts (Poppins body, Cormorant Garamond display, Geist mono) | Done |
-| `public/html/` directory | Created — empty |
+| `public/html/` directory | Created, empty |
 
 ### What is missing
 
@@ -51,11 +51,11 @@ The immediate scope (pre-AI) is:
 
 ---
 
-## 3. Cal.com Setup (External — Manual Steps)
+## 3. Cal.com Setup (External, Manual Steps)
 
 Before any code, set up two event types in Cal.com:
 
-### Event type 1 — Free Consultation
+### Event type 1, Free Consultation
 
 | Field | Value |
 |---|---|
@@ -64,13 +64,13 @@ Before any code, set up two event types in Cal.com:
 | Duration | 20 minutes |
 | Description | Free 20-minute consultation. In person or video. Available in EN, PT, ES. |
 | Location | In-person (Albufeira) or Google Meet |
-| Requires confirmation | No — instant confirm |
+| Requires confirmation | No, instant confirm |
 | Buffer after | 10 minutes |
 | Min notice | 24 hours |
 | Booking questions | Name, email, phone, preferred language, tattoo idea (textarea), reference images (file upload optional) |
 | Deposit | Not required |
 
-### Event type 2 — Tattoo Session
+### Event type 2, Tattoo Session
 
 | Field | Value |
 |---|---|
@@ -79,16 +79,16 @@ Before any code, set up two event types in Cal.com:
 | Duration | 60 / 120 / 180 / 240 minutes (multi-duration) |
 | Description | Custom tattoo session at Aura Tattoo & Meaning, Albufeira. |
 | Location | In person (Albufeira studio) |
-| Requires confirmation | Yes — manual review before confirm |
+| Requires confirmation | Yes, manual review before confirm |
 | Min notice | 48 hours |
 | Booking questions | Name, email, phone, preferred language, placement, size category, style, description, reference images |
-| Deposit | 30% — collected via Stripe integration in Cal.com |
+| Deposit | 30%, collected via Stripe integration in Cal.com |
 
 ### Cal.com API key
 
 Create an API key in Cal.com Settings → Developer → API Keys. Use a dedicated key scoped to booking reads + writes. Store as `CAL_API_KEY` (server-only).
 
-Get your username and event type slugs — used in the slots API call.
+Get your username and event type slugs, used in the slots API call.
 
 ---
 
@@ -145,19 +145,19 @@ app/components/booking/
 
 ### Step breakdown
 
-#### Step 1 — Service type
+#### Step 1, Service type
 
 Two cards: "Free Consultation" and "Tattoo Session". Selecting one sets the event slug used in subsequent API calls. No back button on this step.
 
 Fields stored: `serviceType: 'consultation' | 'tattoo-session'`
 
-#### Step 2 — Artist preference
+#### Step 2, Artist preference
 
 Three options: Sofia Martins, Marco Alves, No preference. Selecting an artist narrows available slots to their calendar (if using Cal.com team/round-robin setup) or passes the artist as metadata.
 
 Fields stored: `artistPreference: string`
 
-#### Step 3 — Session details
+#### Step 3, Session details
 
 This step is conditional:
 
@@ -166,7 +166,7 @@ This step is conditional:
 
 Fields stored: `style`, `size`, `placement`, `description`, `references[]`
 
-#### Step 4 — Slot picker
+#### Step 4, Slot picker
 
 Fetches available slots from `/api/cal/slots` using the event slug and a sliding 4-week window starting from today. Renders a date selector and a grid of time slots for the selected date. Time zone is detected from the browser (`Intl.DateTimeFormat().resolvedOptions().timeZone`) and passed to the API.
 
@@ -203,15 +203,15 @@ Slots are grouped by date in the calendar. If a date has no slots it is greyed o
 
 Fields stored: `selectedSlot: { start: string, end: string }`
 
-#### Step 5 — Personal information
+#### Step 5, Personal information
 
-Fields: first name, last name, email, phone (with country prefix — default +351), preferred language (EN / PT / ES).
+Fields: first name, last name, email, phone (with country prefix, default +351), preferred language (EN / PT / ES).
 
 Validation: email format, phone minimum 8 digits, all required except language (default EN).
 
 Fields stored: `firstName`, `lastName`, `email`, `phone`, `language`
 
-#### Step 6 — Review and confirm
+#### Step 6, Review and confirm
 
 Summary card listing service type, artist, date/time in the user's local timezone, and (for sessions) the pricing tier and deposit amount. A checkbox acknowledges the deposit and cancellation policy. A primary button labelled "Confirm booking" submits to `/api/cal/book`.
 
@@ -338,15 +338,15 @@ All templates receive:
 
 ```
 {{client_first_name}}
-{{service_type}}       — "Free Consultation" or "Tattoo Session"
+{{service_type}}      , "Free Consultation" or "Tattoo Session"
 {{artist_name}}
-{{date}}               — e.g. "Tuesday, 12 May 2026"
-{{time}}               — e.g. "10:00 AM (WEST)"
-{{booking_reference}}  — Cal.com booking uid (truncated)
-{{studio_address}}     — Aura Tattoo & Meaning, Albufeira, Algarve
-{{whatsapp_link}}      — wa.me link for questions
-{{cancel_link}}        — Cal.com self-service cancel URL
-{{reschedule_link}}    — Cal.com self-service reschedule URL
+{{date}}              , e.g. "Tuesday, 12 May 2026"
+{{time}}              , e.g. "10:00 AM (WEST)"
+{{booking_reference}} , Cal.com booking uid (truncated)
+{{studio_address}}    , Aura Tattoo & Meaning, Albufeira, Algarve
+{{whatsapp_link}}     , wa.me link for questions
+{{cancel_link}}       , Cal.com self-service cancel URL
+{{reschedule_link}}   , Cal.com self-service reschedule URL
 ```
 
 ### Design system for emails
@@ -356,7 +356,7 @@ Body: `#fbf7f1` background, max-width 600px centred, 32px horizontal padding.
 Primary button: `#cc7d47` background, white text, 6px border-radius, 48px height.  
 Dividers: 1px solid `#e3d6c2`.  
 Footer: `#262b26` background, white text, studio address, social links, unsubscribe link.  
-Font stack: `'Poppins', Arial, sans-serif` — Poppins loaded via Google Fonts `<link>` at top of each template for clients that support webfonts.
+Font stack: `'Poppins', Arial, sans-serif`, Poppins loaded via Google Fonts `<link>` at top of each template for clients that support webfonts.
 
 ---
 
@@ -377,7 +377,7 @@ pnpm add resend         # Transactional email
 pnpm add react-icons    # Already used by WhatsAppFloatingButton
 ```
 
-No Cal.com SDK is needed — the API is consumed directly via `fetch` in server-side route handlers.
+No Cal.com SDK is needed, the API is consumed directly via `fetch` in server-side route handlers.
 
 Optional (for file uploads in Step 3):
 
@@ -453,7 +453,7 @@ A new `booking` block covering:
 - Step titles and descriptions for all 6 steps
 - All form field labels and placeholder text
 - Validation error messages
-- Artist names and specialties (already in `artists` block — reference rather than duplicate)
+- Artist names and specialties (already in `artists` block, reference rather than duplicate)
 - Style options list
 - Size category labels
 - Success and error state copy
@@ -470,7 +470,7 @@ In `app/page.tsx`, the `BookingSection` is inserted after `HowItWorks`:
 <RevealOnScroll>
   <HowItWorks />
 </RevealOnScroll>
-<BookingSection />        {/* No RevealOnScroll wrapper — form must be instantly interactive */}
+<BookingSection />        {/* No RevealOnScroll wrapper, form must be instantly interactive */}
 <Promotions />
 ```
 
@@ -482,10 +482,10 @@ The Hero component already has `href="#booking"` on its primary CTA. No Hero cha
 
 - Each form step is wrapped in a `<fieldset>` with a `<legend>` for screen reader navigation.
 - Focus moves to the first interactive element of each new step on advance (use `useEffect` + `ref.focus()`).
-- All form inputs have visible `<label>` elements — never placeholder-only.
+- All form inputs have visible `<label>` elements, never placeholder-only.
 - Error messages use `role="alert"` and `aria-describedby` on the associated input.
 - The slot calendar uses `role="grid"` with `aria-label` on each slot button including the formatted time.
-- The deposit checkbox requires explicit user action — cannot be pre-checked.
+- The deposit checkbox requires explicit user action, cannot be pre-checked.
 - Loading states disable the submit/advance button and show a spinner inside it.
 - The `NEXT_PUBLIC_WHATSAPP_URL` fallback is shown on error states in Step 6.
 
@@ -493,21 +493,21 @@ The Hero component already has `href="#booking"` on its primary CTA. No Hero cha
 
 ## 14. Implementation Order
 
-1. Environment variables — `.env.local` setup
-2. Cal.com event types — manual setup in Cal.com dashboard
-3. `app/lib/cal.ts` — typed API wrappers
-4. `/api/cal/slots` route — test with curl
-5. `/api/cal/book` route — test with a real booking
-6. `/api/webhooks/cal` route — set up webhook in Cal.com dashboard, test signature verification
-7. Email templates — all 10 HTML files in `public/html/`
-8. `app/lib/email.ts` + `/api/email/send` — test with Resend sandbox
-9. `BookingForm` component — Steps 1–6
-10. `BookingSection` — wrapper with layout
-11. Page integration — insert `BookingSection` into `page.tsx`
+1. Environment variables, `.env.local` setup
+2. Cal.com event types, manual setup in Cal.com dashboard
+3. `app/lib/cal.ts`, typed API wrappers
+4. `/api/cal/slots` route, test with curl
+5. `/api/cal/book` route, test with a real booking
+6. `/api/webhooks/cal` route, set up webhook in Cal.com dashboard, test signature verification
+7. Email templates, all 10 HTML files in `public/html/`
+8. `app/lib/email.ts` + `/api/email/send`, test with Resend sandbox
+9. `BookingForm` component, Steps 1–6
+10. `BookingSection`, wrapper with layout
+11. Page integration, insert `BookingSection` into `page.tsx`
 12. Content additions to `en.ts`
-13. WhatsApp env var — set `NEXT_PUBLIC_WHATSAPP_URL`
-14. End-to-end test — full booking flow for both consultation and session types
-15. Vercel env vars — add all env vars to production project settings
+13. WhatsApp env var, set `NEXT_PUBLIC_WHATSAPP_URL`
+14. End-to-end test, full booking flow for both consultation and session types
+15. Vercel env vars, add all env vars to production project settings
 16. Deploy and smoke test
 
 ---
@@ -516,17 +516,17 @@ The Hero component already has `href="#booking"` on its primary CTA. No Hero cha
 
 The following Starter Package features are explicitly deferred:
 
-- **AI chatbot** — deferred. Floating button UI shell can be added later as a `ChatWidget` component in the same pattern as `WhatsAppFloatingButton`.
-- **Deposit payment UI** — handled by Cal.com's native Stripe integration. No custom payment page needed for MVP.
-- **Client self-service portal** — Cal.com generates cancel/reschedule links automatically and includes them in all confirmation emails.
-- **CRM integration** — bookings land in Cal.com natively. Export to Airtable or Notion can be added later via a webhook handler.
-- **Analytics** — Vercel Analytics can be enabled in one line. Deferred until post-launch.
-- **Portuguese and Spanish content** — `en.ts` architecture supports this. Add `pt.ts` and `es.ts` in a second phase.
+- **AI chatbot**, deferred. Floating button UI shell can be added later as a `ChatWidget` component in the same pattern as `WhatsAppFloatingButton`.
+- **Deposit payment UI**, handled by Cal.com's native Stripe integration. No custom payment page needed for MVP.
+- **Client self-service portal**, Cal.com generates cancel/reschedule links automatically and includes them in all confirmation emails.
+- **CRM integration**, bookings land in Cal.com natively. Export to Airtable or Notion can be added later via a webhook handler.
+- **Analytics**, Vercel Analytics can be enabled in one line. Deferred until post-launch.
+- **Portuguese and Spanish content**, `en.ts` architecture supports this. Add `pt.ts` and `es.ts` in a second phase.
 
 ---
 
 ## Sources
 
-- [Cal.com API v2 — Get available time slots](https://cal.com/docs/api-reference/v2/slots/get-available-time-slots-for-an-event-type)
-- [Cal.com API essentials — Rollout guide](https://rollout.com/integration-guides/cal.com/api-essentials)
-- [Portugal Tattoo — Starter Package](https://www.portugaltattoo.com/en)
+- [Cal.com API v2, Get available time slots](https://cal.com/docs/api-reference/v2/slots/get-available-time-slots-for-an-event-type)
+- [Cal.com API essentials, Rollout guide](https://rollout.com/integration-guides/cal.com/api-essentials)
+- [Portugal Tattoo, Starter Package](https://www.portugaltattoo.com/en)

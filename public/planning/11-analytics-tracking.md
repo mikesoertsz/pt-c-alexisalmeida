@@ -1,4 +1,4 @@
-# 11 — Analytics, CTA Tracking, and Conversion
+# 11, Analytics, CTA Tracking, and Conversion
 
 **GA4, cookie consent, event tracking on all CTAs, and the thank-you conversion page.**
 
@@ -24,7 +24,7 @@ implementation:
 pnpm add @vercel/analytics @vercel/speed-insights
 ```
 
-GA4 is loaded via `@next/third-parties/google` — this is already bundled with
+GA4 is loaded via `@next/third-parties/google`, this is already bundled with
 Next.js 15 and requires no separate installation.
 
 ---
@@ -73,7 +73,7 @@ only after consent is granted. Do not load it unconditionally in the layout.
 
 ```tsx
 // app/[locale]/layout.tsx
-'use client' — this part must be in a client component
+'use client', this part must be in a client component
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { useConsent } from '@/app/hooks/useConsent'
@@ -263,11 +263,11 @@ GA4 reports are readable.
 | Pricing tier CTA (each tier) | `cta_click` | `pricing_cta_[tier]` |
 | ClosingCTA primary button | `cta_click` | `closing_cta_primary` |
 | ClosingCTA WhatsApp link | `cta_click` | `closing_cta_whatsapp` |
-| Booking form: Step 1 — service selected | `booking_step_1` | `consultation` or `session` |
-| Booking form: Step 4 — slot selected | `booking_step_4` | `slot_selected` |
-| Booking form: Step 6 — submit | `booking_submit` | `consultation` or `session` |
-| Booking form: Step 6 — success | `booking_complete` | `consultation` or `session` |
-| Language switcher — language changed | `language_switch` | `en`, `pt`, or `de` |
+| Booking form: Step 1, service selected | `booking_step_1` | `consultation` or `session` |
+| Booking form: Step 4, slot selected | `booking_step_4` | `slot_selected` |
+| Booking form: Step 6, submit | `booking_submit` | `consultation` or `session` |
+| Booking form: Step 6, success | `booking_complete` | `consultation` or `session` |
+| Language switcher, language changed | `language_switch` | `en`, `pt`, or `de` |
 
 All events should also include `event_category: 'engagement'` in the params
 object.
@@ -358,7 +358,7 @@ export async function generateMetadata({
 
 ```ts
 thankYou: {
-  metaTitle: "Booking confirmed — Aura Tattoo & Meaning",
+  metaTitle: "Booking confirmed, Aura Tattoo & Meaning",
   preheading: "You're all set",
   heading: "We'll be in touch.",
   body: "Your booking request has been sent. Check your email for a confirmation. If you have any questions, reach us on WhatsApp.",
@@ -403,18 +403,18 @@ router.push(`${localePath}/thank-you`)
 | Cookie consent record | `COOKIE_CONSENT` | Records consent choice | Strictly necessary | No | 1 year |
 | Google Analytics | `_ga`, `_ga_*` | User behaviour analytics | Analytics | Yes | 2 years |
 
-The `COOKIE_CONSENT` cookie itself requires no consent — it is the mechanism
+The `COOKIE_CONSENT` cookie itself requires no consent, it is the mechanism
 by which the visitor's choice is stored. Without it, the banner would reappear
 on every page load.
 
 ---
 
-## Legal page update — `/legal/cookies`
+## Legal page update, `/legal/cookies`
 
 The cookies page must be updated to list all three cookie categories with
 accurate names, purposes, and max ages. See the table above. The language
-preference cookie and consent cookie should be listed under "Functional — always
-active". GA4 cookies under "Analytics — optional, requires consent".
+preference cookie and consent cookie should be listed under "Functional, always
+active". GA4 cookies under "Analytics, optional, requires consent".
 
 ---
 
@@ -424,5 +424,5 @@ After the domain is live and analytics is enabled:
 
 - Page views and unique visitors appear in Vercel → Analytics
 - Speed Insights shows real-user Core Web Vitals under Vercel → Speed Insights
-- No code changes required — Vercel captures these automatically
-- These are separate from GA4 — both can run simultaneously
+- No code changes required, Vercel captures these automatically
+- These are separate from GA4, both can run simultaneously

@@ -1,4 +1,4 @@
-# Aura Tattoo — Implementation Tasks
+# Aura Tattoo, Implementation Tasks
 
 Work through these tasks in order. Each section depends on the one before it.
 Do not skip ahead. Check each box only when the feature is working end-to-end,
@@ -6,20 +6,20 @@ not just when the code is written.
 
 ---
 
-## Phase 0 — Codebase fixes (no dependencies)
+## Phase 0, Codebase fixes (no dependencies)
 
 These are wrong today and must be fixed before building anything new on top.
 
 - [ ] Rename `app/components/landing/PainPoints.tsx` → `app/components/landing/WhyAura.tsx`
 - [ ] Update the import in `app/page.tsx` from `PainPoints` to `WhyAura`
 - [ ] Remove the `<Promotions />` import and render from `app/page.tsx` (component returns null, no reason to import it)
-- [ ] Remove `id="booking"` from `ClosingCTA` — this anchor will move to the new `BookingSection`
-- [ ] Fix the `ClosingCTA` primary CTA `href` — currently points to `https://cal.com` (the generic homepage). Change it to `href="#booking"` as a scroll-to-form link until the full booking form is in place
+- [ ] Remove `id="booking"` from `ClosingCTA`, this anchor will move to the new `BookingSection`
+- [ ] Fix the `ClosingCTA` primary CTA `href`, currently points to `https://cal.com` (the generic homepage). Change it to `href="#booking"` as a scroll-to-form link until the full booking form is in place
 - [ ] Confirm `nav.about` content key in `en.ts` is not linked anywhere in the Nav component. If no About section will exist at launch, remove the `about` key from `en.ts`
 
 ---
 
-## Phase 1 — Environment and configuration
+## Phase 1, Environment and configuration
 
 Must be done before any API routes or email sending can be tested.
 
@@ -42,13 +42,13 @@ EMAIL_FROM=bookings@CLIENT-DOMAIN
 EMAIL_REPLY_TO=hello@CLIENT-DOMAIN
 ```
 
-- [ ] Set `NEXT_PUBLIC_WHATSAPP_URL` — confirm the `WhatsAppFloatingButton` is now visible in the browser (it returns null when the var is empty)
+- [ ] Set `NEXT_PUBLIC_WHATSAPP_URL`, confirm the `WhatsAppFloatingButton` is now visible in the browser (it returns null when the var is empty)
 - [ ] Add all env vars to Vercel project: Settings → Environment Variables. Server-only vars (`CAL_API_KEY`, `CAL_WEBHOOK_SECRET`, `RESEND_API_KEY`) set to Production only. `NEXT_PUBLIC_*` vars set to Production + Preview.
 
-### Cal.com setup (manual — done in Cal.com dashboard)
+### Cal.com setup (manual, done in Cal.com dashboard)
 
 - [ ] Create Cal.com account or confirm existing account for client
-- [ ] Note the Cal.com username — this is `CAL_USERNAME`
+- [ ] Note the Cal.com username, this is `CAL_USERNAME`
 - [ ] Create event type: **Free Consultation**
   - Slug: `consultation`
   - Duration: 20 minutes
@@ -59,7 +59,7 @@ EMAIL_REPLY_TO=hello@CLIENT-DOMAIN
   - Booking questions: name (auto), email (auto), phone (add), preferred language (dropdown: EN/PT/DE), tattoo idea (textarea)
 - [ ] Create event type: **Tattoo Session**
   - Slug: `tattoo-session`
-  - Duration: Multiple — 60 / 120 / 180 / 240 minutes
+  - Duration: Multiple, 60 / 120 / 180 / 240 minutes
   - Location: In person (studio address)
   - Requires confirmation: Yes (manual review)
   - Min notice: 48 hours
@@ -71,7 +71,7 @@ EMAIL_REPLY_TO=hello@CLIENT-DOMAIN
 - [ ] Create a Cal.com API key: Settings → Developer → API Keys. Copy into `CAL_API_KEY`
 - [ ] Create a Cal.com webhook pointing to `https://CLIENT-DOMAIN/api/webhooks/cal`. Events to subscribe: `BOOKING_CREATED`, `BOOKING_CONFIRMED`, `BOOKING_CANCELLED`, `BOOKING_RESCHEDULED`. Copy the webhook secret into `CAL_WEBHOOK_SECRET`.
 
-### Resend setup (manual — done in Resend dashboard)
+### Resend setup (manual, done in Resend dashboard)
 
 - [ ] Create Resend account or confirm existing
 - [ ] Add and verify the client's sending domain (e.g. `auratattoo.pt`)
@@ -80,9 +80,9 @@ EMAIL_REPLY_TO=hello@CLIENT-DOMAIN
 
 ---
 
-## Phase 2 — Type definitions and lib utilities
+## Phase 2, Type definitions and lib utilities
 
-Write these before any components or routes — they are imported everywhere.
+Write these before any components or routes, they are imported everywhere.
 
 - [ ] Create `app/lib/types/booking.ts` with the following exported types:
 
@@ -166,17 +166,17 @@ export function resolveLocaleFromHeader(acceptLanguage: string): Locale {
 }
 ```
 
-- [ ] Create `app/lib/cal.ts` — typed fetch wrappers for Cal.com API v2:
+- [ ] Create `app/lib/cal.ts`, typed fetch wrappers for Cal.com API v2:
 
 ```ts
 // getAvailableSlots(eventSlug, start, end, timeZone) → CalSlotsResponse
 // createBooking(payload) → CalBookingResponse
 // All calls set headers: Authorization: Bearer ${CAL_API_KEY}, cal-api-version: ${CAL_API_VERSION}
 // Base URL: https://api.cal.com/v2
-// Server-only functions — use process.env directly, no NEXT_PUBLIC prefix
+// Server-only functions, use process.env directly, no NEXT_PUBLIC prefix
 ```
 
-- [ ] Create `app/lib/email.ts` — email send helper:
+- [ ] Create `app/lib/email.ts`, email send helper:
 
 ```ts
 // sendEmail(template: string, to: string, variables: Record<string, string>) → Promise<void>
@@ -185,7 +185,7 @@ export function resolveLocaleFromHeader(acceptLanguage: string): Locale {
 // Sends via Resend using RESEND_API_KEY, EMAIL_FROM, EMAIL_REPLY_TO env vars
 ```
 
-- [x] Create `app/lib/analytics.ts` — GA4 event helper:
+- [x] Create `app/lib/analytics.ts`, GA4 event helper:
 
 ```ts
 export function trackEvent(
@@ -198,7 +198,7 @@ export function trackEvent(
 }
 ```
 
-- [x] Create `app/types/gtag.d.ts` — Window.gtag type declaration:
+- [x] Create `app/types/gtag.d.ts`, Window.gtag type declaration:
 
 ```ts
 declare global {
@@ -208,46 +208,46 @@ declare global {
 }
 ```
 
-- [x] Create `app/hooks/useConsent.ts` — cookie consent hook (see `11-analytics-tracking.md` for full code)
+- [x] Create `app/hooks/useConsent.ts`, cookie consent hook (see `11-analytics-tracking.md` for full code)
 
 ---
 
-## Phase 3 — i18n routing and content system
+## Phase 3, i18n routing and content system
 
-Build this before the page structure changes — the locale-aware layout and
+Build this before the page structure changes, the locale-aware layout and
 content system must exist before components receive props.
 
 See `10-i18n.md` for all implementation details.
 
-- [x] Create `middleware.ts` at the project root (locale detection and redirect — full code in `10-i18n.md`)
+- [x] Create `middleware.ts` at the project root (locale detection and redirect, full code in `10-i18n.md`)
 - [x] Create `app/content/` folder with `index.ts`, `en.ts`, `pt.ts`, `de.ts`
-  - `en.ts`: rename existing content export to `export const en = { ... }` — source of truth
+  - `en.ts`: rename existing content export to `export const en = { ... }`, source of truth
   - `index.ts`: exports `ContentSchema` type and `getContent(locale)` helper
-  - `pt.ts`: full Portuguese translation — every key matching `en.ts`
-  - `de.ts`: full German translation — use formal "Sie" throughout
+  - `pt.ts`: full Portuguese translation, every key matching `en.ts`
+  - `de.ts`: full German translation, use formal "Sie" throughout
 - [x] Move `app/page.tsx` → `app/[locale]/page.tsx`
-  - Accept `params: Promise<{ locale: string }>` (Next.js 15 pattern — must `await params`)
+  - Accept `params: Promise<{ locale: string }>` (Next.js 15 pattern, must `await params`)
   - Resolve locale, call `getContent(locale)`, pass content slices as props to all section components
 - [x] Add `generateStaticParams` and analytics wrappers under `app/[locale]/layout.tsx`; keep root `app/layout.tsx` with `<html lang>` driven by middleware `x-locale` header (URLs stay unprefixed for English)
 - [x] Add `export async function generateMetadata` to `app/[locale]/page.tsx` with full hreflang including `x-default` (see `10-i18n.md`)
 - [x] Update all landing section components to receive content as props (not import `en` directly)
-  - `Nav.tsx` — receives `content.nav` and `locale`
-  - `Hero.tsx` — receives `content.hero` and `content.whatsapp`
-  - `SocialProof.tsx` — receives `content.socialProof`
-  - `Gallery.tsx` — receives `content.gallery`
-  - `Artists.tsx` — receives `content.artists`
-  - `WhyAura.tsx` — receives `content.whyUs`
-  - `HowItWorks.tsx` — receives `content.howItWorks`
-  - `Pricing.tsx` — receives `content.pricing`
-  - `Testimonials.tsx` — receives `content.testimonials`
-  - `FAQ.tsx` — receives `content.faq`
-  - `ClosingCTA.tsx` — receives `content.closingCta` and `content.whatsapp`
-  - `FooterGutter.tsx` — receives `content.footer` and `locale`
+  - `Nav.tsx`, receives `content.nav` and `locale`
+  - `Hero.tsx`, receives `content.hero` and `content.whatsapp`
+  - `SocialProof.tsx`, receives `content.socialProof`
+  - `Gallery.tsx`, receives `content.gallery`
+  - `Artists.tsx`, receives `content.artists`
+  - `WhyAura.tsx`, receives `content.whyUs`
+  - `HowItWorks.tsx`, receives `content.howItWorks`
+  - `Pricing.tsx`, receives `content.pricing`
+  - `Testimonials.tsx`, receives `content.testimonials`
+  - `FAQ.tsx`, receives `content.faq`
+  - `ClosingCTA.tsx`, receives `content.closingCta` and `content.whatsapp`
+  - `FooterGutter.tsx`, receives `content.footer` and `locale`
 - [x] Create `app/components/shared/LanguageSwitcher.tsx` (full code in `10-i18n.md`)
   - Replaces the cosmetic `EN` button in `Nav.tsx`
   - Uses `router.push()` and `document.cookie` to switch locale and persist preference
   - Active locale shown with `bg-terracotta text-white`
-- [x] Update the `NEXT_LOCALE` cookie classification in `/legal/cookies` — list as functional, always active, no consent required
+- [x] Update the `NEXT_LOCALE` cookie classification in `/legal/cookies`, list as functional, always active, no consent required
 - [x] Update `app/sitemap.ts` to include all locale variants of every page (see `10-i18n.md`)
 
 ### Translation quality check
@@ -259,7 +259,7 @@ See `10-i18n.md` for all implementation details.
 
 ---
 
-## Phase 4 — Cookie consent and analytics
+## Phase 4, Cookie consent and analytics
 
 - [x] Run `pnpm add @vercel/analytics @vercel/speed-insights` (completed with `npm install` in this repo)
 - [x] Create `app/components/shared/CookieConsentBanner.tsx` (full code in `11-analytics-tracking.md`)
@@ -271,7 +271,7 @@ See `10-i18n.md` for all implementation details.
 - [x] Create `app/components/analytics/AnalyticsLoader.tsx` client component
   - Uses `useConsent()` to check `analyticsConsented`
   - Renders `<GoogleAnalytics gaId={gaId} />` only when consent is granted and `NEXT_PUBLIC_GA_ID` is set
-- [x] Import and render `<Analytics />` and `<SpeedInsights />` in `app/[locale]/layout.tsx` — these are cookieless and always active
+- [x] Import and render `<Analytics />` and `<SpeedInsights />` in `app/[locale]/layout.tsx`, these are cookieless and always active
 - [x] Import and render `<AnalyticsLoader />` in `app/[locale]/layout.tsx`
 - [x] Import and render `<CookieConsentBanner content={content.cookieConsent} />` in `app/[locale]/page.tsx`
 - [ ] Enable Vercel Analytics in Vercel dashboard: Project → Analytics → Enable
@@ -279,7 +279,7 @@ See `10-i18n.md` for all implementation details.
 
 ---
 
-## Phase 5 — API routes
+## Phase 5, API routes
 
 Write and test each route independently before wiring up the form.
 
@@ -291,13 +291,13 @@ Write and test each route independently before wiring up the form.
   - Calls `getAvailableSlots` from `app/lib/cal.ts`
   - Returns the `CalSlotsResponse` data to the client
   - Returns 400 if required params missing, 500 on Cal.com error
-- [ ] Test: `curl "http://localhost:3000/api/cal/slots?eventSlug=consultation&start=2026-05-12&end=2026-06-09&timeZone=Europe/Lisbon"` — should return real slot data from Cal.com
+- [ ] Test: `curl "http://localhost:3000/api/cal/slots?eventSlug=consultation&start=2026-05-12&end=2026-06-09&timeZone=Europe/Lisbon"`, should return real slot data from Cal.com
 
 ### `/api/cal/book`
 
 - [ ] Create `app/api/cal/book/route.ts`
   - Method: POST
-  - Body: `BookingFormState` (minus `step` and `references` — files handled separately)
+  - Body: `BookingFormState` (minus `step` and `references`, files handled separately)
   - Maps form state to Cal.com v2 booking payload
   - On success: calls `sendEmail('booking-confirmation', ...)`, returns `{ bookingUid, start, end }`
   - On error: returns 500 with `{ error: string }`
@@ -313,15 +313,15 @@ Write and test each route independently before wiring up the form.
     - `BOOKING_CONFIRMED` → `booking-confirmed-session`
     - `BOOKING_CANCELLED` → `cancellation`
     - `BOOKING_RESCHEDULED` → `reschedule-confirmation`
-  - Return 200 immediately — do not block on email success
+  - Return 200 immediately, do not block on email success
 - [ ] Test: Use Cal.com webhook test feature to fire a `BOOKING_CREATED` event and confirm the email sends
 
 ---
 
-## Phase 6 — Email templates
+## Phase 6, Email templates
 
 Create all 10 HTML email templates in `public/html/`. Each is a self-contained
-HTML file using table-based layout. No external CSS — everything inline.
+HTML file using table-based layout. No external CSS, everything inline.
 
 ### Design system for all templates
 
@@ -359,15 +359,15 @@ See `03-email-templates.md` for subject lines, triggers, variables, and tone for
 
 ---
 
-## Phase 7 — Booking form components
+## Phase 7, Booking form components
 
 Build the form after the API routes are working. Do not build the UI before
-the backend exists — you need real slot data to build the slot picker against.
+the backend exists, you need real slot data to build the slot picker against.
 
 ### Content block in content files
 
 - [ ] Add a `booking` block to `app/content/en.ts`:
-  - Note: the `language` dropdown options must be `{ en: "English", pt: "Português", de: "Deutsch" }` — not Spanish
+  - Note: the `language` dropdown options must be `{ en: "English", pt: "Português", de: "Deutsch" }`, not Spanish
 - [ ] Add the full `booking` block translated to `app/content/pt.ts`
 - [ ] Add the full `booking` block translated to `app/content/de.ts`
 
@@ -384,7 +384,7 @@ the backend exists — you need real slot data to build the slot picker against.
   - Holds `BookingFormState` in `useState`
   - `advanceStep()` validates current step before advancing
   - Fires `trackEvent('booking_step_1', ...)`, `trackEvent('booking_submit', ...)`, `trackEvent('booking_complete', ...)` at the correct moments
-  - On success: calls `router.push(localePath + '/thank-you')` — does NOT show inline success
+  - On success: calls `router.push(localePath + '/thank-you')`, does NOT show inline success
 
 - [ ] Create `app/components/booking/components/StepIndicator.tsx`
   - 6-step indicator, accessible `aria-label="Step N of 6"`
@@ -403,7 +403,7 @@ the backend exists — you need real slot data to build the slot picker against.
   - Session: style selector, size selector, placement, description, references
 
 - [ ] Create `app/components/booking/steps/Step4SlotPicker.tsx`
-  - `"use client"` — fetches `/api/cal/slots` on mount
+  - `"use client"`, fetches `/api/cal/slots` on mount
   - Fires `trackEvent('booking_step_4', { event_label: 'slot_selected' })` on slot selection
   - Loading, error, no-slots states all handled
 
@@ -411,7 +411,7 @@ the backend exists — you need real slot data to build the slot picker against.
 
 - [ ] Create `app/components/booking/steps/Step5PersonalInfo.tsx`
   - Phone default prefix `+351`
-  - Language: toggle buttons EN / PT / DE (three options — not four)
+  - Language: toggle buttons EN / PT / DE (three options, not four)
 
 - [ ] Create `app/components/booking/steps/Step6Confirmation.tsx`
   - Fires `trackEvent('booking_submit', ...)` on submit button click
@@ -431,20 +431,20 @@ the backend exists — you need real slot data to build the slot picker against.
 
 ---
 
-## Phase 8 — Thank-you conversion page
+## Phase 8, Thank-you conversion page
 
 - [x] Create `app/[locale]/thank-you/page.tsx` (full code in `11-analytics-tracking.md`)
   - Locale-aware (reads `params.locale`, calls `getContent(locale)`)
-  - `robots: { index: false }` — do not index the thank-you page
+  - `robots: { index: false }`, do not index the thank-you page
   - Renders `Nav`, a centred confirmation block, and `FooterGutter`
-- [x] Add `thankYou` content block — implemented as copy in `app/[locale]/legal/copy.ts`
+- [x] Add `thankYou` content block, implemented as copy in `app/[locale]/legal/copy.ts`
 - [ ] Verify the page loads at `/thank-you`, `/pt/thank-you`, and `/de/thank-you`
 - [ ] Add the thank-you page to GA4 conversions: GA4 → Configure → Conversions → mark `booking_complete` event as a conversion
 - [ ] Confirm the booking form redirects correctly to the locale-prefixed thank-you URL on success
 
 ---
 
-## Phase 9 — CTA event tracking
+## Phase 9, CTA event tracking
 
 Add `trackEvent()` calls to every CTA that matters to the conversion funnel.
 Import `trackEvent` from `app/lib/analytics.ts`.
@@ -458,15 +458,15 @@ Import `trackEvent` from `app/lib/analytics.ts`.
 - [ ] ClosingCTA primary button → `event_label: 'closing_cta_primary'`
 - [ ] ClosingCTA WhatsApp link → `event_label: 'closing_cta_whatsapp'`
 - [x] Language switcher changes → `trackEvent('language_switch', { event_label: nextLocale })`
-- [ ] All booking form milestones (in BookingForm.tsx) — see Phase 7
+- [ ] All booking form milestones (in BookingForm.tsx), see Phase 7
 
 ---
 
-## Phase 10 — SEO and meta
+## Phase 10, SEO and meta
 
-- [ ] Create `/public/og-image.jpg` — 1200×630px
-- [ ] Update structured data in `app/[locale]/page.tsx` — add `url`, `telephone`, `address.streetAddress`, `address.postalCode`, `geo.latitude`, `geo.longitude`, `openingHoursSpecification`, `image`
-- [x] Fix `availableLanguage` in structured data to `["English", "Portuguese", "German"]` — not Spanish
+- [ ] Create `/public/og-image.jpg`, 1200×630px
+- [ ] Update structured data in `app/[locale]/page.tsx`, add `url`, `telephone`, `address.streetAddress`, `address.postalCode`, `geo.latitude`, `geo.longitude`, `openingHoursSpecification`, `image`
+- [x] Fix `availableLanguage` in structured data to `["English", "Portuguese", "German"]`, not Spanish
 - [x] Update sitemap in `app/sitemap.ts` to cover all three locale variants × all pages (see `10-i18n.md`)
 - [ ] Create `app/robots.ts`
 - [ ] Update meta description in `app/[locale]/page.tsx` with client's actual specialties
@@ -476,9 +476,9 @@ Import `trackEvent` from `app/lib/analytics.ts`.
 
 ---
 
-## Phase 11 — Legal pages
+## Phase 11, Legal pages
 
-- [x] Create `app/[locale]/legal/layout.tsx` — **superseded by** `LegalDocumentFrame.tsx`
+- [x] Create `app/[locale]/legal/layout.tsx`, **superseded by** `LegalDocumentFrame.tsx`
 - [x] Create `app/[locale]/legal/terms/page.tsx`
 - [x] Create `app/[locale]/legal/privacy/page.tsx`
 - [x] Create `app/[locale]/legal/refunds/page.tsx`
@@ -489,10 +489,10 @@ Import `trackEvent` from `app/lib/analytics.ts`.
 
 ---
 
-## Phase 12 — Content (client-supplied)
+## Phase 12, Content (client-supplied)
 
 These tasks block on the client providing assets. Raise them early in the
-onboarding process — do not wait until development is complete.
+onboarding process, do not wait until development is complete.
 
 - [ ] Receive and upload minimum 8 portfolio images → `public/img/gallery/`
 - [ ] Update `gallery.items` in `en.ts` with real `src` and `alt` values
@@ -501,20 +501,20 @@ onboarding process — do not wait until development is complete.
 - [ ] Confirm social proof stats with client in writing (`socialProof.stats`)
 - [ ] Replace all placeholder testimonials with real, client-confirmed reviews
 - [ ] Confirm or update all pricing tiers and notes
-- [ ] Confirm or update each FAQ answer — especially deposit policy and minors policy
-- [ ] Confirm or update studio comfort items (`whyUs.comforts`) — remove any that do not apply
+- [ ] Confirm or update each FAQ answer, especially deposit policy and minors policy
+- [ ] Confirm or update studio comfort items (`whyUs.comforts`), remove any that do not apply
 - [ ] If no studio video: remove `<VideoSection />` from page render
 - [ ] If video available: upload to Cloudinary, update `videoSection.videoUrl` and `videoSection.poster`
 
 ---
 
-## Phase 13 — Pre-launch verification
+## Phase 13, Pre-launch verification
 
 Run through `public/planning/09-go-live-checklist.md` line by line.
 Do not mark the project as delivered until every Section 1 item is checked.
 
 - [ ] All Section 1 hard blockers cleared
-- [ ] Language switcher works correctly in all three locales — EN, PT, DE
+- [ ] Language switcher works correctly in all three locales, EN, PT, DE
 - [ ] Cookie consent banner appears on first visit with no prior consent cookie
 - [ ] Accepting consent: GA4 loads and fires events
 - [ ] Declining consent: GA4 does not load

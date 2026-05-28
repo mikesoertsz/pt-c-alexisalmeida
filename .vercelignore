@@ -1,0 +1,5 @@
+# Raw client source media (local only; not used by the site)
+public/img/process 
+
+# Internal docs served from public by mistake
+public/docs

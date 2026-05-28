@@ -1,4 +1,4 @@
-# 08 — Environment Variables and Deployment
+# 08, Environment Variables and Deployment
 
 ---
 
@@ -7,11 +7,11 @@
 ### Client-specific (change per engagement)
 
 ```env
-# Public — safe to expose to the browser
+# Public, safe to expose to the browser
 NEXT_PUBLIC_BASE_URL=https://CLIENT-DOMAIN
 NEXT_PUBLIC_WHATSAPP_URL=https://wa.me/351XXXXXXXXX
 
-# Cal.com — server-only
+# Cal.com, server-only
 CAL_API_KEY=cal_live_...
 CAL_USERNAME=CLIENT-CAL-USERNAME
 CAL_CONSULTATION_EVENT_SLUG=consultation
@@ -19,7 +19,7 @@ CAL_SESSION_EVENT_SLUG=tattoo-session
 CAL_WEBHOOK_SECRET=wh_...
 CAL_API_VERSION=2024-09-04
 
-# Email — server-only
+# Email, server-only
 RESEND_API_KEY=re_...
 EMAIL_FROM=bookings@CLIENT-DOMAIN
 EMAIL_REPLY_TO=hello@CLIENT-DOMAIN
@@ -45,7 +45,7 @@ CAL_API_VERSION=2024-09-04
 | Build command | `pnpm build` |
 | Output directory | `.next` |
 | Node version | 20.x |
-| Region | Frankfurt (EU Central) — closest to Portugal |
+| Region | Frankfurt (EU Central), closest to Portugal |
 
 ### Adding a custom domain
 
@@ -53,7 +53,7 @@ CAL_API_VERSION=2024-09-04
 2. Add the client's domain
 3. Vercel will show the DNS records to add (CNAME or A record)
 4. Update at the domain registrar
-5. SSL is auto-provisioned — takes 1–5 minutes
+5. SSL is auto-provisioned, takes 1–5 minutes
 
 ### Environment variables in Vercel
 

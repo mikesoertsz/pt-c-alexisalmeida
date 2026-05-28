@@ -1,4 +1,4 @@
-# Portugal Tattoo — Starter: Booking Functionality
+# Portugal Tattoo, Starter: Booking Functionality
 
 **All Starter customers use Cal.com as their booking calendar solution.**  
 Cal.com is an open-source scheduling platform (MIT licensed) that can be self-hosted or used via Cal.com Cloud.
@@ -93,7 +93,7 @@ import { Separator } from '@/components/ui/separator'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: 'Book a consultation — Portugal Tattoo',
+    title: 'Book a consultation, Portugal Tattoo',
     description:
       'Pick a time that works for you. Consultations are free and take 15–30 minutes.',
     robots: { index: false },  // No-index booking pages
@@ -145,7 +145,7 @@ export default async function BookingPage({ params, searchParams }: BookingPageP
             <button
               className="underline underline-offset-2 hover:text-foreground"
               onClick={() => {
-                // Trigger chatbot open — emits custom event
+                // Trigger chatbot open, emits custom event
                 window.dispatchEvent(new CustomEvent('pt:chatbot:open'))
               }}
             >
@@ -423,7 +423,7 @@ export async function POST(request: NextRequest) {
       }
 
       default:
-        // Unhandled event — return 200 so Cal.com doesn't retry
+        // Unhandled event, return 200 so Cal.com doesn't retry
         break
     }
   } catch (err) {
@@ -579,7 +579,7 @@ export async function sendBookingConfirmation(booking: {
   await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL!,
     to: booking.clientEmail,
-    subject: `Booking confirmed — ${formattedDate}`,
+    subject: `Booking confirmed, ${formattedDate}`,
     html: `
       <p>Hi ${booking.clientName},</p>
       <p>Your consultation is confirmed for <strong>${formattedDate} at ${formattedTime} (Lisbon time)</strong>.</p>

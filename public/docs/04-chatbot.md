@@ -1,6 +1,6 @@
-# Portugal Tattoo — Starter: AI Chatbot
+# Portugal Tattoo, Starter: AI Chatbot
 
-The chatbot is a floating widget on every public-facing page. It handles booking enquiries, answers FAQs, checks slot availability, and guides clients through the booking process — in Portuguese, English, or Spanish.
+The chatbot is a floating widget on every public-facing page. It handles booking enquiries, answers FAQs, checks slot availability, and guides clients through the booking process, in Portuguese, English, or Spanish.
 
 ---
 
@@ -30,7 +30,7 @@ Streamed response → ChatMessages
 
 ```bash
 pnpm add openai
-pnpm add ai                           # Vercel AI SDK — streaming helpers
+pnpm add ai                           # Vercel AI SDK, streaming helpers
 pnpm add @ai-sdk/openai               # Vercel AI SDK OpenAI provider
 ```
 
@@ -128,9 +128,9 @@ export function buildSystemPrompt(
 
 The chatbot has three tools available:
 
-1. `check_availability` — query available booking slots from Cal.com
-2. `get_booking_link` — return the booking page URL
-3. `search_knowledge` — vector-search the knowledge base for relevant info
+1. `check_availability`, query available booking slots from Cal.com
+2. `get_booking_link`, return the booking page URL
+3. `search_knowledge`, vector-search the knowledge base for relevant info
 
 ```typescript
 // src/lib/openai/tools.ts
@@ -739,7 +739,7 @@ export default async function ChatbotAdminPage() {
                   <TableRow key={entry.id}>
                     <TableCell className="text-sm text-foreground">{entry.title}</TableCell>
                     <TableCell className="text-xs text-muted-foreground capitalize">
-                      {entry.category ?? '—'}
+                      {entry.category ?? '-'}
                     </TableCell>
                     <TableCell className="text-xs text-muted-foreground uppercase">
                       {entry.language}
@@ -768,16 +768,16 @@ export default async function ChatbotAdminPage() {
         <CardContent className="pt-4">
           <ul className="space-y-1.5 text-xs text-muted-foreground">
             {[
-              'Pricing — consultation fee, minimum price, deposit policy',
-              'Services — tattoo styles offered, sizes, what you specialise in',
-              'Booking policy — notice required, cancellation rules',
-              'Aftercare — healing instructions (can be linked from chatbot)',
-              'Location — address, parking, public transport',
-              'Hours — opening days and times',
-              'FAQ — common client questions and answers',
+              'Pricing, consultation fee, minimum price, deposit policy',
+              'Services, tattoo styles offered, sizes, what you specialise in',
+              'Booking policy, notice required, cancellation rules',
+              'Aftercare, healing instructions (can be linked from chatbot)',
+              'Location, address, parking, public transport',
+              'Hours, opening days and times',
+              'FAQ, common client questions and answers',
             ].map((item) => (
               <li key={item} className="flex items-start gap-2">
-                <span className="text-muted-foreground mt-0.5">—</span>
+                <span className="text-muted-foreground mt-0.5">, </span>
                 {item}
               </li>
             ))}
@@ -863,12 +863,12 @@ Default greetings (pre-seeded in `site_settings`):
 Add rate limiting to `/api/chat` to prevent abuse. Use Vercel KV or a simple in-memory counter.
 
 ```typescript
-// In src/app/api/chat/route.ts — add before streamText call
+// In src/app/api/chat/route.ts, add before streamText call
 
 const ip = request.headers.get('x-forwarded-for') ?? 'anonymous'
 const rateLimitKey = `chat_ratelimit_${ip}`
 
-// Simple check — in production use Upstash Redis (@upstash/ratelimit)
+// Simple check, in production use Upstash Redis (@upstash/ratelimit)
 // For Starter tier: 20 messages per IP per hour is sufficient
 ```
 

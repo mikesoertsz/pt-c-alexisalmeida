@@ -1,4 +1,4 @@
-# Portugal Tattoo — Starter: Legal Pages
+# Portugal Tattoo, Starter: Legal Pages
 
 All legal pages are under the `/legal` route. They are static, server-rendered, and SEO-indexed (no `robots: noindex`). All content is in English by default with locale variants for PT and ES.
 
@@ -56,7 +56,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { ChevronRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Legal — Portugal Tattoo',
+  title: 'Legal, Portugal Tattoo',
   description: 'Privacy policy, terms of service, cookie policy, and refund policy for Portugal Tattoo.',
 }
 
@@ -154,7 +154,7 @@ import type { Metadata } from 'next'
 import { LegalPageWrapper } from '@/components/legal/LegalLayout'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Portugal Tattoo',
+  title: 'Privacy Policy, Portugal Tattoo',
   description: 'How Portugal Tattoo collects, uses, and protects your personal data.',
 }
 
@@ -199,11 +199,11 @@ export default function PrivacyPolicyPage() {
       <h2>5. Who We Share Your Data With</h2>
       <p>We share your data only with trusted service providers acting as data processors:</p>
       <ul>
-        <li><strong>Cal.com</strong> — our booking calendar platform. Your booking details are stored and processed by Cal.com. See Cal.com's privacy policy at cal.com/privacy.</li>
-        <li><strong>Supabase</strong> — our database provider. Data is stored in EU data centres. See supabase.com/privacy.</li>
-        <li><strong>Resend</strong> — our email delivery service for confirmation and reminder emails.</li>
-        <li><strong>Vercel</strong> — our hosting provider. See vercel.com/legal/privacy-policy.</li>
-        <li><strong>OpenAI</strong> — our AI chatbot provider. Chatbot conversation messages may be processed by OpenAI. We do not send personally identifiable booking data to OpenAI. See openai.com/privacy.</li>
+        <li><strong>Cal.com</strong>, our booking calendar platform. Your booking details are stored and processed by Cal.com. See Cal.com's privacy policy at cal.com/privacy.</li>
+        <li><strong>Supabase</strong>, our database provider. Data is stored in EU data centres. See supabase.com/privacy.</li>
+        <li><strong>Resend</strong>, our email delivery service for confirmation and reminder emails.</li>
+        <li><strong>Vercel</strong>, our hosting provider. See vercel.com/legal/privacy-policy.</li>
+        <li><strong>OpenAI</strong>, our AI chatbot provider. Chatbot conversation messages may be processed by OpenAI. We do not send personally identifiable booking data to OpenAI. See openai.com/privacy.</li>
       </ul>
       <p>We do not sell your personal data to third parties.</p>
 
@@ -284,7 +284,7 @@ import type { Metadata } from 'next'
 import { LegalPageWrapper } from '@/components/legal/LegalLayout'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — Portugal Tattoo',
+  title: 'Terms of Service, Portugal Tattoo',
   description: 'Terms and conditions for using Portugal Tattoo services.',
 }
 
@@ -425,7 +425,7 @@ import type { Metadata } from 'next'
 import { LegalPageWrapper } from '@/components/legal/LegalLayout'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — Portugal Tattoo',
+  title: 'Cookie Policy, Portugal Tattoo',
   description: 'What cookies we use and how to manage them.',
 }
 
@@ -456,15 +456,15 @@ export default function CookiePolicyPage() {
       </p>
       <ul>
         <li>
-          <strong>pt_cookie_consent</strong> — Stores your cookie consent preference (accepted/declined).
+          <strong>pt_cookie_consent</strong>, Stores your cookie consent preference (accepted/declined).
           Expires: 365 days. First-party.
         </li>
         <li>
-          <strong>NEXT_LOCALE</strong> — Stores your language preference (en/pt/es).
+          <strong>NEXT_LOCALE</strong>, Stores your language preference (en/pt/es).
           Expires: Session or as set by browser. First-party.
         </li>
         <li>
-          <strong>sb-*</strong> — Supabase authentication session cookies. Used only when you are
+          <strong>sb-*</strong>, Supabase authentication session cookies. Used only when you are
           logged in as an admin. First-party.
         </li>
       </ul>
@@ -476,7 +476,7 @@ export default function CookiePolicyPage() {
       </p>
       <ul>
         <li>
-          <strong>cal.com cookies</strong> — Set by the Cal.com booking embed. Used to maintain
+          <strong>cal.com cookies</strong>, Set by the Cal.com booking embed. Used to maintain
           your booking session state. Third-party (Cal.com).
         </li>
       </ul>
@@ -530,7 +530,7 @@ import type { Metadata } from 'next'
 import { LegalPageWrapper } from '@/components/legal/LegalLayout'
 
 export const metadata: Metadata = {
-  title: 'Refund Policy — Portugal Tattoo',
+  title: 'Refund Policy, Portugal Tattoo',
   description: '30-day money-back guarantee and refund conditions.',
 }
 
@@ -539,7 +539,7 @@ export default function RefundPolicyPage() {
     <LegalPageWrapper title="Refund Policy" lastUpdated="April 2026">
       <p>
         This Refund Policy applies to subscriptions to the Portugal Tattoo platform (the "Service"),
-        operated on behalf of [STUDIO_NAME]. It does not apply to individual tattoo appointments —
+        operated on behalf of [STUDIO_NAME]. It does not apply to individual tattoo appointments , 
         appointment cancellation terms are set out in the Terms of Service.
       </p>
 

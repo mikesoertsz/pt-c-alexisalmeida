@@ -1,0 +1,2 @@
+export { AnalyticsLoader } from "./components/AnalyticsLoader";
+export { ThankYouBeacon } from "./components/ThankYouBeacon";

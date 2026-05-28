@@ -1,4 +1,4 @@
-# Portugal Tattoo — Starter: Landing Page Specification
+# Portugal Tattoo, Starter: Landing Page Specification
 
 **Route:** `/` (locale-prefixed: `/pt`, `/es`, default `/`)  
 **File:** `src/app/[locale]/page.tsx`  
@@ -56,7 +56,7 @@ import { TitleBlock } from '@/components/shared/TitleBlock'
 ├──────────────────────────────────────────┤
 │ HOW IT WORKS                             │
 ├──────────────────────────────────────────┤
-│ PROMOTIONS (conditional — renders only   │
+│ PROMOTIONS (conditional, renders only   │
 │ when active promotions exist)            │
 ├──────────────────────────────────────────┤
 │ PRICING                                  │
@@ -70,8 +70,8 @@ import { TitleBlock } from '@/components/shared/TitleBlock'
 │ FOOTER GUTTER                            │
 └──────────────────────────────────────────┘
 
-[CHATBOT WIDGET — floating, bottom-right]
-[GDPR COOKIE BANNER — bottom, Sonner toast]
+[CHATBOT WIDGET, floating, bottom-right]
+[GDPR COOKIE BANNER, bottom, Sonner toast]
 ```
 
 ---
@@ -79,7 +79,7 @@ import { TitleBlock } from '@/components/shared/TitleBlock'
 ## Section 1: Navigation (Nav)
 
 **File:** `src/components/landing/Nav.tsx`  
-**Component:** Client Component (`'use client'` — needed for Sheet state)
+**Component:** Client Component (`'use client'`, needed for Sheet state)
 
 ### Layout
 
@@ -194,7 +194,7 @@ export function Nav() {
 │                                                     │
 │   Most tattoo artists lose 40% of their bookings    │
 │   every winter. Portugal Tattoo keeps your studio   │
-│   fully booked — year-round.                        │
+│   fully booked, year-round.                        │
 │                                                     │
 │   [Book a free consultation]  [See how it works]    │
 │                                                     │
@@ -256,7 +256,7 @@ export function Hero() {
 
 **File:** `src/components/landing/SocialProof.tsx`  
 **Component:** Server Component  
-**Note:** Slim stats bar — uses a plain `border-y` div rather than full `Wrapper` to keep compact height.
+**Note:** Slim stats bar, uses a plain `border-y` div rather than full `Wrapper` to keep compact height.
 
 ### Layout
 
@@ -339,7 +339,7 @@ const PAIN_POINTS = [
   {
     number: '01',
     title: 'The January wall',
-    body: 'Every December, bookings fall off a cliff. Most artists shrug and wait for spring. The studios that stay full plan ahead — months in advance.',
+    body: 'Every December, bookings fall off a cliff. Most artists shrug and wait for spring. The studios that stay full plan ahead, months in advance.',
   },
   {
     number: '02',
@@ -424,12 +424,12 @@ const STEPS = [
   {
     number: '02',
     title: 'We connect your booking calendar',
-    body: 'Clients can book consultations and appointments directly through your site — no DMs, no back-and-forth, no friction.',
+    body: 'Clients can book consultations and appointments directly through your site, no DMs, no back-and-forth, no friction.',
   },
   {
     number: '03',
     title: 'The AI handles enquiries 24/7',
-    body: 'Your AI assistant answers questions, checks availability, and guides clients to book — in Portuguese, English, or Spanish.',
+    body: 'Your AI assistant answers questions, checks availability, and guides clients to book, in Portuguese, English, or Spanish.',
   },
   {
     number: '04',
@@ -473,7 +473,7 @@ export function HowItWorks() {
 ## Section 6: Promotions (Conditional)
 
 **File:** `src/components/landing/Promotions.tsx`  
-**Component:** Server Component — async, fetches from Supabase  
+**Component:** Server Component, async, fetches from Supabase  
 **Atoms:** `Wrapper` + `InnerWrap` + `TitleBlock`  
 **Visibility:** Only renders when at least one active promotion exists. Returns `null` otherwise.
 
@@ -492,7 +492,7 @@ Reads from the `promotions` table (defined in `07-promotions-referrals.md`). Fil
 │                                                         │
 │  ┌──────────────────────────────┐                       │
 │  │  [Badge: SEASONAL]           │                       │
-│  │  January Flash — 20% off     │                       │
+│  │  January Flash, 20% off     │                       │
 │  │  Book before Jan 31st        │                       │
 │  │  Code: JANUARY20 [copy icon] │                       │
 │  │  [Badge: 12 days remaining]  │                       │
@@ -750,7 +750,7 @@ export function Pricing() {
                     <span className="text-sm text-muted-foreground">/ month</span>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Billed annually —{' '}
+                    Billed annually , {' '}
                     <span className="font-mono">€840/year</span>
                   </p>
                 </div>
@@ -872,11 +872,11 @@ const FAQS = [
   },
   {
     q: 'Do I need to manage the booking system myself?',
-    a: 'No. Once set up, the booking system runs automatically. Clients can book directly through your website. You manage appointments through the admin dashboard — adding availability, cancelling, or rescheduling takes seconds.',
+    a: 'No. Once set up, the booking system runs automatically. Clients can book directly through your website. You manage appointments through the admin dashboard, adding availability, cancelling, or rescheduling takes seconds.',
   },
   {
     q: 'What is Cal.com?',
-    a: 'Cal.com is an open-source scheduling platform similar to Calendly. It powers the booking calendar on your site. You connect your availability and clients book themselves in — no manual back-and-forth.',
+    a: 'Cal.com is an open-source scheduling platform similar to Calendly. It powers the booking calendar on your site. You connect your availability and clients book themselves in, no manual back-and-forth.',
   },
   {
     q: 'Can the AI chatbot handle bookings in Portuguese?',
@@ -888,7 +888,7 @@ const FAQS = [
   },
   {
     q: 'What is the refund policy?',
-    a: 'You have 30 days from the start of your subscription to request a full refund — no questions asked. See the full refund policy in our legal section.',
+    a: 'You have 30 days from the start of your subscription to request a full refund, no questions asked. See the full refund policy in our legal section.',
   },
   {
     q: 'How long does setup take?',
@@ -896,7 +896,7 @@ const FAQS = [
   },
   {
     q: 'Can I use a promo code or referral discount?',
-    a: 'Yes. Enter your promo code at checkout or during the consultation booking. Refer another artist and you both receive a discount — ask about the referral programme during your onboarding call.',
+    a: 'Yes. Enter your promo code at checkout or during the consultation booking. Refer another artist and you both receive a discount, ask about the referral programme during your onboarding call.',
   },
 ]
 
@@ -981,7 +981,7 @@ export function ClosingCTA() {
 **File:** `src/components/shared/FooterGutter.tsx`  
 **Component:** Server Component  
 **Source:** Matches `PT-Templates/FooterGutter.tsx` exactly.  
-**Pattern:** Three-column grid — copyright left, legal nav centre, "A Drifter brand." right.
+**Pattern:** Three-column grid, copyright left, legal nav centre, "A Drifter brand." right.
 
 ```tsx
 // src/components/shared/FooterGutter.tsx
@@ -1042,7 +1042,7 @@ export function FooterGutter() {
 }
 ```
 
-**Required route:** `/legal/gdpr` must exist — see `05-legal.md`.
+**Required route:** `/legal/gdpr` must exist, see `05-legal.md`.
 
 ---
 
@@ -1256,11 +1256,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = await getTranslations({ locale, namespace: 'meta' })
 
   return {
-    title: 'Portugal Tattoo — Professional website and AI booking for tattoo artists',
+    title: 'Portugal Tattoo, Professional website and AI booking for tattoo artists',
     description:
       'Keep your tattoo studio fully booked year-round. Professional website, AI booking assistant, and 24/7 automation. Starting at €70/month.',
     openGraph: {
-      title: 'Portugal Tattoo — Fully booked, year-round.',
+      title: 'Portugal Tattoo, Fully booked, year-round.',
       description:
         'Professional website and AI booking platform for tattoo artists in Portugal. EN/PT/ES.',
       images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
@@ -1307,7 +1307,7 @@ Add to `src/app/[locale]/page.tsx` inside the component return:
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Portugal Tattoo — Starter',
+  name: 'Portugal Tattoo, Starter',
   provider: {
     '@type': 'Organization',
     name: 'Portugal Tattoo',

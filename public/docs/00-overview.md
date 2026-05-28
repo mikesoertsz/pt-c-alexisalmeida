@@ -1,9 +1,9 @@
-# Portugal Tattoo — Starter Package: Project Overview
+# Portugal Tattoo, Starter Package: Project Overview
 
 **Package:** Starter  
 **Price:** €70/month (€840/year)  
 **Audience:** Individual tattoo artists and small studios in Portugal  
-**Value proposition:** A professional multilingual website with AI-powered booking — running 24/7 without manual admin.
+**Value proposition:** A professional multilingual website with AI-powered booking, running 24/7 without manual admin.
 
 ---
 
@@ -17,7 +17,7 @@
 - Legal pages localised for Portugal
 - 30-day money-back guarantee
 
-The Starter package does not include paid advertising management — that is the Growth tier.
+The Starter package does not include paid advertising management, that is the Growth tier.
 
 ---
 
@@ -32,7 +32,7 @@ The Starter package does not include paid advertising management — that is the
 | AI chatbot | OpenAI API (GPT-4o) with function calling |
 | Vector knowledge base | Supabase pgvector |
 | UI components | shadcn/ui (default, no custom styles) |
-| Atomic components | tailwind-styled-components (`tw`) — Wrapper, InnerWrap, TitleBlock |
+| Atomic components | tailwind-styled-components (`tw`), Wrapper, InnerWrap, TitleBlock |
 | Styling | Tailwind CSS (utility classes for layout and sizing only) |
 | Package manager | pnpm (primary) + bun (scripts and runtime) |
 | Language | TypeScript (strict mode) |
@@ -203,14 +203,14 @@ pt-starter/
 │   │   │       └── page.tsx                # Studio/artist settings
 │   │   ├── api/
 │   │   │   ├── chat/
-│   │   │   │   └── route.ts                # POST /api/chat — OpenAI stream
+│   │   │   │   └── route.ts                # POST /api/chat, OpenAI stream
 │   │   │   ├── bookings/
 │   │   │   │   ├── route.ts                # GET /api/bookings, POST /api/bookings
 │   │   │   │   └── [id]/route.ts           # GET/PATCH/DELETE /api/bookings/[id]
 │   │   │   ├── availability/
 │   │   │   │   └── route.ts                # GET /api/availability?date=YYYY-MM-DD
 │   │   │   ├── webhooks/
-│   │   │   │   └── cal/route.ts            # POST /api/webhooks/cal — Cal.com events
+│   │   │   │   └── cal/route.ts            # POST /api/webhooks/cal, Cal.com events
 │   │   │   └── admin/
 │   │   │       ├── bookings/route.ts       # Admin booking management
 │   │   │       ├── calendar/route.ts       # Admin calendar sync
@@ -383,7 +383,7 @@ export async function createServerClient() {
               cookieStore.set(name, value, options)
             )
           } catch {
-            // Server component — cookies set by middleware
+            // Server component, cookies set by middleware
           }
         },
       },
@@ -439,7 +439,7 @@ The canonical atom and component files live in `PT-Templates/` (one level above 
 
 | File | Purpose |
 |---|---|
-| `PT-Templates/atoms.tsx` | All base styled components — Wrapper, InnerWrap, typography atoms |
+| `PT-Templates/atoms.tsx` | All base styled components, Wrapper, InnerWrap, typography atoms |
 | `PT-Templates/titleblock.tsx` | Reusable section heading component |
 | `PT-Templates/FooterGutter.tsx` | Standard footer with PT brand links |
 
@@ -484,13 +484,13 @@ Use `WrapperCentered` / `InnerWrapCentered` for sections that need vertical cent
 </WrapperCentered>
 ```
 
-The `InnerWrap` enforces `max-w-[1440px]` and horizontal centring. Never apply `max-w-*` to a section directly — put it on a child inside `InnerWrap` if you need a narrower content column.
+The `InnerWrap` enforces `max-w-[1440px]` and horizontal centring. Never apply `max-w-*` to a section directly, put it on a child inside `InnerWrap` if you need a narrower content column.
 
 ---
 
-### TitleBlock — Standard Section Headings
+### TitleBlock, Standard Section Headings
 
-All section headings use the `TitleBlock` component. Never write raw `<h2>`, `<h3>`, or standalone heading + subheading markup directly in a section — always use `TitleBlock`.
+All section headings use the `TitleBlock` component. Never write raw `<h2>`, `<h3>`, or standalone heading + subheading markup directly in a section, always use `TitleBlock`.
 
 ```tsx
 import { TitleBlock } from "@/app/components/TitleBlock"
@@ -511,10 +511,10 @@ Props reference:
 
 | Prop | Type | Default | Notes |
 |---|---|---|---|
-| `preheading` | `string` | — | Small eyebrow label above heading |
-| `heading` | `string \| ReactNode` | — | Main section title |
-| `subheading` | `string \| ReactNode` | — | Secondary line; renders as `SubTitle` |
-| `body` | `string \| ReactNode` | — | Paragraph copy below subheading |
+| `preheading` | `string` |, | Small eyebrow label above heading |
+| `heading` | `string \| ReactNode` |, | Main section title |
+| `subheading` | `string \| ReactNode` |, | Secondary line; renders as `SubTitle` |
+| `body` | `string \| ReactNode` |, | Paragraph copy below subheading |
 | `orientation` | `"center" \| "left"` | `"center"` | Text alignment and flex direction |
 | `theme` | `"light" \| "dark"` | `"light"` | Light = brand colours, dark = white text |
 | `headingLevel` | `"h1"–"h4"` | `"h2"` | Controls semantic tag and visual size |
@@ -561,7 +561,7 @@ import { Heading, SubHeading, Body, PreTitle, Title } from "@/app/components/ato
 
 ### Brand Tokens
 
-These Tailwind classes must be configured in `tailwind.config.ts`. Apply them via atoms — do not write raw hex values.
+These Tailwind classes must be configured in `tailwind.config.ts`. Apply them via atoms, do not write raw hex values.
 
 | Token | Typical use |
 |---|---|
@@ -571,7 +571,7 @@ These Tailwind classes must be configured in `tailwind.config.ts`. Apply them vi
 | `brand-secondary` | Secondary text / muted foreground |
 
 ```typescript
-// tailwind.config.ts — extend theme.colors
+// tailwind.config.ts, extend theme.colors
 colors: {
   brand: {
     licorice:    "#1a1a2e",   // confirm exact value with designer
@@ -660,7 +660,7 @@ These constraints apply to ALL documents in this collection and must not be over
 1. Use only shadcn/ui default components. No additional component libraries.
 2. No custom CSS classes beyond Tailwind utility classes for layout and sizing (padding, margin, width, height, gap, flex, grid).
 3. No inline `style` attributes.
-4. No hardcoded colour values — use only Tailwind's semantic classes (`bg-background`, `text-foreground`, `border`, etc.) or shadcn/ui's CSS variables.
+4. No hardcoded colour values, use only Tailwind's semantic classes (`bg-background`, `text-foreground`, `border`, etc.) or shadcn/ui's CSS variables.
 5. Typography: `font-mono` for all numbers and prices. `font-sans` (default) for text below `text-lg`.
 6. Minimum font size: `text-xs` (12px). Never go smaller.
 7. All designs are light mode (dark text on light background). No dark mode unless explicitly requested.
@@ -683,7 +683,7 @@ These constraints apply to ALL documents in this collection and must not be over
   },
   "hero": {
     "headline": "Your calendar should be full in January too.",
-    "sub": "Most tattoo artists lose 40% of their bookings every winter. Portugal Tattoo keeps your studio fully booked — year-round.",
+    "sub": "Most tattoo artists lose 40% of their bookings every winter. Portugal Tattoo keeps your studio fully booked, year-round.",
     "cta_primary": "Book a free consultation",
     "cta_secondary": "See how it works"
   },
@@ -721,13 +721,13 @@ Duplicate structure for `pt.json` and `es.json` with translated values.
 
 Each document in this collection is self-contained and agent-executable. Documents reference shared constraints defined here. Build order:
 
-1. `00-overview.md` — this document (environment, structure, atomic design, constraints)
-2. `01-landing-page.md` — landing page sections and components (uses atomic design)
-3. `02-booking.md` — Cal.com integration and booking flow
-4. `03-admin-backend.md` — admin dashboard and REST APIs
-5. `04-chatbot.md` — AI chatbot with OpenAI
-6. `05-legal.md` — legal pages for Portugal (includes /legal/gdpr)
-7. `06-schema.md` — complete Supabase schema
-8. `07-promotions-referrals.md` — promotions, discount codes, and referral system
+1. `00-overview.md`, this document (environment, structure, atomic design, constraints)
+2. `01-landing-page.md`, landing page sections and components (uses atomic design)
+3. `02-booking.md`, Cal.com integration and booking flow
+4. `03-admin-backend.md`, admin dashboard and REST APIs
+5. `04-chatbot.md`, AI chatbot with OpenAI
+6. `05-legal.md`, legal pages for Portugal (includes /legal/gdpr)
+7. `06-schema.md`, complete Supabase schema
+8. `07-promotions-referrals.md`, promotions, discount codes, and referral system
 
 *Last updated: April 2026*

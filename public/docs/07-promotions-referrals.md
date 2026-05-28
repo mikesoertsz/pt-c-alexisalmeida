@@ -1,4 +1,4 @@
-# Portugal Tattoo — Starter: Promotions & Referrals
+# Portugal Tattoo, Starter: Promotions & Referrals
 
 **Feature area:** Promotions, discount codes, and referral tracking  
 **Routes:** `/api/promotions/*`, `/api/referrals/*`, `/admin/promotions`, `/admin/referrals`  
@@ -57,7 +57,7 @@ CREATE TRIGGER set_promotions_updated_at
   BEFORE UPDATE ON promotions
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
--- Referrals table — tracks who referred whom
+-- Referrals table, tracks who referred whom
 CREATE TABLE referrals (
   id               UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   referrer_name    TEXT NOT NULL,
@@ -75,7 +75,7 @@ CREATE TRIGGER set_referrals_updated_at
   BEFORE UPDATE ON referrals
   FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
--- Promotion redemptions — audit trail
+-- Promotion redemptions, audit trail
 CREATE TABLE promotion_redemptions (
   id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   promotion_id   UUID NOT NULL REFERENCES promotions(id) ON DELETE CASCADE,
@@ -283,7 +283,7 @@ export async function validateCode(code: string): Promise<ValidateCodeResult> {
   return { valid: false, error: 'Code not found or expired.' }
 }
 
-/** Record a redemption and increment use_count — use service role client */
+/** Record a redemption and increment use_count, use service role client */
 export async function redeemCode(params: {
   promotionId: string
   referralId?: string
@@ -329,7 +329,7 @@ $$;
 
 ## API Routes
 
-### `GET /api/promotions` — Public: fetch active promotions
+### `GET /api/promotions`, Public: fetch active promotions
 
 ```ts
 // src/app/api/promotions/route.ts
@@ -344,7 +344,7 @@ export async function GET() {
 }
 ```
 
-### `POST /api/promotions/validate` — Public: validate a code
+### `POST /api/promotions/validate`, Public: validate a code
 
 ```ts
 // src/app/api/promotions/validate/route.ts
@@ -367,7 +367,7 @@ export async function POST(req: NextRequest) {
 }
 ```
 
-### `GET /api/promotions/[id]` — Admin: single promotion
+### `GET /api/promotions/[id]`, Admin: single promotion
 
 ```ts
 // src/app/api/promotions/[id]/route.ts
@@ -427,7 +427,7 @@ export async function DELETE(
 }
 ```
 
-### `POST /api/promotions` — Admin: create promotion
+### `POST /api/promotions`, Admin: create promotion
 
 ```ts
 // src/app/api/promotions/create/route.ts
@@ -471,7 +471,7 @@ export async function POST(req: NextRequest) {
 }
 ```
 
-### `POST /api/referrals/generate` — Admin: generate a referral code
+### `POST /api/referrals/generate`, Admin: generate a referral code
 
 ```ts
 // src/app/api/referrals/generate/route.ts
@@ -518,13 +518,13 @@ export async function POST(req: NextRequest) {
 
 ```
 src/app/admin/promotions/
-  page.tsx              — list all promotions
-  new/page.tsx          — create promotion form
-  [id]/page.tsx         — edit promotion + redemption history
+  page.tsx             , list all promotions
+  new/page.tsx         , create promotion form
+  [id]/page.tsx        , edit promotion + redemption history
 
 src/app/admin/referrals/
-  page.tsx              — list all referral codes + stats
-  new/page.tsx          — generate referral code form
+  page.tsx             , list all referral codes + stats
+  new/page.tsx         , generate referral code form
 ```
 
 ### Promotions List Page
@@ -641,7 +641,7 @@ export function PromotionsTable({ promotions }: Props) {
             </TableCell>
             <TableCell className="font-mono text-sm">{discountLabel(promo)}</TableCell>
             <TableCell className="font-mono text-xs">
-              {promo.promo_code ?? '—'}
+              {promo.promo_code ?? '-'}
             </TableCell>
             <TableCell className="font-mono text-xs">
               {promo.use_count}
@@ -650,7 +650,7 @@ export function PromotionsTable({ promotions }: Props) {
             <TableCell className="text-xs text-muted-foreground">
               {promo.end_date
                 ? new Date(promo.end_date).toLocaleDateString('en-GB')
-                : '—'}
+                : '-'}
             </TableCell>
             <TableCell>{statusBadge(promo)}</TableCell>
             <TableCell>
@@ -1016,7 +1016,7 @@ export default async function AdminReferralsPage() {
                   </code>
                 </TableCell>
                 <TableCell className="text-sm text-muted-foreground">
-                  {ref.promotions?.title ?? '—'}
+                  {ref.promotions?.title ?? '-'}
                 </TableCell>
                 <TableCell className="font-mono text-sm">
                   {ref.referred_bookings}
@@ -1092,7 +1092,7 @@ case 'get_active_promotions': {
           p.discount_type === 'percentage'
             ? `${p.discount_value}% off`
             : `€${p.discount_value} off`
-        const code = p.promo_code ? ` — use code ${p.promo_code}` : ''
+        const code = p.promo_code ? `, use code ${p.promo_code}` : ''
         const expiry = p.end_date
           ? ` (until ${new Date(p.end_date).toLocaleDateString('en-GB')})`
           : ''
@@ -1210,7 +1210,7 @@ https://www.portugaltattoo.com/en?ref=REF-XXXXXXXX
 The landing page reads the `ref` query parameter and pre-fills the promo code field. This is handled in the root page's `searchParams`:
 
 ```tsx
-// src/app/[locale]/page.tsx — add to component props
+// src/app/[locale]/page.tsx, add to component props
 interface PageProps {
   params: Promise<{ locale: string }>
   searchParams: Promise<{ ref?: string }>
@@ -1245,7 +1245,7 @@ export function PromoCodeBanner({ referralCode }: Props) {
   return (
     <div className="w-full bg-brand-light-blue border-b px-4 py-2 flex items-center justify-between text-sm text-brand-licorice">
       <span>
-        You were referred — use code{' '}
+        You were referred, use code{' '}
         <code className="font-mono font-semibold">{referralCode}</code>{' '}
         at booking for your discount.
       </span>
@@ -1269,7 +1269,7 @@ export function PromoCodeBanner({ referralCode }: Props) {
 Every time a promo or referral code is successfully applied to a booking, call `redeemCode()` from the booking confirmation webhook handler (see `02-booking.md`):
 
 ```ts
-// Inside the Cal.com webhook handler — after booking is saved to Supabase
+// Inside the Cal.com webhook handler, after booking is saved to Supabase
 if (validCode && validCode.valid && validCode.promotion) {
   await redeemCode({
     promotionId: validCode.promotion.id,
@@ -1302,7 +1302,7 @@ const NAV_LINKS = [
 
 ## Environment Variables
 
-No additional env vars are required. The promotions system uses the existing Supabase connection. Ensure the service-role client (`SUPABASE_SERVICE_ROLE_KEY`) is set — it is needed by `createAdminClient()` for the `redeemCode` function.
+No additional env vars are required. The promotions system uses the existing Supabase connection. Ensure the service-role client (`SUPABASE_SERVICE_ROLE_KEY`) is set, it is needed by `createAdminClient()` for the `redeemCode` function.
 
 ---
 
