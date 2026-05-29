@@ -3,6 +3,13 @@ import { LegalDocumentFrame } from "@/components/organisms/LegalDocumentFrame/Le
 import { CalConsultationEmbed } from "@/features/booking";
 import { LOCALES, DEFAULT_LOCALE, isValidLocale, localizedPath, type Locale } from "@/lib/locale";
 import { getSiteBaseUrl } from "@/lib/site-url";
+import {
+  isPortoAvailable,
+  getCurrentLocation,
+  nextReturnToPorto,
+  formatDate,
+  COUNTRY_NAMES,
+} from "@/lib/travel";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -84,12 +91,12 @@ const copy: Record<
 };
 
 // ---------------------------------------------------------------------------
-// Cal.com config
+// cal.eu config
 // ---------------------------------------------------------------------------
 
 const CAL_USERNAME = "lextattoo";
 const CAL_CONSULTATION_SLUG =
-  process.env.CAL_CONSULTATION_EVENT_SLUG?.trim() || "consultation";
+  process.env.CAL_CONSULTATION_EVENT_SLUG?.trim() || "free-intake-consultation";
 
 export default async function BookingPage({ params }: Props) {
   const { locale: raw } = await params;
@@ -101,8 +108,38 @@ export default async function BookingPage({ params }: Props) {
   const redirectUrl = `${base}${thankYouPath}`;
   const calLink = `${CAL_USERNAME}/${CAL_CONSULTATION_SLUG}`;
 
+  const portoOpen = isPortoAvailable();
+  const currentLoc = getCurrentLocation();
+  const returnDate = nextReturnToPorto();
+
   return (
     <LegalDocumentFrame locale={locale}>
+      {/* ------------------------------------------------------------------ */}
+      {/* Location status bar                                                  */}
+      {/* ------------------------------------------------------------------ */}
+      <div className="border-b-2 border-brand-black bg-brand-black px-6 md:px-12 py-4">
+        <div className="max-w-[1440px] mx-auto flex items-center gap-3">
+          <span className="relative flex h-2 w-2 shrink-0">
+            {portoOpen ? (
+              <>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </>
+            ) : (
+              <>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-tangerine opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-tangerine" />
+              </>
+            )}
+          </span>
+          <p className="font-mono text-xs text-white/60 uppercase tracking-[0.12em]">
+            {portoOpen
+              ? `Now in ${currentLoc.city} — accepting Porto bookings`
+              : `Currently in ${currentLoc.city}, ${COUNTRY_NAMES[currentLoc.country] ?? currentLoc.country} — Porto bookings paused${returnDate ? ` · Returns ${formatDate(returnDate)}` : ""}`}
+          </p>
+        </div>
+      </div>
+
       {/* ------------------------------------------------------------------ */}
       {/* Header                                                               */}
       {/* ------------------------------------------------------------------ */}
@@ -112,12 +149,25 @@ export default async function BookingPage({ params }: Props) {
             [ {t.pre} ]
           </p>
           <h1 className="font-display font-black uppercase text-brand-black leading-[0.9] tracking-tighter text-5xl md:text-7xl lg:text-[6rem] mb-10">
-            {t.heading}
+            {!portoOpen && currentLoc.country !== "PT"
+              ? `Book ${currentLoc.city}.`
+              : t.heading}
           </h1>
           <div className="w-16 h-0.5 bg-brand-black mb-8" />
           <p className="font-body text-sm md:text-base text-brand-black/70 max-w-xl leading-relaxed">
             {t.lead}
           </p>
+          {!portoOpen && returnDate && (
+            <div className="mt-8 inline-flex items-center gap-3 border-2 border-brand-black/20 bg-brand-cotton px-5 py-3">
+              <span className="font-mono text-xs text-brand-tangerine uppercase tracking-[0.12em]">
+                Porto
+              </span>
+              <span className="w-px h-3 bg-brand-black/20" />
+              <span className="font-mono text-xs text-brand-black/60 uppercase tracking-[0.12em]">
+                Available again {formatDate(returnDate)}
+              </span>
+            </div>
+          )}
         </div>
       </div>
 

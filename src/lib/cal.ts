@@ -1,6 +1,7 @@
 import type { CalBookRequestBody } from "@/lib/types/booking";
 
-const CAL_API_ORIGIN = "https://api.cal.com";
+// cal.eu is the EU-hosted Cal instance used for this client.
+const CAL_API_ORIGIN = process.env.CAL_API_ORIGIN?.trim() || "https://api.cal.eu";
 
 export function calApiVersion(): string {
   return process.env.CAL_API_VERSION?.trim() || "2024-09-04";
