@@ -1,11 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useRouter, usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import {
   LOCALES,
   LOCALE_SHORT,
+  LOCALE_LABELS,
   LOCALE_COOKIE,
   LOCALE_COOKIE_MAX_AGE,
   stripLocalePrefixFromPath,
@@ -18,15 +20,26 @@ import { cn } from "@/lib/cn";
 interface LanguageSwitcherProps {
   currentLocale: Locale;
   className?: string;
+  variant?: "default" | "nav";
+  inverse?: boolean;
 }
 
-export function LanguageSwitcher({ currentLocale, className }: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  currentLocale,
+  className,
+  variant = "default",
+  inverse = false,
+}: LanguageSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
-  const listId = useId();
+  const [mounted, setMounted] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogId = useId();
+  const titleId = `${dialogId}-title`;
   const fullWidth = Boolean(className?.match(/\bw-full\b/));
+  const isNav = variant === "nav";
 
   const switchLocale = useCallback(
     (next: Locale) => {
@@ -45,90 +58,144 @@ export function LanguageSwitcher({ currentLocale, className }: LanguageSwitcherP
       router.push(url);
       setOpen(false);
     },
-    [currentLocale, pathname, router]
+    [currentLocale, pathname, router],
   );
 
   useEffect(() => {
-    function onPointerDown(ev: MouseEvent | TouchEvent) {
-      if (!rootRef.current?.contains(ev.target as Node)) {
-        setOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", onPointerDown);
-    document.addEventListener("touchstart", onPointerDown, { passive: true });
-    return () => {
-      document.removeEventListener("mousedown", onPointerDown);
-      document.removeEventListener("touchstart", onPointerDown);
-    };
+    setMounted(true);
   }, []);
 
   useEffect(() => {
     if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     function onKey(ev: KeyboardEvent) {
       if (ev.key === "Escape") {
         ev.preventDefault();
         setOpen(false);
       }
     }
+
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) {
+      triggerRef.current?.focus();
+      return;
+    }
+    const firstOption = dialogRef.current?.querySelector<HTMLButtonElement>(
+      'button[data-locale-option]:not([disabled])',
+    );
+    firstOption?.focus();
   }, [open]);
 
   return (
-    <div ref={rootRef} className={cn("relative shrink-0", className)}>
+    <>
       <button
+        ref={triggerRef}
         type="button"
-        id={`${listId}-trigger`}
-        aria-haspopup="listbox"
+        aria-haspopup="dialog"
         aria-expanded={open}
-        aria-controls={`${listId}-listbox`}
+        aria-controls={open ? dialogId : undefined}
         aria-label={`Language: ${LOCALE_SHORT[currentLocale]}`}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => setOpen(true)}
         className={cn(
-          "inline-flex h-9 min-w-[3.25rem] items-center justify-center gap-0.5 border border-border bg-brand-cotton px-2",
-          "font-mono text-[0.68rem] font-medium uppercase tracking-widest text-brand-black",
-          "transition-colors hover:text-brand-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine motion-reduce:transition-none",
-          fullWidth && "w-full min-w-0 justify-between px-3"
+          "relative inline-flex h-9 min-w-[3.25rem] shrink-0 items-center justify-center gap-0.5 px-2",
+          "font-mono text-[0.68rem] font-medium uppercase tracking-widest transition-colors",
+          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine motion-reduce:transition-none",
+          isNav
+            ? cn(
+                "rounded-md hover:bg-white/20",
+                inverse ? "text-white hover:text-white" : "text-brand-black hover:text-brand-black",
+              )
+            : cn("border border-border bg-brand-cotton text-brand-black hover:text-brand-black"),
+          fullWidth && "w-full min-w-0 justify-between px-3",
+          className,
         )}
       >
         <span>{LOCALE_SHORT[currentLocale]}</span>
         <ChevronDown
-          className={cn("h-3 w-3 shrink-0 text-brand-black/60 transition-transform", open && "rotate-180")}
+          className={cn(
+            "h-3 w-3 shrink-0 transition-transform",
+            open && "rotate-180",
+            isNav
+              ? inverse
+                ? "text-white/60"
+                : "text-brand-black/60"
+              : "text-brand-black/60",
+          )}
           aria-hidden
         />
       </button>
 
-      {open && (
-        <ul
-          id={`${listId}-listbox`}
-          role="listbox"
-          aria-labelledby={`${listId}-trigger`}
-          className={cn(
-            "absolute right-0 top-full z-50 mt-1 min-w-full overflow-hidden border border-border bg-brand-cotton py-0.5 shadow-sm",
-            fullWidth && "left-0 right-0"
-          )}
-        >
-          {LOCALES.map((locale) => (
-            <li key={locale} role="presentation">
-              <button
-                type="button"
-                role="option"
-                aria-selected={currentLocale === locale}
-                onClick={() => switchLocale(locale)}
-                className={cn(
-                  "flex w-full min-h-8 items-center justify-center px-2 py-1.5 font-mono text-[0.68rem] font-medium uppercase tracking-widest transition-colors",
-                  "focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-tangerine/50 motion-reduce:transition-none",
-                  currentLocale === locale
-                    ? "bg-brand-tangerine text-brand-black"
-                    : "text-brand-muted hover:bg-brand-linen/60 hover:text-brand-black"
-                )}
+      {mounted &&
+        open &&
+        createPortal(
+          <div className="fixed inset-0 z-[100]">
+            <button
+              type="button"
+              className="absolute inset-0 bg-brand-black/10 backdrop-blur-md motion-reduce:backdrop-blur-none"
+              aria-label="Close language selection"
+              onClick={() => setOpen(false)}
+            />
+
+            <div
+              ref={dialogRef}
+              id={dialogId}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={titleId}
+              className="pointer-events-none absolute inset-0 flex items-center justify-center p-6"
+            >
+              <div
+                className="pointer-events-auto w-full max-w-[16rem] border border-border bg-white px-2 py-3 shadow-sm"
+                onClick={(ev) => ev.stopPropagation()}
               >
-                {LOCALE_SHORT[locale]}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+                <p
+                  id={titleId}
+                  className="px-3 pb-2 font-mono text-[0.62rem] font-medium uppercase tracking-[0.2em] text-brand-black/45"
+                >
+                  Language
+                </p>
+                <ul className="flex flex-col gap-0.5" role="list">
+                  {LOCALES.map((locale) => {
+                    const selected = currentLocale === locale;
+                    return (
+                      <li key={locale}>
+                        <button
+                          type="button"
+                          data-locale-option
+                          aria-current={selected ? "true" : undefined}
+                          onClick={() => switchLocale(locale)}
+                          className={cn(
+                            "flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left transition-colors",
+                            "focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-brand-tangerine motion-reduce:transition-none",
+                            selected
+                              ? "bg-brand-tangerine text-brand-black"
+                              : "text-brand-black hover:bg-brand-linen/80",
+                          )}
+                        >
+                          <span className="font-mono text-[0.68rem] font-medium uppercase tracking-widest">
+                            {LOCALE_SHORT[locale]}
+                          </span>
+                          <span className="font-body text-xs text-brand-black/55">{LOCALE_LABELS[locale]}</span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }

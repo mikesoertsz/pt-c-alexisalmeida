@@ -3,9 +3,9 @@ import { LegalDocumentFrame } from "@/components/organisms/LegalDocumentFrame/Le
 import { DEFAULT_LOCALE, isValidLocale, type Locale } from "@/lib/locale";
 
 const UPDATED = {
-  en: "Last updated: 10 May 2026",
-  pt: "Última atualização: 10 de maio de 2026",
-  de: "Stand: 10. Mai 2026",
+  en: "Last updated: 29 May 2026",
+  pt: "Última atualização: 29 de maio de 2026",
+  de: "Stand: 29. Mai 2026",
 } as const;
 
 const COOKIE_ROWS: Record<
@@ -133,7 +133,7 @@ const COPY: Record<
   en: {
     title: "Cookie policy",
     intro: [
-      "This policy explains how Aura Tattoo & Meaning uses storage and similar technologies on this website.",
+      "This policy explains how Lex Almeida Tattoo uses storage and similar technologies on this website.",
       "Essential items (language preference and your consent storage) are always active.",
       "Vercel Web Analytics and Speed Insights are loaded to understand traffic and performance; they are configured to avoid advertising cookies and typically do not rely on persistent third-party cookies.",
       "Google Analytics 4 loads only after you tap Accept on optional analytics cookies.",
@@ -154,7 +154,7 @@ const COPY: Record<
   pt: {
     title: "Política de cookies",
     intro: [
-      "Esta página explica como a Aura Tattoo & Meaning utiliza cookies e tecnologias similares neste website.",
+      "Esta página explica como a Lex Almeida Tattoo utiliza cookies e tecnologias similares neste website.",
       "Os meios necessários (língua e registo da decisão sobre cookies opcionais) permanecem ativos.",
       "Vercel Web Analytics e Speed Insights permitem medir audiência e desempenho, sem finalidade publicitária de terceiros e, em regra, sem cookies persistentes no seu equipamento.",
       "Google Analytics 4 só é carregado após aceitar cookies analíticos no aviso.",

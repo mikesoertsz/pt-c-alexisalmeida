@@ -10,7 +10,7 @@ export function Testimonials({ slice: testimonials }: TestimonialsProps) {
   const [featured, ...rest] = items;
 
   return (
-    <section className="w-full bg-brand-cotton border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12">
+    <section data-nav-tone="light" className="w-full bg-brand-cotton border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12">
       <div className="max-w-[1440px] mx-auto">
 
         <AnimateIn>

@@ -14,6 +14,7 @@ export function FAQ({ slice }: FAQProps) {
   return (
     <section
       id="faq"
+      data-nav-tone="light"
       className="w-full scroll-mt-16 border-t-2 border-brand-black bg-brand-linen py-20 md:py-28 px-6 md:px-12"
     >
       <div className="mx-auto flex max-w-[1440px] flex-col gap-12 md:gap-14">

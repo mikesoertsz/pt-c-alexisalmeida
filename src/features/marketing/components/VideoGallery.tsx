@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Play } from "lucide-react";
 import { AnimateIn } from "@/components/atoms/AnimateIn/AnimateIn";
 import { videoSrc } from "@/lib/video";
@@ -11,54 +11,46 @@ interface VideoEntry {
 }
 
 const POOL: VideoEntry[] = [
-  { id: "gallery-1",   src: "/img/gallery/gallery-1.mp4" },
-  { id: "gallery-10",  src: "/img/gallery/gallery-10.mp4" },
-  { id: "gallery-12",  src: "/img/gallery/gallery-12.mp4" },
-  { id: "gallery-100", src: "/img/gallery/gallery-100.mp4" },
-  { id: "gallery-103", src: "/img/gallery/gallery-103.mp4" },
-  { id: "gallery-104", src: "/img/gallery/gallery-104.mp4" },
-  { id: "gallery-107", src: "/img/gallery/gallery-107.mp4" },
-  { id: "gallery-120", src: "/img/gallery/gallery-120.mp4" },
-  { id: "gallery-122", src: "/img/gallery/gallery-122.mp4" },
-  { id: "gallery-125", src: "/img/gallery/gallery-125.mp4" },
-  { id: "gallery-128", src: "/img/gallery/gallery-128.mp4" },
-  { id: "gallery-133", src: "/img/gallery/gallery-133.mp4" },
-  { id: "gallery-134", src: "/img/gallery/gallery-134.mp4" },
-  { id: "gallery-137", src: "/img/gallery/gallery-137.mp4" },
-  { id: "gallery-138", src: "/img/gallery/gallery-138.mp4" },
-  { id: "gallery-144", src: "/img/gallery/gallery-144.mp4" },
-  { id: "gallery-148", src: "/img/gallery/gallery-148.mp4" },
-  { id: "gallery-151", src: "/img/gallery/gallery-151.mp4" },
-  { id: "gallery-154", src: "/img/gallery/gallery-154.mp4" },
-  { id: "gallery-157", src: "/img/gallery/gallery-157.mp4" },
-  { id: "gallery-161", src: "/img/gallery/gallery-161.mp4" },
-  { id: "gallery-164", src: "/img/gallery/gallery-164.mp4" },
-  { id: "gallery-167", src: "/img/gallery/gallery-167.mp4" },
-  { id: "gallery-171", src: "/img/gallery/gallery-171.mp4" },
-  { id: "gallery-174", src: "/img/gallery/gallery-174.mp4" },
-  { id: "gallery-177", src: "/img/gallery/gallery-177.mp4" },
-  { id: "gallery-180", src: "/img/gallery/gallery-180.mp4" },
-  { id: "gallery-183", src: "/img/gallery/gallery-183.mp4" },
-  { id: "gallery-184", src: "/img/gallery/gallery-184.mp4" },
-  { id: "gallery-185", src: "/img/gallery/gallery-185.mp4" },
-  { id: "gallery-186", src: "/img/gallery/gallery-186.mp4" },
-  { id: "gallery-189", src: "/img/gallery/gallery-189.mp4" },
-  { id: "gallery-19",  src: "/img/gallery/gallery-19.mp4" },
-  { id: "gallery-192", src: "/img/gallery/gallery-192.mp4" },
-  { id: "gallery-197", src: "/img/gallery/gallery-197.mp4" },
-  { id: "gallery-204", src: "/img/gallery/gallery-204.mp4" },
-  { id: "gallery-207", src: "/img/gallery/gallery-207.mp4" },
-  { id: "gallery-210", src: "/img/gallery/gallery-210.mp4" },
-  { id: "gallery-213", src: "/img/gallery/gallery-213.mp4" },
-  { id: "gallery-216", src: "/img/gallery/gallery-216.mp4" },
-  { id: "gallery-22",  src: "/img/gallery/gallery-22.mp4" },
-  { id: "gallery-228", src: "/img/gallery/gallery-228.mp4" },
-  { id: "gallery-231", src: "/img/gallery/gallery-231.mp4" },
-  { id: "gallery-234", src: "/img/gallery/gallery-234.mp4" },
-  { id: "gallery-237", src: "/img/gallery/gallery-237.mp4" },
-  { id: "gallery-24",  src: "/img/gallery/gallery-24.mp4" },
-  { id: "gallery-240", src: "/img/gallery/gallery-240.mp4" },
-  { id: "gallery-243", src: "/img/gallery/gallery-243.mp4" },
+  { id: "gallery-49",  src: "/img/shortlist/gallery-49.mp4" },
+  { id: "gallery-55",  src: "/img/shortlist/gallery-55.mp4" },
+  { id: "gallery-120", src: "/img/shortlist/gallery-120.mp4" },
+  { id: "gallery-137", src: "/img/shortlist/gallery-137.mp4" },
+  { id: "gallery-138", src: "/img/shortlist/gallery-138.mp4" },
+  { id: "gallery-164", src: "/img/shortlist/gallery-164.mp4" },
+  { id: "gallery-180", src: "/img/shortlist/gallery-180.mp4" },
+  { id: "gallery-183", src: "/img/shortlist/gallery-183.mp4" },
+  { id: "gallery-186", src: "/img/shortlist/gallery-186.mp4" },
+  { id: "gallery-189", src: "/img/shortlist/gallery-189.mp4" },
+  { id: "gallery-213", src: "/img/shortlist/gallery-213.mp4" },
+  { id: "gallery-240", src: "/img/shortlist/gallery-240.mp4" },
+  { id: "gallery-246", src: "/img/shortlist/gallery-246.mp4" },
+  { id: "gallery-247", src: "/img/shortlist/gallery-247.mp4" },
+  { id: "gallery-249", src: "/img/shortlist/gallery-249.mp4" },
+  { id: "gallery-254", src: "/img/shortlist/gallery-254.mp4" },
+  { id: "gallery-302", src: "/img/shortlist/gallery-302.mp4" },
+  { id: "gallery-327", src: "/img/shortlist/gallery-327.mp4" },
+  { id: "gallery-334", src: "/img/shortlist/gallery-334.mp4" },
+  { id: "gallery-343", src: "/img/shortlist/gallery-343.mp4" },
+  { id: "gallery-384", src: "/img/shortlist/gallery-384.mp4" },
+  { id: "gallery-413", src: "/img/shortlist/gallery-413.mp4" },
+  { id: "gallery-423", src: "/img/shortlist/gallery-423.mp4" },
+  { id: "gallery-438", src: "/img/shortlist/gallery-438.mp4" },
+  { id: "gallery-442", src: "/img/shortlist/gallery-442.mp4" },
+  { id: "gallery-443", src: "/img/shortlist/gallery-443.mp4" },
+  { id: "gallery-444", src: "/img/shortlist/gallery-444.mp4" },
+  { id: "gallery-456", src: "/img/shortlist/gallery-456.mp4" },
+  { id: "gallery-459", src: "/img/shortlist/gallery-459.mp4" },
+  { id: "gallery-470", src: "/img/shortlist/gallery-470.mp4" },
+  { id: "gallery-487", src: "/img/shortlist/gallery-487.mp4" },
+  { id: "gallery-498", src: "/img/shortlist/gallery-498.mp4" },
+  { id: "gallery-502", src: "/img/shortlist/gallery-502.mp4" },
+  { id: "gallery-513", src: "/img/shortlist/gallery-513.mp4" },
+  { id: "gallery-543", src: "/img/shortlist/gallery-543.mp4" },
+  { id: "gallery-544", src: "/img/shortlist/gallery-544.mp4" },
+  { id: "gallery-552", src: "/img/shortlist/gallery-552.mp4" },
+  { id: "gallery-563", src: "/img/shortlist/gallery-563.mp4" },
+  { id: "gallery-567", src: "/img/shortlist/gallery-567.mp4" },
+  { id: "gallery-578", src: "/img/shortlist/gallery-578.mp4" },
 ];
 
 function shuffle(arr: VideoEntry[]): VideoEntry[] {
@@ -81,6 +73,7 @@ function VideoThumb({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
 
+  // Seek to first frame once metadata is available
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -120,26 +113,31 @@ function VideoThumb({
 }
 
 export function VideoGallery() {
-  // Randomly pick 24 from the pool on each mount
-  const videos = useMemo(() => shuffle(POOL).slice(0, 24), []);
+  // Initialize client-side only to avoid SSR/hydration mismatch from Math.random()
+  const [videos, setVideos] = useState<VideoEntry[]>([]);
+  const [activeId, setActiveId] = useState<string>("");
 
-  // Active video tracked by id — not by array index — to prevent mismatch
-  const [activeId, setActiveId] = useState<string>(videos[0].id);
+  useEffect(() => {
+    const picked = shuffle(POOL).slice(0, 24);
+    setVideos(picked);
+    setActiveId(picked[0].id);
+  }, []);
 
   const featuredRef = useRef<HTMLVideoElement>(null);
 
-  const activeVideo = videos.find((v) => v.id === activeId) ?? videos[0];
+  const activeVideo = videos.find((v) => v.id === activeId) ?? videos[0] ?? null;
 
-  // Play featured player whenever the active video changes
+  // Auto-play featured player whenever the active video changes
   useEffect(() => {
+    if (!activeVideo) return;
     const el = featuredRef.current;
     if (!el) return;
     el.load();
     el.play().catch(() => {});
-  }, [activeId]);
+  }, [activeId, activeVideo]);
 
   return (
-    <section className="w-full bg-brand-black border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12">
+    <section data-nav-tone="dark" className="w-full bg-brand-black border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10">
 
         <AnimateIn>
@@ -170,17 +168,19 @@ export function VideoGallery() {
 
             {/* Featured player — keyed by activeVideo.id so it remounts on change */}
             <div className="relative aspect-[9/16] lg:aspect-auto lg:w-[360px] shrink-0 overflow-hidden bg-brand-black">
-              <video
-                ref={featuredRef}
-                key={activeVideo.id}
-                src={videoSrc(activeVideo.src)}
-                controls
-                playsInline
-                muted
-                loop
-                className="absolute inset-0 h-full w-full object-cover"
-                preload="auto"
-              />
+              {activeVideo && (
+                <video
+                  ref={featuredRef}
+                  key={activeVideo.id}
+                  src={videoSrc(activeVideo.src)}
+                  controls
+                  playsInline
+                  muted
+                  loop
+                  className="absolute inset-0 h-full w-full object-cover"
+                  preload="auto"
+                />
+              )}
             </div>
 
           </div>

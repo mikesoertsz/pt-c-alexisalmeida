@@ -16,7 +16,7 @@ function isVideoItem(
 
 export function WorkGrid({ slice }: WorkGridProps) {
   return (
-    <section id="work" className="w-full bg-brand-black scroll-mt-16 border-t-2 border-brand-black">
+    <section id="work" data-nav-tone="dark" className="w-full bg-brand-black scroll-mt-16 border-t-2 border-brand-black">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-brand-black">
         {slice.images.map((item) => {
           const key = `${"kind" in item ? item.kind : "image"}-${item.src}`;

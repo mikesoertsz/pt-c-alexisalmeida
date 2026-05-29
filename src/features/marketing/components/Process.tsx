@@ -7,7 +7,7 @@ interface ProcessProps {
 
 export function Process({ slice }: ProcessProps) {
   return (
-    <section className="w-full bg-brand-cotton border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12">
+    <section data-nav-tone="light" className="w-full bg-brand-cotton border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12">
       <div className="max-w-[1440px] mx-auto">
         <AnimateIn>
           <h2 className="font-display font-black uppercase text-brand-black text-4xl md:text-5xl lg:text-6xl leading-[0.9] tracking-tighter mb-16 md:mb-20">

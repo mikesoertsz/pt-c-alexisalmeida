@@ -23,7 +23,9 @@ export async function LegalDocumentFrame({
         locale={locale}
         logoHref={localizedPath(locale, "/")}
       />
-      <main className="grow w-full bg-brand-linen text-brand-black">{children}</main>
+      <main data-nav-tone="light" className="grow w-full bg-brand-linen text-brand-black">
+        {children}
+      </main>
       <SiteFooter footer={content.footer} locale={locale} />
       <CookieConsentBanner
         content={content.cookieConsent}

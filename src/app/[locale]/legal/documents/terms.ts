@@ -8,9 +8,9 @@ import type { Locale } from "@/lib/locale";
 import type { LegalDocument } from "@/features/legal";
 
 const UPDATED = {
-  en: "Last updated: 10 May 2026",
-  pt: "Última atualização: 10 de maio de 2026",
-  de: "Stand: 10. Mai 2026",
+  en: "Last updated: 29 May 2026",
+  pt: "Última atualização: 29 de maio de 2026",
+  de: "Stand: 29. Mai 2026",
 } as const;
 
 function termsPt(e: LegalEntity): LegalDocument {

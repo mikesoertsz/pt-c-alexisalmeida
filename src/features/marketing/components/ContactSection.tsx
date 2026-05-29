@@ -11,6 +11,7 @@ export function ContactSection({ slice }: ContactSectionProps) {
   return (
     <section
       id="contact"
+      data-nav-tone="light"
       className="w-full scroll-mt-16 bg-brand-cotton border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12"
     >
       <div className="mx-auto flex max-w-[1440px] flex-col gap-10 lg:flex-row lg:justify-between lg:gap-16">

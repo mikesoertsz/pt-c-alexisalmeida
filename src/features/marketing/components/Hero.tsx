@@ -11,9 +11,9 @@ import { trackEvent } from "@/lib/analytics";
 const ease = [0.25, 0.1, 0.25, 1] as const;
 const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 
-const HERO_IMAGE_SRC = "/img/shortlist/mask-oni-front.jpg";
+const HERO_IMAGE_SRC = "/img/heroes/hero1.webp";
 const HERO_IMAGE_ALT =
-  "Oni demon mask blackwork tattoo on upper arm by Lex Almeida, Porto";
+  "Fine line and blackwork tattoo portfolio by Lex Almeida, Porto";
 
 interface HeroProps {
   hero: ContentSchema["hero"];
@@ -22,7 +22,10 @@ interface HeroProps {
 
 export function Hero({ hero, locale }: HeroProps) {
   return (
-    <section className="relative isolate w-full min-h-dvh overflow-hidden bg-brand-black flex flex-col justify-center md:justify-end pb-20 md:pb-28 px-6 md:px-12 lg:px-20 border-b-2 border-brand-black">
+    <section
+      data-nav-tone="dark"
+      className="relative isolate w-full min-h-dvh overflow-hidden bg-brand-black flex flex-col justify-center md:justify-end pb-20 md:pb-28 px-6 md:px-12 lg:px-20 border-b-2 border-brand-black"
+    >
       <div className="absolute inset-0 -z-10" aria-hidden>
         <Image
           src={HERO_IMAGE_SRC}

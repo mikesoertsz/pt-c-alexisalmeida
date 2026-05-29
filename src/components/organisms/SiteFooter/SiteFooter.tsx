@@ -10,7 +10,7 @@ interface SiteFooterProps {
 
 export function SiteFooter({ footer, locale }: SiteFooterProps) {
   return (
-    <footer className="w-full border-t-2 border-brand-black bg-brand-cotton">
+    <footer data-nav-tone="light" className="w-full border-t-2 border-brand-black bg-brand-cotton">
       <div className="grid w-full grid-cols-1 items-center gap-4 px-6 py-5 md:h-[48px] md:grid-cols-3 md:py-0 lg:px-8">
         <div className="flex flex-row flex-wrap items-center justify-center gap-x-1 md:justify-start">
           <span className="font-mono text-xs text-brand-muted">
@@ -39,7 +39,7 @@ export function SiteFooter({ footer, locale }: SiteFooterProps) {
           </ul>
         </nav>
 
-        <div className="flex items-center justify-center text-center md:justify-end md:text-right">
+        <div className="flex items-center justify-center gap-4 text-center md:justify-end md:text-right">
           <p className="font-mono text-xs text-brand-muted">
             {footer.agencyCreditPrefix}
             <a
@@ -52,6 +52,13 @@ export function SiteFooter({ footer, locale }: SiteFooterProps) {
             </a>
             {footer.agencyCreditSuffix}
           </p>
+          <Link
+            href="/admin"
+            className="font-mono text-xs text-brand-black/20 hover:text-brand-black/50 transition-colors"
+            aria-label="Admin"
+          >
+            admin
+          </Link>
         </div>
       </div>
     </footer>

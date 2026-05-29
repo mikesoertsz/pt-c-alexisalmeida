@@ -12,6 +12,8 @@ import { FAQ } from "./FAQ";
 import { VideoGallery } from "./VideoGallery";
 import { ContactSection } from "./ContactSection";
 import { BookingSection } from "./BookingSection";
+import { LocationBanner } from "./LocationBanner";
+import { TravelScheduleSection } from "./TravelScheduleSection";
 import type { Locale } from "@/lib/locale";
 import { localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
@@ -83,8 +85,10 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
       />
       <main>
         <Hero hero={content.hero} locale={locale} />
+        <LocationBanner />
         <PhilosophyStrip slice={content.philosophyStrip} />
         <WorkGrid slice={content.workGrid} />
+        <TravelScheduleSection />
         <AboutArtist slice={content.about} />
         <Process slice={content.process} />
         <Promotions />

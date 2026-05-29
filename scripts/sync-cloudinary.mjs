@@ -29,8 +29,9 @@ cloudinary.config({
 
 const CLOUD  = cloudinary.config().cloud_name;
 const PREFIXES = [
-  { prefix: "Portugal Tattoo/alexis-almeida/gallery/", localDir: "/img/gallery" },
-  { prefix: "Portugal Tattoo/alexis-almeida/video/",   localDir: "/video" },
+  { prefix: "Portugal Tattoo/alexis-almeida/gallery/",   localDir: "/img/gallery" },
+  { prefix: "Portugal Tattoo/alexis-almeida/shortlist/", localDir: "/img/shortlist" },
+  { prefix: "Portugal Tattoo/alexis-almeida/video/",     localDir: "/video" },
 ];
 
 async function fetchAll(prefix) {
