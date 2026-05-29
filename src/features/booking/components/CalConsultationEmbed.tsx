@@ -40,11 +40,30 @@ export function CalConsultationEmbed({ calLink, redirectUrl }: CalConsultationEm
         },
       });
 
-      // Programmatic fallback redirect after booking completes
+      // Capture booking data and redirect with params for the thank-you page
       cal("on", {
         action: "bookingSuccessful",
-        callback: () => {
-          window.location.href = redirectUrl;
+        callback: (e: unknown) => {
+          const params = new URLSearchParams();
+          try {
+            const data = e as {
+              data?: {
+                booking?: {
+                  startTime?: string;
+                  endTime?: string;
+                  title?: string;
+                };
+              };
+            };
+            const booking = data?.data?.booking;
+            if (booking?.startTime) params.set("start", booking.startTime);
+            if (booking?.endTime) params.set("end", booking.endTime);
+            if (booking?.title) params.set("title", booking.title);
+          } catch {
+            // ignore — redirect still fires without calendar params
+          }
+          const qs = params.size > 0 ? `?${params.toString()}` : "";
+          window.location.href = `${redirectUrl}${qs}`;
         },
       });
     });
