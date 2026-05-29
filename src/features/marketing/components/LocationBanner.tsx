@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { Locale } from "@/lib/locale";
+import { localizedHomeAnchor } from "@/lib/locale";
 import {
   getEffectiveSchedule,
   computeCurrentLocation,
@@ -13,7 +15,11 @@ import {
  * Compact status strip directly below the hero.
  * Left: where Lex is now. Right: availability status + scroll-to-booking link.
  */
-export async function LocationBanner() {
+interface LocationBannerProps {
+  locale: Locale;
+}
+
+export async function LocationBanner({ locale }: LocationBannerProps) {
   const schedule = await getEffectiveSchedule();
   const location = computeCurrentLocation(schedule);
   const portoOpen = computeIsPortoAvailable(schedule);
@@ -64,7 +70,7 @@ export async function LocationBanner() {
 
             {/* Scroll-to-booking CTA */}
             <Link
-              href="#booking"
+              href={localizedHomeAnchor(locale, "booking")}
               className="font-mono text-xs text-brand-tangerine uppercase tracking-[0.12em] hover:text-white transition-colors shrink-0"
             >
               Book &rarr;

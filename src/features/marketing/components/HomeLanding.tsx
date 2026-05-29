@@ -85,10 +85,10 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
       />
       <main>
         <Hero hero={content.hero} locale={locale} />
-        <LocationBanner />
+        <LocationBanner locale={locale} />
         <PhilosophyStrip slice={content.philosophyStrip} />
         <WorkGrid slice={content.workGrid} />
-        <TravelScheduleSection />
+        <TravelScheduleSection locale={locale} />
         <AboutArtist slice={content.about} />
         <Process slice={content.process} />
         <Promotions />

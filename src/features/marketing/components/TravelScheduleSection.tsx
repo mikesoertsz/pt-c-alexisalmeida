@@ -1,4 +1,6 @@
 import Link from "next/link";
+import type { Locale } from "@/lib/locale";
+import { localizedHomeAnchor } from "@/lib/locale";
 import {
   getEffectiveSchedule,
   computeCurrentPeriod,
@@ -28,7 +30,11 @@ function periodStatus(
  * Current period: tangerine. Upcoming: white. Past: gray.
  * Hidden entirely when no schedule is configured.
  */
-export async function TravelScheduleSection() {
+interface TravelScheduleSectionProps {
+  locale: Locale;
+}
+
+export async function TravelScheduleSection({ locale }: TravelScheduleSectionProps) {
   const schedule = await getEffectiveSchedule();
   if (schedule.length === 0) return null;
 
@@ -55,7 +61,7 @@ export async function TravelScheduleSection() {
               Lex works between Porto and Germany. Check the schedule before booking.
             </p>
             <Link
-              href="#booking"
+              href={localizedHomeAnchor(locale, "booking")}
               className="font-mono text-xs text-brand-tangerine uppercase tracking-[0.12em] hover:underline"
             >
               Go to booking &rarr;

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 
 // ---------------------------------------------------------------------------
@@ -173,12 +174,12 @@ export default function AdminPage() {
               Travel Schedule
             </h1>
           </div>
-          <a
+          <Link
             href="/"
             className="font-mono text-xs text-white/50 uppercase tracking-[0.12em] hover:text-white transition-colors"
           >
             &larr; Site
-          </a>
+          </Link>
         </div>
       </header>
 

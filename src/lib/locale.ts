@@ -60,3 +60,10 @@ export function localizedPath(locale: Locale, path: string): string {
   if (normalized === "/") return `/${locale}`;
   return `/${locale}${normalized}`;
 }
+
+/** Home page section anchors (work, about, booking) — valid from any route. */
+export type HomeSectionId = "work" | "about" | "booking";
+
+export function localizedHomeAnchor(locale: Locale, section: HomeSectionId): string {
+  return localizedPath(locale, `/#${section}`);
+}
