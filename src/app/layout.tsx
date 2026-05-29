@@ -37,6 +37,9 @@ export const metadata: Metadata = {
   },
   description:
     "Collector-grade fine line, blackwork and dark art. 11 years experience. Custom work only. Porto, Portugal.",
+  verification: {
+    google: "s5LqZOTwqJ_1cPQxXjDUPJ16zrMZWcIocUdJFHLro-k",
+  },
 };
 
 async function localeFromHeaders(): Promise<Locale> {
