@@ -96,7 +96,7 @@ function VideoThumb({
       onClick={onActivate}
       aria-label={`Play ${video.id}`}
       className={[
-        "relative overflow-hidden bg-brand-black block w-full h-full",
+        "relative overflow-hidden bg-brand-black block w-full aspect-square lg:aspect-auto lg:h-full",
         "focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-tangerine focus-visible:outline-offset-[-2px]",
         isActive ? "outline outline-2 outline-brand-tangerine outline-offset-[-2px]" : "",
       ].join(" ")}
