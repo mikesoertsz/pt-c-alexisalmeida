@@ -87,7 +87,7 @@ export function Hero({ hero, locale }: HeroProps) {
           <div className="flex flex-col items-start md:items-end gap-3">
             <ButtonStyled
               href={localizedPath(locale, "/booking")}
-              className="bg-white border-white text-brand-black hover:bg-brand-tangerine hover:border-brand-tangerine hover:text-white"
+              className="bg-brand-tangerine border-brand-tangerine text-brand-linen hover:bg-brand-tangerine/90 hover:border-brand-tangerine/90 hover:text-brand-linen"
               onClick={() =>
                 trackEvent("cta_click", { event_category: "engagement", event_label: "hero_primary" })
               }

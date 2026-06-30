@@ -109,7 +109,7 @@ export function LanguageSwitcher({
         className={cn(
           "relative inline-flex h-9 min-w-[3.25rem] shrink-0 items-center justify-center gap-0.5 px-2",
           "font-mono text-[0.68rem] font-medium uppercase tracking-widest transition-colors",
-          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine motion-reduce:transition-none",
+          "outline-none focus:outline-none focus-visible:outline-none motion-reduce:transition-none",
           isNav
             ? cn(
                 "rounded-md hover:bg-white/20",
