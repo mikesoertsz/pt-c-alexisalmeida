@@ -4,6 +4,7 @@ import { DEFAULT_LOCALE, isValidLocale, type Locale } from "@/lib/locale";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import { GoogleConsentMode } from "@/components/consent/GoogleConsentMode";
 import { GoogleTagsInit } from "@/components/google/GoogleTagsInit";
+import { MetaPixel } from "@/components/meta/MetaPixel";
 import "@/styles/globals.css";
 
 const archivo = Archivo_Black({
@@ -65,6 +66,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col bg-brand-linen text-brand-black">
         <GoogleConsentMode />
         <GoogleTagsInit />
+        <MetaPixel />
         {children}
       </body>
     </html>

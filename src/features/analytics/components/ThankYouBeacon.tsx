@@ -20,11 +20,9 @@ export function ThankYouBeacon() {
     // Google Ads — fires the Booking Confirmed conversion action (AW-XXXXXXXXX/label)
     trackBookingConversion();
 
-    // Google Analytics 4 — standard lead conversion event
+    // Google Analytics 4 — standard lead conversion event (marked as the
+    // GA4 Key Event for this property — see admin/events/hub in GA4)
     trackEvent("generate_lead", { event_category: "booking", event_label: "consultation" });
-
-    // Custom event for additional funnel visibility
-    trackEvent("booking_consultation_confirmed", {});
 
     // Meta Pixel — standard Lead event (fires only when Pixel is loaded)
     trackMetaEvent("Lead", { content_name: "consultation_booking" });
