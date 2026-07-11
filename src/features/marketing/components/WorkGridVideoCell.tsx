@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useSyncExternalStore } from "react";
-import { videoSrc } from "@/lib/video";
+import { videoSrc, youtubeId, videoThumbSrc } from "@/lib/video";
 
 interface WorkGridVideoCellProps {
   src: string;
@@ -35,18 +35,23 @@ export default function WorkGridVideoCell({
     getReducedMotionServerSnapshot,
   );
 
-  if (prefersReducedMotion && poster) {
+  const resolvedSrc = videoSrc(src);
+  const isYoutube = !!youtubeId(resolvedSrc);
+  const thumb = poster ?? videoThumbSrc(src) ?? undefined;
+
+  if (prefersReducedMotion && thumb) {
     return (
       <div
         className="relative aspect-square bg-brand-linen overflow-hidden"
         aria-label={alt}
       >
         <Image
-          src={poster}
+          src={thumb}
           alt={alt}
           fill
           sizes="(max-width: 768px) 50vw, 25vw"
           className="object-cover"
+          unoptimized={thumb.startsWith("https://img.youtube.com")}
         />
       </div>
     );
@@ -57,15 +62,37 @@ export default function WorkGridVideoCell({
       className="work-grid-video relative aspect-square bg-brand-linen overflow-hidden"
       aria-label={alt}
     >
-      <video
-        src={videoSrc(src)}
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={poster}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      {isYoutube ? (
+        /* Scale the 16:9 iframe up so it covers the square container */
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            width: "180%",
+            height: "180%",
+            transform: "translate(-50%, -50%)",
+            pointerEvents: "none",
+          }}
+        >
+          <iframe
+            src={`https://www.youtube.com/embed/${youtubeId(resolvedSrc)}?autoplay=1&mute=1&loop=1&playlist=${youtubeId(resolvedSrc)}&controls=0&rel=0&modestbranding=1&disablekb=1&playsinline=1`}
+            title={alt}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            className="h-full w-full border-0"
+          />
+        </div>
+      ) : (
+        <video
+          src={resolvedSrc}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={poster}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      )}
     </div>
   );
 }

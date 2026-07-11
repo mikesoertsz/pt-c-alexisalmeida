@@ -1,10 +1,13 @@
 import { verifyCalWebhookSignature } from "@/lib/cal-webhook";
-import { sendTemplatedEmail } from "@/lib/email";
+import { sendEmail, sendTemplatedEmail } from "@/lib/email";
 import { baselineEmailVars } from "@/lib/email-variables";
 import {
+  buildOwnerNotification,
   extractWebhookFields,
   formatSlotForEmail,
+  ownerNotifyRecipients,
   subjectForTemplate,
+  triggerLabel,
   triggerToTemplate,
 } from "@/lib/email-cal-webhook";
 
@@ -38,8 +41,36 @@ export async function POST(req: Request): Promise<Response> {
   const extracted = extractWebhookFields(parsed);
   const { date, time } = formatSlotForEmail(extracted.startIso, tz);
 
+  // Internal notification to the agency/artist, fired for every booking event.
+  // Best-effort: never let a failed notification block the client email.
+  let notified = false;
+  const recipients = ownerNotifyRecipients();
+  if (recipients.length > 0) {
+    const { subject, html } = buildOwnerNotification({
+      label: triggerLabel(trigger),
+      clientName: extracted.firstName,
+      clientEmail: extracted.email,
+      serviceType: extracted.serviceType,
+      date,
+      time,
+      bookingRef: extracted.bookingRef,
+      manageLink: extracted.rescheduleLink,
+    });
+    try {
+      await sendEmail({
+        to: recipients,
+        subject,
+        html,
+        replyTo: extracted.email ?? undefined,
+      });
+      notified = true;
+    } catch (err) {
+      console.error("Owner booking notification failed:", err);
+    }
+  }
+
   if (!extracted.email) {
-    return Response.json({ ok: true, mailed: false, reason: "no attendee email" });
+    return Response.json({ ok: true, mailed: false, notified, reason: "no attendee email" });
   }
 
   const baseline = baselineEmailVars();
@@ -63,8 +94,8 @@ export async function POST(req: Request): Promise<Response> {
     });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Email send failed";
-    return Response.json({ error: message }, { status: 502 });
+    return Response.json({ error: message, notified }, { status: 502 });
   }
 
-  return Response.json({ ok: true, mailed: mailTemplate });
+  return Response.json({ ok: true, mailed: mailTemplate, notified });
 }

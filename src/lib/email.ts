@@ -28,6 +28,20 @@ export async function sendTemplatedEmail(options: {
   template: EmailTemplateName;
   variables: Record<string, string>;
 }): Promise<void> {
+  const templatePath = path.join(process.cwd(), "public", "html", `${options.template}.html`);
+  const raw = await readFile(templatePath, "utf8");
+  const html = interpolateTemplate(raw, options.variables);
+
+  await sendEmail({ to: options.to, subject: options.subject, html });
+}
+
+/** Send a raw HTML email (no template file). Used for internal/admin notifications. */
+export async function sendEmail(options: {
+  to: string | string[];
+  subject: string;
+  html: string;
+  replyTo?: string;
+}): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const from = process.env.EMAIL_FROM?.trim();
 
@@ -35,16 +49,13 @@ export async function sendTemplatedEmail(options: {
     throw new Error("RESEND_API_KEY and EMAIL_FROM must be configured to send mail");
   }
 
-  const templatePath = path.join(process.cwd(), "public", "html", `${options.template}.html`);
-  const raw = await readFile(templatePath, "utf8");
-  const html = interpolateTemplate(raw, options.variables);
-
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
     from,
     to: options.to,
     subject: options.subject,
-    html,
+    html: options.html,
+    ...(options.replyTo ? { replyTo: options.replyTo } : {}),
   });
 
   if (error) {

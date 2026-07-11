@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Play } from "lucide-react";
 import { AnimateIn } from "@/components/atoms/AnimateIn/AnimateIn";
-import { videoSrc } from "@/lib/video";
+import { videoSrc, youtubeId, videoThumbSrc } from "@/lib/video";
 
 interface VideoEntry {
   id: string;
@@ -71,16 +71,7 @@ function VideoThumb({
   isActive: boolean;
   onActivate: () => void;
 }) {
-  const ref = useRef<HTMLVideoElement>(null);
-
-  // Seek to first frame once metadata is available
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const seek = () => { el.currentTime = 0; };
-    if (el.readyState >= 1) seek();
-    else el.addEventListener("loadedmetadata", seek, { once: true });
-  }, [video.src]);
+  const thumb = videoThumbSrc(video.src);
 
   return (
     <button
@@ -94,14 +85,17 @@ function VideoThumb({
         isActive ? "outline outline-2 outline-brand-tangerine outline-offset-[-2px]" : "",
       ].join(" ")}
     >
-      {/* Static first-frame thumbnail */}
-      <video
-        ref={ref}
-        src={videoSrc(video.src)}
-        preload="metadata"
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-      />
+      {thumb ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={thumb}
+          alt={video.id}
+          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+          loading="lazy"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-brand-black" />
+      )}
 
       {isActive && (
         <span className="absolute bottom-1 right-1 text-white animate-pulse">
@@ -113,7 +107,6 @@ function VideoThumb({
 }
 
 export function VideoGallery() {
-  // Initialize client-side only to avoid SSR/hydration mismatch from Math.random()
   const [videos, setVideos] = useState<VideoEntry[]>([]);
   const [activeId, setActiveId] = useState<string>("");
 
@@ -123,18 +116,9 @@ export function VideoGallery() {
     setActiveId(picked[0].id);
   }, []);
 
-  const featuredRef = useRef<HTMLVideoElement>(null);
-
   const activeVideo = videos.find((v) => v.id === activeId) ?? videos[0] ?? null;
-
-  // Auto-play featured player whenever the active video changes
-  useEffect(() => {
-    if (!activeVideo) return;
-    const el = featuredRef.current;
-    if (!el) return;
-    el.load();
-    el.play().catch(() => {});
-  }, [activeId, activeVideo]);
+  const activeSrc = activeVideo ? videoSrc(activeVideo.src) : null;
+  const isYoutube = activeSrc ? !!youtubeId(activeSrc) : false;
 
   return (
     <section data-nav-tone="dark" className="w-full bg-brand-black border-t-2 border-brand-black py-20 md:py-28 px-6 md:px-12">
@@ -154,7 +138,7 @@ export function VideoGallery() {
         <AnimateIn>
           <div className="flex flex-col lg:flex-row lg:h-[640px]">
 
-            {/* Thumbnail grid — each button keyed by video.id */}
+            {/* Thumbnail grid */}
             <div className="flex-1 grid grid-cols-6 grid-rows-4 overflow-hidden">
               {videos.map((video) => (
                 <VideoThumb
@@ -166,20 +150,32 @@ export function VideoGallery() {
               ))}
             </div>
 
-            {/* Featured player — keyed by activeVideo.id so it remounts on change */}
+            {/* Featured player */}
             <div className="relative aspect-[9/16] lg:aspect-auto lg:w-[360px] shrink-0 overflow-hidden bg-brand-black">
-              {activeVideo && (
-                <video
-                  ref={featuredRef}
-                  key={activeVideo.id}
-                  src={videoSrc(activeVideo.src)}
-                  controls
-                  playsInline
-                  muted
-                  loop
-                  className="absolute inset-0 h-full w-full object-cover"
-                  preload="auto"
-                />
+              {activeVideo && activeSrc && (
+                isYoutube ? (
+                  <iframe
+                    key={activeVideo.id}
+                    src={`https://www.youtube.com/embed/${youtubeId(activeSrc)}?autoplay=1&mute=1&loop=1&playlist=${youtubeId(activeSrc)}&rel=0&modestbranding=1&playsinline=1`}
+                    title={activeVideo.id}
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 h-full w-full border-0"
+                    style={{ position: "absolute", top: 0, left: 0 }}
+                  />
+                ) : (
+                  <video
+                    key={activeVideo.id}
+                    src={activeSrc}
+                    controls
+                    playsInline
+                    muted
+                    loop
+                    autoPlay
+                    className="absolute inset-0 h-full w-full object-cover"
+                    preload="auto"
+                  />
+                )
               )}
             </div>
 
