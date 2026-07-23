@@ -82,6 +82,7 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
         nav={content.nav}
         locale={locale}
         logoHref={localizedPath(locale, "/")}
+        whatsapp={content.whatsapp}
       />
       <main>
         <Hero hero={content.hero} locale={locale} />

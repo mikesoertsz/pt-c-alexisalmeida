@@ -3,13 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { FaInstagram } from "react-icons/fa";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import type { Locale } from "@/lib/locale";
 import { localizedHomeAnchor, localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
 import { LanguageSwitcher } from "@/components/molecules/LanguageSwitcher/LanguageSwitcher";
 import ButtonStyled from "@/components/atoms/ButtonStyled/ButtonStyled";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackMetaEvent } from "@/lib/analytics";
+import { trackWhatsAppConversion } from "@/lib/google-ads";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { logoNavSrc } from "@/config/branding";
 import { cn } from "@/lib/cn";
 import { useNavTone } from "./useNavTone";
@@ -19,6 +21,7 @@ interface SiteNavProps {
   nav: ContentSchema["nav"];
   locale: Locale;
   logoHref: string;
+  whatsapp?: ContentSchema["whatsapp"];
 }
 
 type NavItem = { href: string; label: string; trackBook?: boolean };
@@ -26,10 +29,12 @@ type NavItem = { href: string; label: string; trackBook?: boolean };
 const mobileNavLinkClass =
   "font-body text-sm font-semibold uppercase tracking-[0.12em] text-brand-black/70 hover:text-brand-black transition-colors";
 
-export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
+export function SiteNav({ nav, logoHref, locale, whatsapp }: SiteNavProps) {
   const tone = useNavTone();
   const { open, toggle, close, menuId } = useMobileNav();
   const bookingHref = localizedPath(locale, "/booking");
+  const whatsappUrl = getWhatsAppUrl({ message: whatsapp?.inquiryMessage });
+  const whatsappAriaLabel = whatsapp?.fabAriaLabel ?? "Contact on WhatsApp";
   const logoSrc = logoNavSrc();
   const overDark = tone === "dark";
 
@@ -41,6 +46,13 @@ export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
 
   function handleBookClick(): void {
     trackEvent("cta_click", { event_category: "engagement", event_label: "nav_book" });
+  }
+
+  function handleWhatsAppClick(): void {
+    trackEvent("cta_click", { event_category: "engagement", event_label: "nav_whatsapp" });
+    trackWhatsAppConversion();
+    // Meta Pixel: attribute the WhatsApp path for Meta-sourced visitors (consent-gated)
+    trackMetaEvent("Contact", { content_name: "nav_whatsapp" });
   }
 
   function onNavigate(item: NavItem): void {
@@ -122,11 +134,39 @@ export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
             >
               <FaInstagram className="h-5 w-5" aria-hidden />
             </a>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleWhatsAppClick}
+              aria-label={whatsappAriaLabel}
+              className={cn(
+                "inline-flex h-9 w-9 items-center justify-center rounded-md bg-[#25D366] text-white",
+                "transition-opacity duration-300 hover:opacity-90",
+                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine",
+              )}
+            >
+              <FaWhatsapp className="h-5 w-5" aria-hidden />
+            </a>
             <ButtonStyled href={bookingHref} onClick={handleBookClick} className={navCtaClass}>
               {nav.booking}
             </ButtonStyled>
           </div>
 
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleWhatsAppClick}
+            aria-label={whatsappAriaLabel}
+            className={cn(
+              "md:hidden inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-[#25D366] text-white",
+              "transition-opacity duration-300 hover:opacity-90",
+              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine",
+            )}
+          >
+            <FaWhatsapp className="h-5 w-5" aria-hidden />
+          </a>
           <button
             type="button"
             onClick={toggle}
@@ -179,6 +219,19 @@ export function SiteNav({ nav, logoHref, locale }: SiteNavProps) {
           >
             <FaInstagram className="h-4 w-4" aria-hidden />
             Instagram
+          </a>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              handleWhatsAppClick();
+              close();
+            }}
+            className={cn(mobileNavLinkClass, "inline-flex items-center gap-2")}
+          >
+            <FaWhatsapp className="h-4 w-4" aria-hidden />
+            WhatsApp
           </a>
           <ButtonStyled
             href={bookingHref}

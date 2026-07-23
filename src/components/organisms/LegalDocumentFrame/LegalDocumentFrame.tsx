@@ -22,6 +22,7 @@ export async function LegalDocumentFrame({
         nav={content.nav}
         locale={locale}
         logoHref={localizedPath(locale, "/")}
+        whatsapp={content.whatsapp}
       />
       <main data-nav-tone="light" className="grow w-full bg-brand-linen text-brand-black">
         {children}
