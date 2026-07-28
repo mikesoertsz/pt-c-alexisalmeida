@@ -63,7 +63,9 @@ export default function WorkGridVideoCell({
       aria-label={alt}
     >
       {isYoutube ? (
-        /* Scale the 16:9 iframe up so it covers the square container */
+        /* Scale the 16:9 iframe up so it covers the square container.
+           All native YouTube chrome is disabled and the wrapper blocks
+           every click so no YouTube UI is ever shown or reachable. */
         <div
           style={{
             position: "absolute",
@@ -76,9 +78,10 @@ export default function WorkGridVideoCell({
           }}
         >
           <iframe
-            src={`https://www.youtube.com/embed/${youtubeId(resolvedSrc)}?autoplay=1&mute=1&loop=1&playlist=${youtubeId(resolvedSrc)}&controls=0&rel=0&modestbranding=1&disablekb=1&playsinline=1`}
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId(resolvedSrc)}?autoplay=1&mute=1&loop=1&playlist=${youtubeId(resolvedSrc)}&controls=0&rel=0&modestbranding=1&disablekb=1&fs=0&iv_load_policy=3&playsinline=1&showinfo=0`}
             title={alt}
             allow="autoplay; encrypted-media; picture-in-picture"
+            tabIndex={-1}
             className="h-full w-full border-0"
           />
         </div>
@@ -89,7 +92,7 @@ export default function WorkGridVideoCell({
           muted
           loop
           playsInline
-          poster={poster}
+          poster={thumb}
           className="absolute inset-0 h-full w-full object-cover"
         />
       )}

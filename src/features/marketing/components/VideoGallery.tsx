@@ -10,6 +10,9 @@ interface VideoEntry {
   src: string;
 }
 
+/** Static image shown if a video poster fails to load. */
+const FALLBACK_THUMB = "/img/shortlist/blackwork-swallow.jpg";
+
 const POOL: VideoEntry[] = [
   { id: "gallery-49",  src: "/img/shortlist/gallery-49.mp4" },
   { id: "gallery-55",  src: "/img/shortlist/gallery-55.mp4" },
@@ -85,17 +88,18 @@ function VideoThumb({
         isActive ? "outline outline-2 outline-brand-tangerine outline-offset-[-2px]" : "",
       ].join(" ")}
     >
-      {thumb ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={thumb}
-          alt={video.id}
-          className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-          loading="lazy"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-brand-black" />
-      )}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={thumb}
+        alt={video.id}
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+        loading="lazy"
+        onError={(e) => {
+          const el = e.currentTarget;
+          if (el.src.endsWith(FALLBACK_THUMB)) return;
+          el.src = FALLBACK_THUMB;
+        }}
+      />
 
       {isActive && (
         <span className="absolute bottom-1 right-1 text-white animate-pulse">
@@ -154,20 +158,33 @@ export function VideoGallery() {
             <div className="relative aspect-[9/16] lg:aspect-auto lg:w-[360px] shrink-0 overflow-hidden bg-brand-black">
               {activeVideo && activeSrc && (
                 isYoutube ? (
-                  <iframe
-                    key={activeVideo.id}
-                    src={`https://www.youtube.com/embed/${youtubeId(activeSrc)}?autoplay=1&mute=1&loop=1&playlist=${youtubeId(activeSrc)}&rel=0&modestbranding=1&playsinline=1`}
-                    title={activeVideo.id}
-                    allow="autoplay; encrypted-media; picture-in-picture"
-                    allowFullScreen
-                    className="absolute inset-0 h-full w-full border-0"
-                    style={{ position: "absolute", top: 0, left: 0 }}
-                  />
+                  // YouTube-hosted (unlisted) playback with ALL native chrome hidden:
+                  // controls/keyboard/fullscreen/related/branding disabled, the iframe
+                  // is scaled up + centered to crop the title bar, and a transparent
+                  // overlay blocks every click so no YouTube UI is ever reachable.
+                  <>
+                    <iframe
+                      key={activeVideo.id}
+                      src={`https://www.youtube-nocookie.com/embed/${youtubeId(activeSrc)}?autoplay=1&mute=1&loop=1&playlist=${youtubeId(activeSrc)}&controls=0&disablekb=1&fs=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&showinfo=0`}
+                      title="The work in motion"
+                      allow="autoplay; encrypted-media; picture-in-picture"
+                      tabIndex={-1}
+                      className="pointer-events-none absolute left-1/2 top-1/2 border-0"
+                      style={{
+                        width: "100%",
+                        height: "300%",
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    />
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 z-10"
+                    />
+                  </>
                 ) : (
                   <video
                     key={activeVideo.id}
                     src={activeSrc}
-                    controls
                     playsInline
                     muted
                     loop

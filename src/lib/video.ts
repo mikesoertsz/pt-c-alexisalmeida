@@ -25,11 +25,23 @@ export function youtubeId(url: string): string | null {
 
 /**
  * Returns the best available thumbnail URL for a video path.
- * For YouTube-hosted videos, returns the YouTube hqdefault thumbnail.
- * Falls back to null (caller should show a placeholder).
+ *
+ * Lookup order:
+ *   1. YouTube hqdefault thumbnail  (when the resolved source is a YouTube URL)
+ *   2. Locally generated poster     (/img/<dir>/thumbs/<name>.jpg — see scripts/gen-video-thumbs)
+ *
+ * Always returns a usable URL so the caller can render an <img> with a
+ * static image fallback rather than an empty placeholder.
  */
-export function videoThumbSrc(path: string): string | null {
+export function videoThumbSrc(path: string): string {
   const src = videoSrc(path);
   const id = youtubeId(src);
-  return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
+  if (id) return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+
+  // Derive the co-located poster: /a/b/name.mp4 -> /a/b/thumbs/name.jpg
+  const key = path.startsWith("/") ? path : `/${path}`;
+  const slash = key.lastIndexOf("/");
+  const dir = key.slice(0, slash);
+  const file = key.slice(slash + 1).replace(/\.[^.]+$/, "");
+  return `${dir}/thumbs/${file}.jpg`;
 }
