@@ -1,6 +1,6 @@
 "use client";
 
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackMetaEvent } from "@/lib/analytics";
 import { trackPhoneConversion } from "@/lib/google-ads";
 
 interface ContactDetailsProps {
@@ -40,6 +40,11 @@ export function ContactDetails({
               event_label: "phone_click",
             });
             trackPhoneConversion();
+            // Meta: phone is a Contact just like WhatsApp. Without this the
+            // phone path was the only conversion route invisible to Meta.
+            // trackMetaEvent also mirrors server-side via CAPI with a shared
+            // event_id, so this survives the consent gate.
+            trackMetaEvent("Contact", { content_name: "phone_click" });
           }}
           className="font-mono text-sm text-brand-black underline-offset-4 hover:text-brand-tangerine hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine"
         >
