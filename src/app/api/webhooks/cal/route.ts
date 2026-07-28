@@ -10,6 +10,7 @@ import {
   triggerLabel,
   triggerToTemplate,
 } from "@/lib/email-cal-webhook";
+import { sendMetaCapiEvent } from "@/lib/meta-capi";
 
 export const runtime = "nodejs";
 
@@ -40,6 +41,43 @@ export async function POST(req: Request): Promise<Response> {
   const tz = process.env.DEFAULT_TIMEZONE?.trim() || "Europe/Lisbon";
   const extracted = extractWebhookFields(parsed);
   const { date, time } = formatSlotForEmail(extracted.startIso, tz);
+
+  // ---------------------------------------------------------------------------
+  // Meta Conversions API — server-side Lead on a real booking.
+  //
+  // This is the only fully reliable conversion signal we have. The browser pixel
+  // is consent-gated and was delivering almost nothing to Meta, so the Leads
+  // campaign had no event to optimise against. Firing here means every genuine
+  // booking reaches Meta with a hashed email for matching, regardless of cookie
+  // consent, ad blockers or whether the visitor ever reached /thank-you.
+  //
+  // event_id is derived from the booking reference so a repeated webhook
+  // delivery for the same booking is deduplicated by Meta rather than counted twice.
+  // ---------------------------------------------------------------------------
+  const isNewBooking =
+    typeof trigger === "string" &&
+    ["BOOKING_CREATED", "BOOKING_REQUESTED", "BOOKING_CONFIRMED"].includes(
+      trigger.trim().toUpperCase(),
+    );
+
+  if (isNewBooking) {
+    void sendMetaCapiEvent({
+      eventName: "Lead",
+      eventId: `cal-${extracted.bookingRef}`,
+      actionSource: "system_generated",
+      eventSourceUrl: `${process.env.NEXT_PUBLIC_BASE_URL ?? "https://www.lextattoo.com"}/booking`,
+      userData: {
+        email: extracted.email,
+        firstName: extracted.firstName,
+      },
+      customData: {
+        content_name: "consultation_booking",
+        content_category: extracted.serviceType,
+      },
+    }).catch(() => {
+      /* never let measurement break the webhook response */
+    });
+  }
 
   // Internal notification to the agency/artist, fired for every booking event.
   // Best-effort: never let a failed notification block the client email.
