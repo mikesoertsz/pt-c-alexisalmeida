@@ -5,8 +5,6 @@ import { getSiteBaseUrl } from "@/lib/site-url";
 import { GoogleConsentMode } from "@/components/consent/GoogleConsentMode";
 import { GoogleTagsInit } from "@/components/google/GoogleTagsInit";
 import { MetaPixel } from "@/components/meta/MetaPixel";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "@/styles/globals.css";
 
 const archivo = Archivo_Black({
@@ -70,10 +68,6 @@ export default async function RootLayout({
         <GoogleTagsInit />
         <MetaPixel />
         {children}
-        {/* First-party, cookieless, not consent-gated. Independent of GA4 so the
-            two can be reconciled against each other and against page_hits. */}
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
