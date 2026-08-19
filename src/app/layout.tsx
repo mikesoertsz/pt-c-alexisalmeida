@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Archivo_Black, Inter, IBM_Plex_Mono, Oswald } from "next/font/google";
 import { DEFAULT_LOCALE, isValidLocale, type Locale } from "@/lib/locale";
 import { getSiteBaseUrl } from "@/lib/site-url";
 import { GoogleConsentMode } from "@/components/consent/GoogleConsentMode";
@@ -25,6 +25,13 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+  display: "swap",
+});
+
+const oswald = Oswald({
+  variable: "--font-oswald",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -61,7 +68,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${archivo.variable} ${inter.variable} ${ibmPlexMono.variable} h-full scroll-smooth antialiased`}
+      className={`${archivo.variable} ${inter.variable} ${ibmPlexMono.variable} ${oswald.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full flex flex-col bg-brand-linen text-brand-black">
         <GoogleConsentMode />

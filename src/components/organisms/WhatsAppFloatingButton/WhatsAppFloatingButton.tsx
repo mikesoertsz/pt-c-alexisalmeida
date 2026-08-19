@@ -1,33 +1,40 @@
-"use client";
-
 import { FaWhatsapp } from "react-icons/fa";
-import { trackEvent, trackMetaEvent } from "@/lib/analytics";
-import { trackWhatsAppConversion } from "@/lib/google-ads";
-import { getWhatsAppUrl } from "@/lib/whatsapp";
-import type { ContentSchema } from "@/content/schema";
 
-interface WhatsAppFloatingButtonProps {
-  whatsapp: ContentSchema["whatsapp"];
+interface Props {
+  href: string;
+  label: string;
+  ariaLabel: string;
 }
 
-export default function WhatsAppFloatingButton({ whatsapp }: WhatsAppFloatingButtonProps) {
-  const url = getWhatsAppUrl({ message: whatsapp.inquiryMessage });
-
+/**
+ * Floating WhatsApp CTA, bottom-right. Keeps WhatsApp's own green rather than
+ * the host brand colour — it is the most recognisable "message me now"
+ * affordance and must not read as just another branded button. Expands to a
+ * labelled pill on pointer devices.
+ */
+export default function WhatsAppFloatingButton({ href, label, ariaLabel }: Props) {
   return (
     <a
-      href={url}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={whatsapp.fabAriaLabel}
-      onClick={() => {
-        trackEvent("cta_click", { event_category: "engagement", event_label: "whatsapp_float" });
-        trackWhatsAppConversion();
-        // Meta Pixel: attribute the WhatsApp path for Meta-sourced visitors (consent-gated)
-        trackMetaEvent("Contact", { content_name: "whatsapp_float" });
-      }}
-      className="fixed z-[60] flex h-14 w-14 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-105 active:scale-95 motion-reduce:transition-none motion-reduce:hover:scale-100 motion-reduce:active:scale-100 bottom-[max(1.5rem,env(safe-area-inset-bottom,1.5rem))] right-[max(1.5rem,env(safe-area-inset-right,1.5rem))] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine"
+      aria-label={ariaLabel}
+      className={[
+        "group fixed z-50 flex h-14 items-center gap-0 overflow-hidden rounded-full",
+        "bg-[#25D366] px-4 text-white shadow-lg shadow-[rgba(13,15,17,0.25)]",
+        "transition-[gap,box-shadow,transform] duration-300 ease-out",
+        "hover:gap-2.5 hover:shadow-xl active:scale-95",
+        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ed5024]",
+        "bottom-[max(1.5rem,env(safe-area-inset-bottom,1.5rem))]",
+        "right-[max(1.5rem,env(safe-area-inset-right,1.5rem))]",
+      ].join(" ")}
     >
-      <FaWhatsapp className="h-7 w-7" aria-hidden />
+      <FaWhatsapp className="size-7 shrink-0" aria-hidden />
+      {/* Unfurls on hover; collapsed to zero width so the resting state is a
+          clean circle. Hidden on touch, where hover never fires. */}
+      <span className="font-[family-name:var(--font-oswald),system-ui,sans-serif] hidden max-w-0 whitespace-nowrap text-sm uppercase tracking-[0.14em] opacity-0 transition-[max-width,opacity] duration-300 ease-out group-hover:max-w-52 group-hover:opacity-100 sm:inline">
+        {label}
+      </span>
     </a>
   );
 }

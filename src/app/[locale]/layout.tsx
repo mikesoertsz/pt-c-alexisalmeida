@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import WhatsAppFloatingButton from "@/components/organisms/WhatsAppFloatingButton/WhatsAppFloatingButton";
 import { getContent } from "@/content/get-content";
 import { LOCALES, isValidLocale, type Locale } from "@/lib/locale";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import type { PropsWithChildren } from "react";
 import { notFound } from "next/navigation";
 
@@ -27,7 +28,11 @@ export default async function LocaleLayout({
   return (
     <>
       {children}
-      <WhatsAppFloatingButton whatsapp={content.whatsapp} />
+      <WhatsAppFloatingButton
+        href={getWhatsAppUrl()}
+        label={content.whatsapp.fabLabel}
+        ariaLabel={content.whatsapp.fabAriaLabel}
+      />
       <Analytics />
       <SpeedInsights />
     </>

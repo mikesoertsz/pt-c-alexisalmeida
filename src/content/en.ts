@@ -311,7 +311,8 @@ export const en = {
   },
 
   whatsapp: {
-    fabAriaLabel: "Contact on WhatsApp",
+    fabLabel: "Message us",
+    fabAriaLabel: "Contact us on WhatsApp",
     inquiryMessage: "Hi, I'd like to inquire about a custom tattoo consultation.",
     heroLink: "Or message on WhatsApp",
     closingLink: "Or message on WhatsApp",

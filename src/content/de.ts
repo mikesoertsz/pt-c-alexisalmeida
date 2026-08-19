@@ -310,7 +310,8 @@ export const de = {
   },
 
   whatsapp: {
-    fabAriaLabel: "Auf WhatsApp kontaktieren",
+    fabLabel: "Schreib uns",
+    fabAriaLabel: "Kontakt über WhatsApp",
     inquiryMessage: "Hallo, ich möchte mich über eine individuelle Tattoo-Beratung informieren.",
     heroLink: "Oder per WhatsApp schreiben",
     closingLink: "Oder per WhatsApp schreiben",

@@ -34,7 +34,7 @@ export function SiteNav({ nav, logoHref, locale, whatsapp }: SiteNavProps) {
   const { open, toggle, close, menuId } = useMobileNav();
   const bookingHref = localizedPath(locale, "/booking");
   const whatsappUrl = getWhatsAppUrl({ message: whatsapp?.inquiryMessage });
-  const whatsappAriaLabel = whatsapp?.fabAriaLabel ?? "Contact on WhatsApp";
+  const whatsappAriaLabel = whatsapp?.fabAriaLabel ?? "Contact us on WhatsApp";
   const logoSrc = logoNavSrc();
   const overDark = tone === "dark";
 

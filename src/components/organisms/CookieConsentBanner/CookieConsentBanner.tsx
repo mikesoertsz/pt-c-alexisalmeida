@@ -76,7 +76,7 @@ export function CookieConsentBanner({ content, cookiesPolicyHref }: CookieConsen
     });
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[60] flex justify-center p-4 pb-24 sm:inset-x-auto sm:bottom-6 sm:left-6 sm:justify-start sm:p-0">
+    <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center p-4 pb-24 sm:inset-x-auto sm:bottom-6 sm:left-6 sm:justify-start sm:p-0">
       <div
         ref={dialogRef}
         role="dialog"
