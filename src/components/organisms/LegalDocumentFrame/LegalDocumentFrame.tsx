@@ -14,7 +14,6 @@ export async function LegalDocumentFrame({
 }>) {
   const content = getContent(locale);
   const cookiesPolicyHref = localizedPath(locale, "/legal/cookies");
-  const privacyPolicyHref = localizedPath(locale, "/legal/privacy");
 
   return (
     <>
@@ -27,11 +26,10 @@ export async function LegalDocumentFrame({
       <main data-nav-tone="light" className="grow w-full bg-brand-linen text-brand-black">
         {children}
       </main>
-      <SiteFooter footer={content.footer} locale={locale} />
+      <SiteFooter footer={content.footer} cookieConsent={content.cookieConsent} locale={locale} />
       <CookieConsentBanner
         content={content.cookieConsent}
         cookiesPolicyHref={cookiesPolicyHref}
-        privacyPolicyHref={privacyPolicyHref}
       />
     </>
   );

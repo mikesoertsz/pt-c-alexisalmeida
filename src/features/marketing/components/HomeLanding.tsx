@@ -4,6 +4,7 @@ import { CookieConsentBanner } from "@/components/organisms/CookieConsentBanner/
 import { Hero } from "./Hero";
 import { PhilosophyStrip } from "./PhilosophyStrip";
 import { WorkGrid } from "./WorkGrid";
+import { FlashGrid } from "./FlashGrid";
 import { AboutArtist } from "./AboutArtist";
 import { Process } from "./Process";
 import { Promotions } from "./Promotions";
@@ -17,6 +18,7 @@ import { TravelScheduleSection } from "./TravelScheduleSection";
 import type { Locale } from "@/lib/locale";
 import { localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
+import { STUDIO_GEO } from "@/config/studio";
 import { absoluteUrl } from "@/lib/site-url";
 import { ogImagePath } from "@/config/branding";
 
@@ -27,7 +29,6 @@ interface HomeLandingProps {
 
 export function HomeLanding({ locale, content }: HomeLandingProps) {
   const cookiesPolicyHref = localizedPath(locale, "/legal/cookies");
-  const privacyPolicyHref = localizedPath(locale, "/legal/privacy");
   const canonicalPath = localizedPath(locale, "/");
   const canonical = absoluteUrl(canonicalPath === "/" ? "/" : canonicalPath);
   const ogImageAbs = absoluteUrl(ogImagePath());
@@ -47,8 +48,8 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 41.1447,
-      longitude: -8.6065,
+      latitude: STUDIO_GEO.lat,
+      longitude: STUDIO_GEO.lng,
     },
     openingHoursSpecification: [
       {
@@ -89,6 +90,7 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
         <LocationBanner locale={locale} />
         <PhilosophyStrip slice={content.philosophyStrip} />
         <WorkGrid slice={content.workGrid} />
+        <FlashGrid slice={content.flashGrid} />
         <TravelScheduleSection locale={locale} />
         <AboutArtist slice={content.about} />
         <Process slice={content.process} />
@@ -99,11 +101,10 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
         <ContactSection slice={content.contact} />
         <BookingSection slice={content.bookingSection} locale={locale} />
       </main>
-      <SiteFooter footer={content.footer} locale={locale} />
+      <SiteFooter footer={content.footer} cookieConsent={content.cookieConsent} locale={locale} />
       <CookieConsentBanner
         content={content.cookieConsent}
         cookiesPolicyHref={cookiesPolicyHref}
-        privacyPolicyHref={privacyPolicyHref}
       />
     </>
   );

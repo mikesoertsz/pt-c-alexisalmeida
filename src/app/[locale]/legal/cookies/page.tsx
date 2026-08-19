@@ -28,7 +28,7 @@ const COOKIE_ROWS: Record<
     },
     {
       name: "COOKIE_CONSENT",
-      purpose: "Remembers your analytics consent choice.",
+      purpose: "Remembers your cookie preferences (preferences, analytics, marketing).",
       classification: "Strictly necessary, always active",
       consent: "Not required",
       maxAge: "1 year",
@@ -59,7 +59,7 @@ const COOKIE_ROWS: Record<
     },
     {
       name: "COOKIE_CONSENT",
-      purpose: "Lembra se aceitou ou recusou cookies estritamente não necessários (analíticos).",
+      purpose: "Guarda as tuas preferências de cookies (preferências, análise, marketing).",
       classification: "Estritamente necessário, sempre ativo",
       consent: "Não necessário",
       maxAge: "1 ano",
@@ -90,7 +90,7 @@ const COOKIE_ROWS: Record<
     },
     {
       name: "COOKIE_CONSENT",
-      purpose: "Speichert Ihre Entscheidung zu optionalen Analyse‑Cookies.",
+      purpose: "Speichert deine Cookie-Einstellungen (Präferenzen, Analyse, Marketing).",
       classification: "Unbedingt erforderlich, immer aktiv",
       consent: "Nicht erforderlich",
       maxAge: "1 Jahr",

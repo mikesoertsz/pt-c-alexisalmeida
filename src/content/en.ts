@@ -39,20 +39,46 @@ export const en = {
   },
 
   workGrid: {
+    label: "[ Large work ]",
+    heading: "Large-scale work.",
     images: [
-      { src: "/img/shortlist/mask-oni-front.jpg", alt: "Oni demon mask blackwork tattoo on upper arm by Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-74.jpg", alt: "Blackwork demon mask half sleeve tattoo by Lex Almeida, Porto" },
       {
         kind: "video",
         src: "/video/work-grid-process.mp4",
-        alt: "Tattoo session process footage by Lex Almeida",
-        poster: "/img/shortlist/sleeve-eye-tree-golden.jpg",
+        alt: "Large-scale forearm piece being tattooed by Lex Almeida",
+        poster: "/img/gallery/gallery-460.webp",
       },
-      { src: "/img/shortlist/sleeve-zeus-skull.jpg", alt: "Zeus and skull split composition fine line tattoo on forearm by Lex Almeida" },
-      { src: "/img/shortlist/sleeve-owl-face.webp", alt: "Owl and face blackwork half sleeve tattoo by Lex Almeida, Porto" },
-      { src: "/img/shortlist/sleeve-clock-roses.jpg", alt: "Broken clock and roses blackwork half sleeve by Lex Almeida" },
-      { src: "/img/shortlist/blackwork-beetle-skull.jpg", alt: "Beetle and skull dark art blackwork tattoo by Lex Almeida" },
-      { src: "/img/shortlist/fineline-hummingbird.jpg", alt: "Hummingbird fine line blackwork tattoo by Lex Almeida, Porto" },
-      { src: "/img/shortlist/blackwork-octopus-nautical.jpg", alt: "Octopus and nautical anchor blackwork tattoo on forearm by Lex Almeida" },
+      { src: "/img/gallery/gallery-484.webp", alt: "Creation of Adam fine line shoulder piece by Lex Almeida" },
+      { src: "/img/gallery/gallery-101.jpg", alt: "Bull skull blackwork back piece by Lex Almeida" },
+      { src: "/img/gallery/gallery-158.jpg", alt: "Barn owl blackwork back piece by Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-193.jpg", alt: "Mechanical pocket watch and gears full sleeve by Lex Almeida" },
+      { src: "/img/gallery/gallery-297.webp", alt: "Pocket watch and roses black and grey half sleeve by Lex Almeida" },
+      { src: "/img/gallery/gallery-337.webp", alt: "Reaper skull dark art upper arm piece by Lex Almeida" },
+      { src: "/img/gallery/gallery-424.jpg", alt: "Hannya mask neo-traditional colour sleeve by Lex Almeida" },
+      { src: "/img/gallery/gallery-121.jpg", alt: "Octopus blackwork forearm piece by Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-146.jpg", alt: "Spartan helmet blackwork shoulder piece by Lex Almeida" },
+      { src: "/img/gallery/gallery-235.webp", alt: "Classical bust with glitch fine line thigh piece by Lex Almeida" },
+    ],
+  },
+
+  flashGrid: {
+    label: "[ Flash ]",
+    heading: "Flash designs.",
+    intro: "Drawn and ready to claim. Each design is tattooed once, then retired.",
+    images: [
+      { src: "/img/gallery/gallery-473.jpg", alt: "Bee fine line flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-475.jpg", alt: "Hourglass black and grey flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-477.jpg", alt: "Olive branch fine line flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-478.jpg", alt: "Four-leaf clover and bee flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-479.jpg", alt: "Eye and chrome heart flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-480.jpg", alt: "Moth black and grey flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-481.jpg", alt: "Goldfish black and grey flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-483.jpg", alt: "Butterfly black and grey flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-490.jpg", alt: "Pharaoh mask blackwork flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-492.jpg", alt: "Panther black and grey flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-493.jpg", alt: "Skull and helmet dark art flash design by Lex Almeida" },
+      { src: "/img/gallery/gallery-494.jpg", alt: "Spartan helmet blackwork flash design by Lex Almeida" },
     ],
   },
 
@@ -209,12 +235,33 @@ export const en = {
   },
 
   cookieConsent: {
-    ariaLabel: "Cookie consent",
-    body: "We use strictly necessary cookies to run this site. Optional analytics cookies load only with your consent, as required by EU/EEA law including rules applicable in Portugal (GDPR).",
-    learnMoreLabel: "Cookie policy",
-    privacyLinkLabel: "Privacy policy",
-    declineLabel: "Reject optional",
-    acceptLabel: "Accept optional",
+    ariaLabel: "Cookie settings",
+    title: "Cookie settings",
+    body: "We use strictly necessary cookies to run this site. Optional cookies load only with your consent, as required by EU/EEA law including rules applicable in Portugal. Read our",
+    policyLinkLabel: "cookie policy",
+    rejectAllLabel: "Reject all",
+    customizeLabel: "Customize",
+    acceptAllLabel: "Accept all",
+    saveLabel: "Save preferences",
+    manageCookiesLabel: "Manage cookies",
+    categories: {
+      necessary: {
+        label: "Necessary",
+        description: "Required for the site to function. Always on.",
+      },
+      preferences: {
+        label: "Preferences",
+        description: "Remembers choices like your selected language.",
+      },
+      analytics: {
+        label: "Analytics",
+        description: "Helps us understand how visitors use the site.",
+      },
+      marketing: {
+        label: "Marketing",
+        description: "Used to measure and improve ad performance.",
+      },
+    },
   },
 
   footer: {

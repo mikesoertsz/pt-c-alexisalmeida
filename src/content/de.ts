@@ -39,20 +39,46 @@ export const de = {
   },
 
   workGrid: {
+    label: "[ Großflächig ]",
+    heading: "Großflächige Arbeiten.",
     images: [
-      { src: "/img/shortlist/mask-oni-front.jpg",  alt: "Oni-Dämonenmaske Blackwork-Tattoo am Oberarm von Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-74.jpg", alt: "Blackwork-Halbhülse mit Dämonenmaske von Lex Almeida, Porto" },
       {
         kind: "video",
         src: "/video/work-grid-process.mp4",
-        alt: "Tätowierungsprozess-Aufnahme von Lex Almeida",
-        poster: "/img/shortlist/sleeve-eye-tree-golden.jpg",
+        alt: "Großflächiges Unterarmstück wird von Lex Almeida tätowiert",
+        poster: "/img/gallery/gallery-460.webp",
       },
-      { src: "/img/shortlist/sleeve-zeus-skull.jpg",  alt: "Zeus und Schädel Fineline-Tattoo am Unterarm von Lex Almeida" },
-      { src: "/img/shortlist/sleeve-owl-face.webp", alt: "Eule und Gesicht Blackwork-Halbhülse von Lex Almeida, Porto" },
-      { src: "/img/shortlist/sleeve-clock-roses.jpg",  alt: "Zerbrochene Uhr und Rosen Blackwork-Halbhülse von Lex Almeida" },
-      { src: "/img/shortlist/blackwork-beetle-skull.jpg",  alt: "Käfer und Schädel Blackwork-Tattoo von Lex Almeida" },
-      { src: "/img/shortlist/fineline-hummingbird.jpg",  alt: "Kolibri Fineline-Tattoo von Lex Almeida, Porto" },
-      { src: "/img/shortlist/blackwork-octopus-nautical.jpg",  alt: "Oktopus und Anker Blackwork-Tattoo am Unterarm von Lex Almeida" },
+      { src: "/img/gallery/gallery-484.webp", alt: "Erschaffung Adams als Fineline-Arbeit auf der Schulter von Lex Almeida" },
+      { src: "/img/gallery/gallery-101.jpg", alt: "Bullenschädel Blackwork-Rückenstück von Lex Almeida" },
+      { src: "/img/gallery/gallery-158.jpg", alt: "Schleiereule Blackwork-Rückenstück von Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-193.jpg", alt: "Ganze Hülse mit Taschenuhr und Zahnrädern von Lex Almeida" },
+      { src: "/img/gallery/gallery-297.webp", alt: "Taschenuhr und Rosen als Black-and-Grey-Halbhülse von Lex Almeida" },
+      { src: "/img/gallery/gallery-337.webp", alt: "Sensenmann-Schädel Dark-Art-Oberarmstück von Lex Almeida" },
+      { src: "/img/gallery/gallery-424.jpg", alt: "Hannya-Maske neotraditionelle Farbhülse von Lex Almeida" },
+      { src: "/img/gallery/gallery-121.jpg", alt: "Oktopus Blackwork-Unterarmstück von Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-146.jpg", alt: "Spartanerhelm Blackwork-Schulterstück von Lex Almeida" },
+      { src: "/img/gallery/gallery-235.webp", alt: "Antike Büste mit Glitch-Effekt als Fineline-Oberschenkelstück von Lex Almeida" },
+    ],
+  },
+
+  flashGrid: {
+    label: "[ Flash ]",
+    heading: "Flash-Designs.",
+    intro: "Gezeichnet und bereit. Jedes Design wird einmal tätowiert und danach zurückgezogen.",
+    images: [
+      { src: "/img/gallery/gallery-473.jpg", alt: "Bienen-Flashdesign in Fineline von Lex Almeida" },
+      { src: "/img/gallery/gallery-475.jpg", alt: "Sanduhr-Flashdesign in Black and Grey von Lex Almeida" },
+      { src: "/img/gallery/gallery-477.jpg", alt: "Olivenzweig-Flashdesign in Fineline von Lex Almeida" },
+      { src: "/img/gallery/gallery-478.jpg", alt: "Flashdesign mit vierblättrigem Klee und Biene von Lex Almeida" },
+      { src: "/img/gallery/gallery-479.jpg", alt: "Flashdesign mit Auge und Chromherz von Lex Almeida" },
+      { src: "/img/gallery/gallery-480.jpg", alt: "Motten-Flashdesign in Black and Grey von Lex Almeida" },
+      { src: "/img/gallery/gallery-481.jpg", alt: "Goldfisch-Flashdesign in Black and Grey von Lex Almeida" },
+      { src: "/img/gallery/gallery-483.jpg", alt: "Schmetterlings-Flashdesign in Black and Grey von Lex Almeida" },
+      { src: "/img/gallery/gallery-490.jpg", alt: "Pharaonenmasken-Flashdesign in Blackwork von Lex Almeida" },
+      { src: "/img/gallery/gallery-492.jpg", alt: "Panther-Flashdesign in Black and Grey von Lex Almeida" },
+      { src: "/img/gallery/gallery-493.jpg", alt: "Dark-Art-Flashdesign mit Schädel und Helm von Lex Almeida" },
+      { src: "/img/gallery/gallery-494.jpg", alt: "Spartanerhelm-Flashdesign in Blackwork von Lex Almeida" },
     ],
   },
 
@@ -209,12 +235,33 @@ export const de = {
   },
 
   cookieConsent: {
-    ariaLabel: "Cookie-Einwilligung",
-    body: "Wir verwenden unbedingt erforderliche Cookies für den Betrieb dieser Website. Optionale Analytics-Cookies werden nur mit deiner Einwilligung geladen.",
-    learnMoreLabel: "Cookie-Richtlinie",
-    privacyLinkLabel: "Datenschutzerklärung",
-    declineLabel: "Optionale ablehnen",
-    acceptLabel: "Optionale akzeptieren",
+    ariaLabel: "Cookie-Einstellungen",
+    title: "Cookie-Einstellungen",
+    body: "Wir verwenden unbedingt erforderliche Cookies für den Betrieb dieser Website. Optionale Cookies werden nur mit deiner Einwilligung geladen, wie es das EU/EWR-Recht vorschreibt. Lies unsere",
+    policyLinkLabel: "Cookie-Richtlinie",
+    rejectAllLabel: "Alle ablehnen",
+    customizeLabel: "Anpassen",
+    acceptAllLabel: "Alle akzeptieren",
+    saveLabel: "Einstellungen speichern",
+    manageCookiesLabel: "Cookies verwalten",
+    categories: {
+      necessary: {
+        label: "Notwendig",
+        description: "Für den Betrieb der Website erforderlich. Immer aktiv.",
+      },
+      preferences: {
+        label: "Präferenzen",
+        description: "Speichert Auswahl wie deine gewählte Sprache.",
+      },
+      analytics: {
+        label: "Analyse",
+        description: "Hilft uns zu verstehen, wie die Website genutzt wird.",
+      },
+      marketing: {
+        label: "Marketing",
+        description: "Wird verwendet, um die Anzeigenleistung zu messen und zu verbessern.",
+      },
+    },
   },
 
   footer: {

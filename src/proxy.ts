@@ -34,6 +34,8 @@ export function proxy(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/favicon") ||
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/review") ||
     PUBLIC_FILE.test(pathname)
   ) {
     return NextResponse.next();

@@ -2,13 +2,15 @@ import Link from "next/link";
 import type { Locale } from "@/lib/locale";
 import { localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
+import { CookieSettingsLink } from "@/components/organisms/CookieConsentBanner/CookieSettingsLink";
 
 interface SiteFooterProps {
   footer: ContentSchema["footer"];
+  cookieConsent: ContentSchema["cookieConsent"];
   locale: Locale;
 }
 
-export function SiteFooter({ footer, locale }: SiteFooterProps) {
+export function SiteFooter({ footer, cookieConsent, locale }: SiteFooterProps) {
   return (
     <footer data-nav-tone="light" className="w-full border-t-2 border-brand-black bg-brand-cotton">
       <div className="grid w-full grid-cols-1 items-center gap-4 px-6 py-5 md:h-[48px] md:grid-cols-3 md:py-0 lg:px-8">
@@ -36,6 +38,15 @@ export function SiteFooter({ footer, locale }: SiteFooterProps) {
                 </Link>
               </li>
             ))}
+            <li className="flex items-center">
+              <span className="text-brand-black/30 select-none" aria-hidden>
+                ·
+              </span>
+              <CookieSettingsLink
+                label={cookieConsent.manageCookiesLabel}
+                className="px-1 font-mono text-xs text-brand-muted no-underline transition-colors hover:text-brand-black"
+              />
+            </li>
           </ul>
         </nav>
 

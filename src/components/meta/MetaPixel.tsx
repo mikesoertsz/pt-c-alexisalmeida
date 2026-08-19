@@ -1,8 +1,4 @@
-"use client";
-
 import Script from "next/script";
-import { useEffect } from "react";
-import { useConsent } from "@/hooks/useConsent";
 
 const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
 
@@ -12,10 +8,10 @@ const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
  * GDPR / ePrivacy handling mirrors the Google Consent Mode approach used
  * elsewhere on the site. The pixel is initialised with consent REVOKED, so
  * fbevents.js loads but holds all events and cookies until the visitor opts
- * in. When the visitor accepts via CookieConsentBanner, the useEffect below
- * calls fbq('consent', 'grant') and the queued PageView (plus any later
- * standard events such as the booking "Lead") are released. Declining keeps
- * consent revoked.
+ * in to marketing. useConsent().save() calls updateMetaConsent() directly
+ * (see src/lib/consent.ts) which fires fbq('consent', 'grant'|'revoke')
+ * whenever the visitor's choice changes — this component only handles the
+ * initial load and revoke.
  *
  * Standard conversion events are fired elsewhere via trackMetaEvent()
  * (see src/lib/analytics.ts), e.g. the "Lead" event on /thank-you.
@@ -23,18 +19,6 @@ const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
  * Renders nothing until NEXT_PUBLIC_META_PIXEL_ID is configured.
  */
 export function MetaPixel() {
-  const { consentState } = useConsent();
-
-  useEffect(() => {
-    if (!pixelId) return;
-    if (consentState === null) return;
-    if (typeof window === "undefined") return;
-    const fbq = (window as Window & { fbq?: (...args: unknown[]) => void }).fbq;
-    if (typeof fbq !== "function") return;
-
-    fbq("consent", consentState === "accepted" ? "grant" : "revoke");
-  }, [consentState]);
-
   if (!pixelId) return null;
 
   return (

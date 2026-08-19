@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalDocumentFrame } from "@/components/organisms/LegalDocumentFrame/LegalDocumentFrame";
-import { CalConsultationEmbed } from "@/features/booking";
+import { BookingIntakeForm, CalConsultationEmbed } from "@/features/booking";
 import { LOCALES, DEFAULT_LOCALE, isValidLocale, localizedPath, type Locale } from "@/lib/locale";
 import { getSiteBaseUrl } from "@/lib/site-url";
 
@@ -52,6 +52,28 @@ export default async function BookingPage({ params }: Props) {
       <div className="bg-brand-linen px-6 md:px-12 pt-28 md:pt-32 pb-16">
         <div className="max-w-[1440px] mx-auto">
           <CalConsultationEmbed calLink={calLink} redirectUrl={redirectUrl} />
+        </div>
+      </div>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* Intake form — project details Lex needs before the consultation    */}
+      {/* ------------------------------------------------------------------ */}
+      <div className="bg-brand-linen border-t-2 border-brand-black px-6 md:px-12 py-16 md:py-20">
+        <div className="max-w-[900px] mx-auto flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
+            <p className="font-mono text-xs text-brand-black/50 uppercase tracking-[0.12em]">
+              [ Step 02 ]
+            </p>
+            <h2 className="font-display font-black uppercase text-brand-black text-3xl md:text-5xl leading-[0.9] tracking-tighter">
+              Tell Lex about the piece
+            </h2>
+            <p className="font-body text-sm text-brand-black/60 leading-relaxed max-w-[60ch]">
+              Send your concept, placement, size and references. Every request is reviewed
+              personally, and you receive an answer within 48 hours.
+            </p>
+          </div>
+
+          <BookingIntakeForm privacyHref={localizedPath(locale, "/legal/privacy")} />
         </div>
       </div>
     </LegalDocumentFrame>

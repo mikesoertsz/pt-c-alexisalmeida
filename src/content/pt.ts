@@ -39,20 +39,46 @@ export const pt = {
   },
 
   workGrid: {
+    label: "[ Grande escala ]",
+    heading: "Trabalho de grande escala.",
     images: [
-      { src: "/img/shortlist/mask-oni-front.jpg",  alt: "Tatuagem máscara oni blackwork no braço por Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-74.jpg", alt: "Meia manga blackwork com máscara de demónio por Lex Almeida, Porto" },
       {
         kind: "video",
         src: "/video/work-grid-process.mp4",
-        alt: "Filmagem do processo de tatuagem por Lex Almeida",
-        poster: "/img/shortlist/sleeve-eye-tree-golden.jpg",
+        alt: "Peça de grande escala no antebraço a ser tatuada por Lex Almeida",
+        poster: "/img/gallery/gallery-460.webp",
       },
-      { src: "/img/shortlist/sleeve-zeus-skull.jpg",  alt: "Composição Zeus e crânio em fineline no antebraço por Lex Almeida" },
-      { src: "/img/shortlist/sleeve-owl-face.webp", alt: "Manga blackwork coruja e rosto por Lex Almeida, Porto" },
-      { src: "/img/shortlist/sleeve-clock-roses.jpg",  alt: "Manga blackwork relógio partido e rosas por Lex Almeida" },
-      { src: "/img/shortlist/blackwork-beetle-skull.jpg",  alt: "Escaravelho e crânio blackwork por Lex Almeida" },
-      { src: "/img/shortlist/fineline-hummingbird.jpg",  alt: "Beija-flor fineline por Lex Almeida, Porto" },
-      { src: "/img/shortlist/blackwork-octopus-nautical.jpg",  alt: "Polvo e âncora náutica blackwork no antebraço por Lex Almeida" },
+      { src: "/img/gallery/gallery-484.webp", alt: "Criação de Adão em fineline no ombro por Lex Almeida" },
+      { src: "/img/gallery/gallery-101.jpg", alt: "Crânio de touro blackwork nas costas por Lex Almeida" },
+      { src: "/img/gallery/gallery-158.jpg", alt: "Coruja blackwork nas costas por Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-193.jpg", alt: "Manga completa com relógio de bolso e engrenagens por Lex Almeida" },
+      { src: "/img/gallery/gallery-297.webp", alt: "Meia manga a preto e cinza com relógio de bolso e rosas por Lex Almeida" },
+      { src: "/img/gallery/gallery-337.webp", alt: "Crânio ceifeiro dark art no braço por Lex Almeida" },
+      { src: "/img/gallery/gallery-424.jpg", alt: "Manga a cores neo-tradicional com máscara hannya por Lex Almeida" },
+      { src: "/img/gallery/gallery-121.jpg", alt: "Polvo blackwork no antebraço por Lex Almeida, Porto" },
+      { src: "/img/gallery/gallery-146.jpg", alt: "Elmo espartano blackwork no ombro por Lex Almeida" },
+      { src: "/img/gallery/gallery-235.webp", alt: "Busto clássico com efeito glitch em fineline na coxa por Lex Almeida" },
+    ],
+  },
+
+  flashGrid: {
+    label: "[ Flash ]",
+    heading: "Desenhos flash.",
+    intro: "Desenhados e prontos a reservar. Cada desenho é tatuado uma vez e depois retirado.",
+    images: [
+      { src: "/img/gallery/gallery-473.jpg", alt: "Desenho flash de abelha em fineline por Lex Almeida" },
+      { src: "/img/gallery/gallery-475.jpg", alt: "Desenho flash de ampulheta a preto e cinza por Lex Almeida" },
+      { src: "/img/gallery/gallery-477.jpg", alt: "Desenho flash de ramo de oliveira em fineline por Lex Almeida" },
+      { src: "/img/gallery/gallery-478.jpg", alt: "Desenho flash de trevo de quatro folhas e abelha por Lex Almeida" },
+      { src: "/img/gallery/gallery-479.jpg", alt: "Desenho flash de olho e coração cromado por Lex Almeida" },
+      { src: "/img/gallery/gallery-480.jpg", alt: "Desenho flash de mariposa a preto e cinza por Lex Almeida" },
+      { src: "/img/gallery/gallery-481.jpg", alt: "Desenho flash de peixe dourado a preto e cinza por Lex Almeida" },
+      { src: "/img/gallery/gallery-483.jpg", alt: "Desenho flash de borboleta a preto e cinza por Lex Almeida" },
+      { src: "/img/gallery/gallery-490.jpg", alt: "Desenho flash blackwork de máscara de faraó por Lex Almeida" },
+      { src: "/img/gallery/gallery-492.jpg", alt: "Desenho flash de pantera a preto e cinza por Lex Almeida" },
+      { src: "/img/gallery/gallery-493.jpg", alt: "Desenho flash dark art de crânio e elmo por Lex Almeida" },
+      { src: "/img/gallery/gallery-494.jpg", alt: "Desenho flash blackwork de elmo espartano por Lex Almeida" },
     ],
   },
 
@@ -209,12 +235,33 @@ export const pt = {
   },
 
   cookieConsent: {
-    ariaLabel: "Consentimento de cookies",
-    body: "Utilizamos cookies estritamente necessários para o funcionamento do site. Cookies analíticos opcionais carregam apenas com o teu consentimento, conforme exigido pela lei da UE/EEE.",
-    learnMoreLabel: "Política de cookies",
-    privacyLinkLabel: "Política de privacidade",
-    declineLabel: "Recusar opcionais",
-    acceptLabel: "Aceitar opcionais",
+    ariaLabel: "Definições de cookies",
+    title: "Definições de cookies",
+    body: "Utilizamos cookies estritamente necessários para o funcionamento do site. Os cookies opcionais carregam apenas com o teu consentimento, conforme exigido pela lei da UE/EEE. Consulta a nossa",
+    policyLinkLabel: "política de cookies",
+    rejectAllLabel: "Recusar todos",
+    customizeLabel: "Personalizar",
+    acceptAllLabel: "Aceitar todos",
+    saveLabel: "Guardar preferências",
+    manageCookiesLabel: "Gerir cookies",
+    categories: {
+      necessary: {
+        label: "Necessários",
+        description: "Necessários para o funcionamento do site. Sempre ativos.",
+      },
+      preferences: {
+        label: "Preferências",
+        description: "Guarda escolhas como o idioma selecionado.",
+      },
+      analytics: {
+        label: "Análise",
+        description: "Ajuda-nos a perceber como o site é utilizado.",
+      },
+      marketing: {
+        label: "Marketing",
+        description: "Utilizado para medir e melhorar o desempenho de anúncios.",
+      },
+    },
   },
 
   footer: {

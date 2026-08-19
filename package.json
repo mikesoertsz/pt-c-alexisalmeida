@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--disable-warning=DEP0205' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "gen:qr": "node scripts/gen-qr-assets.mjs"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
@@ -19,6 +20,7 @@
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.14.0",
     "next": "16.2.4",
+    "qrcode": "^1.5.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-icons": "^5.6.0",
@@ -28,10 +30,12 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^20.19.39",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.4",
     "eslint-config-next": "16.2.4",
+    "pdf-lib": "^1.17.1",
     "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3"
   },

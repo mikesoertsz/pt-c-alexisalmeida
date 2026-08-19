@@ -15,7 +15,6 @@ interface ComingSoonProps {
 export function ComingSoon({ locale, content }: ComingSoonProps) {
   const slice = content.comingSoon;
   const cookiesPolicyHref = localizedPath(locale, "/legal/cookies");
-  const privacyPolicyHref = localizedPath(locale, "/legal/privacy");
   const logoHref = localizedPath(locale, "/");
 
   return (
@@ -76,7 +75,6 @@ export function ComingSoon({ locale, content }: ComingSoonProps) {
       <CookieConsentBanner
         content={content.cookieConsent}
         cookiesPolicyHref={cookiesPolicyHref}
-        privacyPolicyHref={privacyPolicyHref}
       />
     </>
   );
