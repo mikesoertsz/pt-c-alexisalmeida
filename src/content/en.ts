@@ -73,14 +73,14 @@ export const en = {
       { src: "/img/gallery/gallery-341.jpg", alt: "Dagger through two hearts small blackwork tattoo by Lex Almeida" },
       { src: "/img/gallery/gallery-382.jpg", alt: "Conch shell with Saudade script small forearm tattoo by Lex Almeida" },
       { src: "/img/gallery/gallery-351.jpg", alt: "Swallow blackwork small tattoo by Lex Almeida, Porto" },
-      { src: "/img/gallery/gallery-508.jpg", alt: "Colour moth small tattoo on thigh by Lex Almeida" },
-      { src: "/img/gallery/gallery-510.jpg", alt: "Skull moth colour small upper arm tattoo by Lex Almeida" },
-      { src: "/img/gallery/gallery-512.jpg", alt: "Colour moth spread small tattoo by Lex Almeida" },
+      { src: "/img/gallery/gallery-512.jpg", alt: "Colour moth small tattoo on thigh by Lex Almeida" },
+      { src: "/img/gallery/gallery-385.jpg", alt: "Fish skeleton fine line small tattoo by Lex Almeida" },
       { src: "/img/gallery/gallery-342.jpg", alt: "Ghost character small shoulder tattoo by Lex Almeida" },
       { src: "/img/gallery/gallery-411.jpg", alt: "Sardine with hearts small fun tattoo by Lex Almeida" },
+      { src: "/img/gallery/gallery-13.jpg", alt: "Fine line roses small wrist tattoo by Lex Almeida" },
       { src: "/img/gallery/gallery-346.jpg", alt: "Skull beetle blackwork medium tattoo by Lex Almeida" },
       { src: "/img/gallery/gallery-499.jpg", alt: "Skull death-moth sternum tattoo by Lex Almeida, Porto" },
-      { src: "/img/gallery/gallery-383.jpg", alt: "Conch shell close-up fine line tattoo by Lex Almeida" },
+      { src: "/img/gallery/gallery-30.jpg", alt: "Radiating eye small calf tattoo by Lex Almeida" },
     ],
   },
 
@@ -153,8 +153,7 @@ export const en = {
       },
     ],
     notes: [
-      "A 30% deposit is required to confirm your booking.",
-      "Deposits are non-refundable but transferable to a rescheduled date.",
+      "No deposit required. You pay on the day.",
       "Touch-ups within 3 months of your session are complimentary.",
       "We accept bank transfer, Multibanco, and card.",
     ],
@@ -290,28 +289,28 @@ export const en = {
     openInGoogleMaps: "Open in Google Maps",
     items: [
       {
-        q: "How should I prepare for my session?",
-        a: "Rest well, eat beforehand, stay hydrated, and avoid alcohol the day before. Wear comfortable clothing that gives clear access to the placement area. If you are unwell, reschedule. Your skin and immune system should be in good shape.",
+        q: "How do I get started?",
+        a: "Just show up — walk-ins are welcome for small pieces. For custom work, book a callback and Lex will call you back within 48 hours to talk through your idea. No commitment, no deposit.",
+      },
+      {
+        q: "Do I need a deposit?",
+        a: "No. There is no deposit. You pay on the day, once the work is done and you love it.",
+      },
+      {
+        q: "What if I only have a rough idea?",
+        a: "That is fine — most people do. Book a callback, share whatever you have in mind, and Lex will help shape it into something concrete. You see and approve the drawing before anything touches your skin.",
+      },
+      {
+        q: "Can I bring references?",
+        a: "Yes, bring anything that helps — Instagram screenshots, photos, sketches. Lex does not copy other artists work, but references are a great starting point for direction and mood.",
       },
       {
         q: "How long does healing take?",
-        a: "Surface healing is often about two weeks, with full settling over several weeks. You will receive written aftercare at the appointment. Follow it closely. Sun protection and moisture matter for fine line and blackwork.",
+        a: "Surface healing is usually around two weeks. Full settling takes a few weeks more. You will get written aftercare before you leave. Touch-ups within 3 months are free.",
       },
       {
-        q: "Can I bring my own design or references?",
-        a: "Yes, references help explain direction, mood, and scale. Work here is custom: Lex does not copy other artists’ pieces. The final drawing is created for you and approved before tattooing begins.",
-      },
-      {
-        q: "Do you take cover-ups or rework?",
-        a: "Sometimes, depending on the existing ink, size, and goals. Send clear, well-lit photos during your consultation request. If a cover-up is not realistic, you will get an honest assessment and alternatives.",
-      },
-      {
-        q: "What is your deposit policy?",
-        a: "A 30% deposit is required to confirm a booking. Deposits are non-refundable but can be moved to a new date when rescheduled with reasonable notice, subject to studio policy. Full payment details are confirmed when you book.",
-      },
-      {
-        q: "Which languages can we use?",
-        a: "English, Portuguese, and German. Note your preference when you book so the session can be planned accordingly.",
+        q: "Which languages do you work in?",
+        a: "English, Portuguese, and German. Just mention your preference when you get in touch.",
       },
     ],
   },
