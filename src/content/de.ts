@@ -228,11 +228,6 @@ export const de = {
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Zeiten",
     hours: ["Mo–Fr: 10:00–18:00", "Walk-ins willkommen für kleine Stücke zu Öffnungszeiten", "Rückruf buchen für Custom-Arbeit"],
-    phoneLabel: "Telefon",
-    phoneDisplay: "+351 934 613 635",
-    phoneTel: "+351934613635",
-    emailLabel: "E-Mail",
-    email: "alexis.almeida.cc@gmail.com",
   },
 
   cookieConsent: {

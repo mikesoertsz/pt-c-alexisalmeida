@@ -38,7 +38,6 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
     "@type": "TattooParlor",
     name: content.nav.logo,
     description: content.meta.description,
-    telephone: content.contact.phoneTel,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Rua do Paraíso 82",

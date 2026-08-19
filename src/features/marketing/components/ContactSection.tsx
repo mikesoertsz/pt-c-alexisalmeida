@@ -1,5 +1,4 @@
 import { TitleBlock } from "@/components/molecules/TitleBlock/TitleBlock";
-import { ContactDetails } from "@/components/molecules/ContactDetails/ContactDetails";
 import { studioMapsEmbedUrl, studioMapsOpenUrl } from "@/config/studio";
 import type { ContentSchema } from "@/content/schema";
 import { AnimateIn } from "@/components/atoms/AnimateIn/AnimateIn";
@@ -59,14 +58,6 @@ export function ContactSection({ slice }: ContactSectionProps) {
               ))}
             </ul>
           </div>
-
-          <ContactDetails
-            phoneLabel={slice.phoneLabel}
-            phoneDisplay={slice.phoneDisplay}
-            phoneTel={slice.phoneTel}
-            emailLabel={slice.emailLabel}
-            email={slice.email}
-          />
         </AnimateIn>
       </div>
     </section>
