@@ -32,6 +32,7 @@ export const pt = {
     sub: "Trabalho de colecionador. Fine line, blackwork e dark art. Por marcação.",
     cta: "Marcar consulta",
     appointmentNote: "Apenas por marcação",
+    walkInNote: "Walk-ins flash bem-vindos",
   },
 
   philosophyStrip: {
@@ -66,6 +67,7 @@ export const pt = {
     label: "[ Flash ]",
     heading: "Desenhos flash.",
     intro: "Desenhados e prontos a reservar. Cada desenho é tatuado uma vez e depois retirado.",
+    walkInNote: "Walk-ins bem-vindos — sem marcação necessária para flash.",
     images: [
       { src: "/img/gallery/gallery-473.jpg", alt: "Desenho flash de abelha em fineline por Lex Almeida" },
       { src: "/img/gallery/gallery-475.jpg", alt: "Desenho flash de ampulheta a preto e cinza por Lex Almeida" },
@@ -226,7 +228,7 @@ export const pt = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Horário",
-    hours: ["Segunda–sexta: 10:00–18:00", "Visitas e sessões apenas com marcação"],
+    hours: ["Segunda–sexta: 10:00–18:00", "Walk-ins flash aceites no horário de abertura", "Sessões personalizadas apenas com marcação"],
     phoneLabel: "Telefone",
     phoneDisplay: "+351 934 613 635",
     phoneTel: "+351934613635",

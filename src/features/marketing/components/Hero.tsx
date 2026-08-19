@@ -97,6 +97,9 @@ export function Hero({ hero, locale }: HeroProps) {
             <p className="font-mono text-xs text-white/60 drop-shadow-lg uppercase tracking-[0.12em]">
               [ {hero.appointmentNote} ]
             </p>
+            <p className="font-mono text-xs text-brand-tangerine drop-shadow-lg uppercase tracking-[0.12em]">
+              [ {hero.walkInNote} ]
+            </p>
           </div>
         </motion.div>
       </div>

@@ -25,6 +25,9 @@ export function FlashGrid({ slice }: FlashGridProps) {
           <p className="max-w-xl text-brand-black/70 text-base md:text-lg leading-relaxed">
             {slice.intro}
           </p>
+          <p className="font-mono text-xs text-brand-tangerine uppercase tracking-[0.12em] mt-1">
+            [ {slice.walkInNote} ]
+          </p>
         </div>
       </AnimateIn>
 

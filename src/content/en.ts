@@ -32,6 +32,7 @@ export const en = {
     sub: "Collector-grade work. Fine line, blackwork, and dark art. By appointment.",
     cta: "Book a Consultation",
     appointmentNote: "By appointment only",
+    walkInNote: "Flash walk-ins welcome",
   },
 
   philosophyStrip: {
@@ -66,6 +67,7 @@ export const en = {
     label: "[ Flash ]",
     heading: "Flash designs.",
     intro: "Drawn and ready to claim. Each design is tattooed once, then retired.",
+    walkInNote: "Walk-ins welcome — no appointment needed for flash.",
     images: [
       { src: "/img/gallery/gallery-473.jpg", alt: "Bee fine line flash design by Lex Almeida" },
       { src: "/img/gallery/gallery-475.jpg", alt: "Hourglass black and grey flash design by Lex Almeida" },
@@ -226,7 +228,7 @@ export const en = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Hours",
-    hours: ["Monday–Friday: 10:00–18:00", "Visits and sessions by appointment only"],
+    hours: ["Monday–Friday: 10:00–18:00", "Flash walk-ins welcome during opening hours", "Custom sessions by appointment only"],
     phoneLabel: "Phone",
     phoneDisplay: "+351 934 613 635",
     phoneTel: "+351934613635",

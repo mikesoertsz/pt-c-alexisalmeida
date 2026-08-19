@@ -32,6 +32,7 @@ export const de = {
     sub: "Kollektor-Qualität. Fine Line, Blackwork und Dark Art. Nur nach Termin.",
     cta: "Beratung anfragen",
     appointmentNote: "Nur nach Termin",
+    walkInNote: "Flash Walk-ins willkommen",
   },
 
   philosophyStrip: {
@@ -66,6 +67,7 @@ export const de = {
     label: "[ Flash ]",
     heading: "Flash-Designs.",
     intro: "Gezeichnet und bereit. Jedes Design wird einmal tätowiert und danach zurückgezogen.",
+    walkInNote: "Walk-ins willkommen — kein Termin nötig für Flash.",
     images: [
       { src: "/img/gallery/gallery-473.jpg", alt: "Bienen-Flashdesign in Fineline von Lex Almeida" },
       { src: "/img/gallery/gallery-475.jpg", alt: "Sanduhr-Flashdesign in Black and Grey von Lex Almeida" },
@@ -226,7 +228,7 @@ export const de = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Zeiten",
-    hours: ["Mo–Fr: 10:00–18:00", "Besuche und Sessions nur nach Termin"],
+    hours: ["Mo–Fr: 10:00–18:00", "Flash Walk-ins willkommen zu Öffnungszeiten", "Custom Sessions nur nach Termin"],
     phoneLabel: "Telefon",
     phoneDisplay: "+351 934 613 635",
     phoneTel: "+351934613635",
