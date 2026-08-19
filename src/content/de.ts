@@ -19,7 +19,7 @@ export const de = {
     logo: "Lex Almeida",
     work: "Arbeit",
     about: "Über",
-    booking: "Beratung buchen",
+    booking: "Rückruf buchen",
     faq: "FAQ",
     contact: "Kontakt",
     socialInstagramUrl: "https://www.instagram.com/alexis.tattoo.art/",
@@ -29,9 +29,9 @@ export const de = {
     preheading: "Tattoo-Künstler · Porto & Deutschland",
     headlineLines: ["Lex", "Tattoo"],
     location: "Porto & darüber hinaus.",
-    sub: "Kollektor-Qualität. Fine Line, Blackwork und Dark Art. Nur nach Termin.",
-    cta: "Beratung anfragen",
-    appointmentNote: "Nur nach Termin",
+    sub: "Kollektor-Qualität. Fine Line, Blackwork und Dark Art. Walk-ins willkommen.",
+    cta: "Rückruf buchen",
+    appointmentNote: "Rückruf buchen, um dein Tattoo zu planen",
     walkInNote: "Flash Walk-ins willkommen",
   },
 
@@ -67,7 +67,7 @@ export const de = {
     label: "[ Flash ]",
     heading: "Flash-Designs.",
     intro: "Gezeichnet und bereit. Jedes Design wird einmal tätowiert und danach zurückgezogen.",
-    walkInNote: "Walk-ins willkommen — kein Termin nötig für Flash.",
+    walkInNote: "Walk-ins willkommen — keine Buchung nötig für Flash.",
     images: [
       { src: "/img/gallery/gallery-473.jpg", alt: "Bienen-Flashdesign in Fineline von Lex Almeida" },
       { src: "/img/gallery/gallery-475.jpg", alt: "Sanduhr-Flashdesign in Black and Grey von Lex Almeida" },
@@ -110,7 +110,7 @@ export const de = {
       {
         number: "1",
         title: "Wir reden.",
-        body: "Buch eine Beratung. Teile dein Konzept, Platzierung und Referenzen. Lex prüft jede Anfrage persönlich und antwortet innerhalb von 48 Stunden.",
+        body: "Buch einen Rückruf. Teile dein Konzept, Platzierung und Referenzen. Lex prüft jede Anfrage persönlich und ruft dich innerhalb von 48 Stunden zurück, um die Arbeit zu planen.",
       },
       {
         number: "2",
@@ -128,7 +128,7 @@ export const de = {
   pricing: {
     preheading: "Preise",
     heading: "Preis pro Stück.",
-    body: "Jedes Angebot basiert auf der spezifischen Arbeit, Größe, Komplexität und Sitzungszeit. Ein verbindliches Angebot wird nach der Beratung gegeben.",
+    body: "Jedes Angebot basiert auf der spezifischen Arbeit, Größe, Komplexität und Sitzungszeit. Ein verbindliches Angebot wird nach dem Rückruf-Gespräch gegeben.",
     tiers: [
       {
         name: "Klein",
@@ -158,7 +158,7 @@ export const de = {
       "Korrekturen innerhalb von 3 Monaten nach der Sitzung sind kostenlos.",
       "Wir akzeptieren Banküberweisung, Multibanco und Karte.",
     ],
-    consultationCta: "Beratung anfragen",
+    consultationCta: "Rückruf buchen",
   },
 
   testimonials: {
@@ -211,16 +211,16 @@ export const de = {
   },
 
   bookingSection: {
-    headline: "Starten Sie das Gespräch.",
-    note: "Nur Custom-Arbeit. Nur nach Termin.",
-    cta: "Beratung anfragen",
+    headline: "Lass uns dein Stück planen.",
+    note: "Walk-ins willkommen. Rückruf buchen für Custom-Arbeit.",
+    cta: "Rückruf buchen",
     openCalInNewTab: "Cal.com in neuem Tab öffnen",
   },
 
   contact: {
     preheading: "Studio",
     heading: "Adresse und Zeiten.",
-    lead: "Basis in Porto. Deutschland-Termine werden angekündigt, wenn Reiseblöcke geöffnet sind. Buchen Sie eine Beratung für den Zeitplan.",
+    lead: "Basis in Porto. Deutschland-Termine werden angekündigt, wenn Reiseblöcke geöffnet sind. Rückruf buchen, um den Zeitplan zu besprechen.",
     addressLabel: "Standort",
     addressLines: "Rua do Paraíso 82\n4000-374 Porto\nPortugal",
     mapsPreviewTitle: "Lex Almeida Tattoo Studio auf Google Maps",
@@ -228,7 +228,7 @@ export const de = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Zeiten",
-    hours: ["Mo–Fr: 10:00–18:00", "Flash Walk-ins willkommen zu Öffnungszeiten", "Custom Sessions nur nach Termin"],
+    hours: ["Mo–Fr: 10:00–18:00", "Flash Walk-ins willkommen zu Öffnungszeiten", "Rückruf buchen für Custom-Arbeit"],
     phoneLabel: "Telefon",
     phoneDisplay: "+351 934 613 635",
     phoneTel: "+351934613635",

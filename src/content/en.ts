@@ -19,7 +19,7 @@ export const en = {
     logo: "Lex Almeida",
     work: "Work",
     about: "About",
-    booking: "Book a Consultation",
+    booking: "Book a Callback",
     faq: "FAQ",
     contact: "Contact",
     socialInstagramUrl: "https://www.instagram.com/alexis.tattoo.art/",
@@ -29,9 +29,9 @@ export const en = {
     preheading: "Tattoo artist · Porto & Germany",
     headlineLines: ["Lex", "Tattoo"],
     location: "Porto & beyond.",
-    sub: "Collector-grade work. Fine line, blackwork, and dark art. By appointment.",
-    cta: "Book a Consultation",
-    appointmentNote: "By appointment only",
+    sub: "Collector-grade work. Fine line, blackwork, and dark art. Walk-ins welcome.",
+    cta: "Book a Callback",
+    appointmentNote: "Book a callback to plan your tattoo",
     walkInNote: "Flash walk-ins welcome",
   },
 
@@ -67,7 +67,7 @@ export const en = {
     label: "[ Flash ]",
     heading: "Flash designs.",
     intro: "Drawn and ready to claim. Each design is tattooed once, then retired.",
-    walkInNote: "Walk-ins welcome — no appointment needed for flash.",
+    walkInNote: "Walk-ins welcome — no booking needed for flash.",
     images: [
       { src: "/img/gallery/gallery-473.jpg", alt: "Bee fine line flash design by Lex Almeida" },
       { src: "/img/gallery/gallery-475.jpg", alt: "Hourglass black and grey flash design by Lex Almeida" },
@@ -92,7 +92,7 @@ export const en = {
     bio: [
       "Alexis 'Lex' Almeida has spent eleven years building a craft that takes no shortcuts. Working between Porto and Germany, he draws from a background in painting, composition, contrast, negative space, and brings that eye to every piece.",
       "Custom work only. No flash, no replication. Every tattoo begins as a fresh drawing, refined through conversation until it's exactly right. He works with a deliberately small number of clients at a time.",
-      "Collector-grade tattooing is not a volume business. It requires time, precision, and a shared commitment to the work. If that's what you're looking for, the consultation form is below.",
+      "Collector-grade tattooing is not a volume business. It requires time, precision, and a shared commitment to the work. If that's what you're looking for, book a callback below.",
     ],
     facts: [
       "Fine line",
@@ -110,7 +110,7 @@ export const en = {
       {
         number: "1",
         title: "We talk.",
-        body: "Book a Consultation. Share your concept, placement, references, and intent. Lex reviews every request personally and responds within 48 hours.",
+        body: "Book a callback. Share your concept, placement, references, and intent. Lex reviews every request personally and calls you back within 48 hours to plan the piece.",
       },
       {
         number: "2",
@@ -128,7 +128,7 @@ export const en = {
   pricing: {
     preheading: "Pricing",
     heading: "Priced by the piece.",
-    body: "Every quote is based on the specific work, size, complexity, and session time. A firm quote is given after your consultation.",
+    body: "Every quote is based on the specific work, size, complexity, and session time. A firm quote is given after your callback call.",
     tiers: [
       {
         name: "Small",
@@ -158,7 +158,7 @@ export const en = {
       "Touch-ups within 3 months of your session are complimentary.",
       "We accept bank transfer, Multibanco, and card.",
     ],
-    consultationCta: "Book a Consultation",
+    consultationCta: "Book a Callback",
   },
 
   testimonials: {
@@ -211,16 +211,16 @@ export const en = {
   },
 
   bookingSection: {
-    headline: "Start the conversation.",
-    note: "Custom work only. By appointment.",
-    cta: "Book a Consultation",
+    headline: "Let's plan your piece.",
+    note: "Walk-ins welcome. Book a callback for custom work.",
+    cta: "Book a Callback",
     openCalInNewTab: "Open Cal.com in a new tab",
   },
 
   contact: {
     preheading: "Studio",
     heading: "Location & hours.",
-    lead: "Based in Porto. Germany dates are announced when travel blocks open. Book a Consultation to discuss timing.",
+    lead: "Based in Porto. Germany dates are announced when travel blocks open. Book a callback to discuss timing.",
     addressLabel: "Location",
     addressLines: "Rua do Paraíso 82\n4000-374 Porto\nPortugal",
     mapsPreviewTitle: "Lex Almeida Tattoo studio on Google Maps",
@@ -228,7 +228,7 @@ export const en = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Hours",
-    hours: ["Monday–Friday: 10:00–18:00", "Flash walk-ins welcome during opening hours", "Custom sessions by appointment only"],
+    hours: ["Monday–Friday: 10:00–18:00", "Flash walk-ins welcome during opening hours", "Book a callback to plan your custom piece"],
     phoneLabel: "Phone",
     phoneDisplay: "+351 934 613 635",
     phoneTel: "+351934613635",

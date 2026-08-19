@@ -19,7 +19,7 @@ export const pt = {
     logo: "Lex Almeida",
     work: "Trabalho",
     about: "Sobre",
-    booking: "Marcar consulta",
+    booking: "Agendar chamada",
     faq: "FAQ",
     contact: "Contacto",
     socialInstagramUrl: "https://www.instagram.com/alexis.tattoo.art/",
@@ -29,9 +29,9 @@ export const pt = {
     preheading: "Tatuador · Porto e Alemanha",
     headlineLines: ["Lex", "Tattoo"],
     location: "Porto & além.",
-    sub: "Trabalho de colecionador. Fine line, blackwork e dark art. Por marcação.",
-    cta: "Marcar consulta",
-    appointmentNote: "Apenas por marcação",
+    sub: "Trabalho de colecionador. Fine line, blackwork e dark art. Walk-ins bem-vindos.",
+    cta: "Agendar chamada",
+    appointmentNote: "Agenda uma chamada para planear o teu tattoo",
     walkInNote: "Walk-ins flash bem-vindos",
   },
 
@@ -67,7 +67,7 @@ export const pt = {
     label: "[ Flash ]",
     heading: "Desenhos flash.",
     intro: "Desenhados e prontos a reservar. Cada desenho é tatuado uma vez e depois retirado.",
-    walkInNote: "Walk-ins bem-vindos — sem marcação necessária para flash.",
+    walkInNote: "Walk-ins bem-vindos — sem reserva necessária para flash.",
     images: [
       { src: "/img/gallery/gallery-473.jpg", alt: "Desenho flash de abelha em fineline por Lex Almeida" },
       { src: "/img/gallery/gallery-475.jpg", alt: "Desenho flash de ampulheta a preto e cinza por Lex Almeida" },
@@ -110,7 +110,7 @@ export const pt = {
       {
         number: "1",
         title: "Falamos.",
-        body: "Marca uma consulta. Partilha o teu conceito, colocação e referências. Lex revê cada pedido pessoalmente e responde em 48 horas.",
+        body: "Agenda uma chamada. Partilha o teu conceito, colocação e referências. Lex revê cada pedido pessoalmente e liga-te em 48 horas para planear a peça.",
       },
       {
         number: "2",
@@ -128,7 +128,7 @@ export const pt = {
   pricing: {
     preheading: "Preços",
     heading: "Preço por peça.",
-    body: "Cada orçamento baseia-se no trabalho específico, tamanho, complexidade e tempo de sessão. O orçamento definitivo é dado após a consulta.",
+    body: "Cada orçamento baseia-se no trabalho específico, tamanho, complexidade e tempo de sessão. O orçamento definitivo é dado após a chamada de planeamento.",
     tiers: [
       {
         name: "Pequeno",
@@ -158,7 +158,7 @@ export const pt = {
       "Retoques nos primeiros 3 meses da sessão são gratuitos.",
       "Aceitamos transferência bancária, Multibanco e cartão.",
     ],
-    consultationCta: "Marcar consulta",
+    consultationCta: "Agendar chamada",
   },
 
   testimonials: {
@@ -211,16 +211,16 @@ export const pt = {
   },
 
   bookingSection: {
-    headline: "Comece a conversa.",
-    note: "Trabalho personalizado apenas. Por marcação.",
-    cta: "Marcar consulta",
+    headline: "Vamos planear a tua peça.",
+    note: "Walk-ins bem-vindos. Agenda uma chamada para trabalho personalizado.",
+    cta: "Agendar chamada",
     openCalInNewTab: "Abrir Cal.com num novo separador",
   },
 
   contact: {
     preheading: "Estúdio",
     heading: "Localização e horário.",
-    lead: "Base no Porto. Datas na Alemanha são anunciadas quando há blocos de viagem. Marca consulta para falar sobre calendário.",
+    lead: "Base no Porto. Datas na Alemanha são anunciadas quando há blocos de viagem. Agenda uma chamada para falar sobre calendário.",
     addressLabel: "Localização",
     addressLines: "Rua do Paraíso 82\n4000-374 Porto\nPortugal",
     mapsPreviewTitle: "Estúdio Lex Almeida Tattoo no Google Maps",
@@ -228,7 +228,7 @@ export const pt = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Horário",
-    hours: ["Segunda–sexta: 10:00–18:00", "Walk-ins flash aceites no horário de abertura", "Sessões personalizadas apenas com marcação"],
+    hours: ["Segunda–sexta: 10:00–18:00", "Walk-ins flash aceites no horário de abertura", "Agenda uma chamada para planear o teu trabalho personalizado"],
     phoneLabel: "Telefone",
     phoneDisplay: "+351 934 613 635",
     phoneTel: "+351934613635",
