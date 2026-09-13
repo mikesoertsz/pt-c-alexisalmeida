@@ -18,7 +18,7 @@ import { TravelScheduleSection } from "./TravelScheduleSection";
 import type { Locale } from "@/lib/locale";
 import { localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
-import { STUDIO_GEO } from "@/config/studio";
+import { STUDIO_GEO, STUDIO_TELEPHONE, STUDIO_SAME_AS, GOOGLE_REVIEWS } from "@/config/studio";
 import { absoluteUrl } from "@/lib/site-url";
 import { ogImagePath } from "@/config/branding";
 
@@ -64,7 +64,25 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
     ],
     availableLanguage: ["English", "Portuguese", "German"],
     priceRange: "€€€",
-    sameAs: [content.nav.socialInstagramUrl],
+    telephone: STUDIO_TELEPHONE,
+    sameAs: [content.nav.socialInstagramUrl, ...STUDIO_SAME_AS],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: GOOGLE_REVIEWS.ratingValue,
+      reviewCount: GOOGLE_REVIEWS.reviewCount,
+      bestRating: 5,
+      worstRating: 1,
+    },
+  };
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: content.faq.items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   };
 
   if (canonical) jsonLd.url = canonical;
@@ -77,6 +95,11 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
         key={`ldjson-${locale}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        key={`ldjson-faq-${locale}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <SiteNav
         nav={content.nav}

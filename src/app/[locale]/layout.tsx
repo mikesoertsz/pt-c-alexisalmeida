@@ -1,5 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import WhatsAppFloatingButton from "@/components/organisms/WhatsAppFloatingButton/WhatsAppFloatingButton";
 import { getContent } from "@/content/get-content";
 import { LOCALES, isValidLocale, type Locale } from "@/lib/locale";
@@ -33,8 +31,6 @@ export default async function LocaleLayout({
         label={content.whatsapp.fabLabel}
         ariaLabel={content.whatsapp.fabAriaLabel}
       />
-      <Analytics />
-      <SpeedInsights />
     </>
   );
 }

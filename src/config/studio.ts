@@ -31,3 +31,21 @@ export function studioMapsOpenUrl(): string {
 export function studioReviewUrl(): string {
   return STUDIO_GOOGLE_REVIEW_LINK;
 }
+
+/** Public WhatsApp number in E.164, used as the schema.org telephone. */
+export const STUDIO_TELEPHONE = "+351934613635";
+
+/** Same-entity profiles for schema.org sameAs (Instagram is added from content). */
+export const STUDIO_SAME_AS = [
+  `https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=${STUDIO_GOOGLE_PLACE_ID}`,
+  "https://www.facebook.com/tattooart.alexis",
+] as const;
+
+/**
+ * Google Business Profile rating, read from Business Profile Manager.
+ * Update reviewCount when the GBP count changes (last read 2026-09-13).
+ */
+export const GOOGLE_REVIEWS = {
+  ratingValue: 5,
+  reviewCount: 19,
+} as const;

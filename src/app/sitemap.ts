@@ -6,7 +6,6 @@ const LEGAL_PATHS = [
   "/legal/refunds",
   "/legal/gdpr",
   "/legal/cookies",
-  "/thank-you",
 ] as const;
 
 function normalizedBase(): string {
