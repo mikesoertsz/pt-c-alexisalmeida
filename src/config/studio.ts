@@ -35,6 +35,12 @@ export function studioReviewUrl(): string {
 /** Public WhatsApp number in E.164, used as the schema.org telephone. */
 export const STUDIO_TELEPHONE = "+351934613635";
 
+/** Human-readable form of STUDIO_TELEPHONE for the visible NAP block. */
+export const STUDIO_TELEPHONE_DISPLAY = "+351 934 613 635";
+
+/** Canonical public studio name, identical to the Google Business Profile listing. */
+export const STUDIO_NAME = "Lex Almeida Tattoo";
+
 /** Same-entity profiles for schema.org sameAs (Instagram is added from content). */
 export const STUDIO_SAME_AS = [
   `https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=${STUDIO_GOOGLE_PLACE_ID}`,

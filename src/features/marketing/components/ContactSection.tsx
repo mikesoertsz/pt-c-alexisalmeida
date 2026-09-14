@@ -1,6 +1,12 @@
 import { TitleBlock } from "@/components/molecules/TitleBlock/TitleBlock";
-import { studioMapsEmbedUrl, studioMapsOpenUrl } from "@/config/studio";
+import {
+  STUDIO_NAME,
+  STUDIO_TELEPHONE_DISPLAY,
+  studioMapsEmbedUrl,
+  studioMapsOpenUrl,
+} from "@/config/studio";
 import type { ContentSchema } from "@/content/schema";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import { AnimateIn } from "@/components/atoms/AnimateIn/AnimateIn";
 
 interface ContactSectionProps {
@@ -30,6 +36,22 @@ export function ContactSection({ slice }: ContactSectionProps) {
             <p className="font-mono text-xs uppercase tracking-[0.12em] text-brand-black">
               {slice.addressLabel}
             </p>
+            <address className="not-italic leading-relaxed text-brand-black/80">
+              <span className="block text-brand-black">{STUDIO_NAME}</span>
+              {slice.addressLines.split("\n").map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block font-mono text-brand-black underline-offset-4 hover:text-brand-tangerine hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-tangerine"
+              >
+                WhatsApp {STUDIO_TELEPHONE_DISPLAY}
+              </a>
+            </address>
             <div className="relative aspect-[16/10] w-full overflow-hidden border-2 border-brand-black bg-brand-linen">
               <iframe
                 title={slice.mapsPreviewTitle}
