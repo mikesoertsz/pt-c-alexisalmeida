@@ -19,7 +19,7 @@ export const en = {
     logo: "Lex Almeida",
     work: "Work",
     about: "About",
-    booking: "Book a Callback",
+    booking: "Book a call",
     faq: "FAQ",
     contact: "Contact",
     socialInstagramUrl: "https://www.instagram.com/alexis.tattoo.art/",
@@ -30,8 +30,8 @@ export const en = {
     headlineLines: ["Lex", "Tattoo"],
     location: "Porto & beyond.",
     sub: "Collector-grade work. Fine line, blackwork, and dark art. Walk-ins welcome.",
-    cta: "Book a Callback",
-    appointmentNote: "Book a callback to plan your tattoo",
+    cta: "Book a call",
+    appointmentNote: "Book a call and Lex sets up your appointment",
     walkInNote: "Walk-ins welcome for small pieces",
   },
 
@@ -92,7 +92,7 @@ export const en = {
     bio: [
       "Alexis 'Lex' Almeida has spent eleven years building a craft that takes no shortcuts. Working between Porto and Germany, he draws from a background in painting, composition, contrast, negative space, and brings that eye to every piece.",
       "Custom work only. No flash, no replication. Every tattoo begins as a fresh drawing, refined through conversation until it's exactly right. He works with a deliberately small number of clients at a time.",
-      "Collector-grade tattooing is not a volume business. It requires time, precision, and a shared commitment to the work. If that's what you're looking for, book a callback below.",
+      "Collector-grade tattooing is not a volume business. It requires time, precision, and a shared commitment to the work. If that is what you are looking for, book a call below.",
     ],
     facts: [
       "Fine line",
@@ -110,7 +110,7 @@ export const en = {
       {
         number: "1",
         title: "We talk.",
-        body: "Book a callback. Share your concept, placement, references, and intent. Lex reviews every request personally and calls you back within 48 hours to plan the piece.",
+        body: "Book a call. Share your concept, placement, references, and intent. Lex reviews every request personally and calls you back within 48 hours to plan the piece and set your appointment.",
       },
       {
         number: "2",
@@ -128,7 +128,7 @@ export const en = {
   pricing: {
     preheading: "Pricing",
     heading: "Priced by the piece.",
-    body: "Every quote is based on the specific work, size, complexity, and session time. A firm quote is given after your callback call.",
+    body: "Every quote is based on the specific work, size, complexity, and session time. A firm quote is given on the call.",
     tiers: [
       {
         name: "Small",
@@ -157,7 +157,7 @@ export const en = {
       "Touch-ups within 3 months of your session are complimentary.",
       "We accept bank transfer, Multibanco, and card.",
     ],
-    consultationCta: "Book a Callback",
+    consultationCta: "Book a call",
   },
 
   testimonials: {
@@ -211,15 +211,15 @@ export const en = {
 
   bookingSection: {
     headline: "Let's plan your piece.",
-    note: "Walk-ins welcome. Book a callback for custom work.",
-    cta: "Book a Callback",
+    note: "Walk-ins welcome. Book a call for custom work.",
+    cta: "Book a call",
     openCalInNewTab: "Open Cal.com in a new tab",
   },
 
   contact: {
     preheading: "Studio",
     heading: "Location & hours.",
-    lead: "Based in Porto. Germany dates are announced when travel blocks open. Book a callback to discuss timing.",
+    lead: "Based in Porto. Germany dates are announced when travel blocks open. Book a call to discuss timing.",
     addressLabel: "Location",
     addressLines: "Rua do Paraíso 82\n4000-374 Porto\nPortugal",
     mapsPreviewTitle: "Lex Almeida Tattoo studio on Google Maps",
@@ -227,7 +227,7 @@ export const en = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Hours",
-    hours: ["Monday–Friday: 10:00–18:00", "Walk-ins welcome for small pieces during opening hours", "Book a callback to plan your custom piece"],
+    hours: ["Monday–Friday: 10:00–18:00", "Walk-ins welcome for small pieces during opening hours", "Book a call to plan your custom piece"],
   },
 
   cookieConsent: {
@@ -285,7 +285,7 @@ export const en = {
     items: [
       {
         q: "How do I get started?",
-        a: "Just show up — walk-ins are welcome for small pieces. For custom work, book a callback and Lex will call you back within 48 hours to talk through your idea. No commitment, no deposit.",
+        a: "Just show up — walk-ins are welcome for small pieces. For custom work, book a call and Lex will ring you back within 48 hours to talk through your idea and book your session. No commitment, no deposit.",
       },
       {
         q: "Do I need a deposit?",
@@ -293,7 +293,7 @@ export const en = {
       },
       {
         q: "What if I only have a rough idea?",
-        a: "That is fine — most people do. Book a callback, share whatever you have in mind, and Lex will help shape it into something concrete. You see and approve the drawing before anything touches your skin.",
+        a: "That is fine — most people do. Book a call, share whatever you have in mind, and Lex will help shape it into something concrete. You see and approve the drawing before anything touches your skin.",
       },
       {
         q: "Can I bring references?",

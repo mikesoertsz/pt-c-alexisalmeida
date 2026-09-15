@@ -31,7 +31,7 @@ export const pt = {
     location: "Porto & além.",
     sub: "Trabalho de colecionador. Fine line, blackwork e dark art. Walk-ins bem-vindos.",
     cta: "Agendar chamada",
-    appointmentNote: "Agenda uma chamada para planear o teu tattoo",
+    appointmentNote: "Agenda uma chamada e o Lex marca a tua sessão",
     walkInNote: "Walk-ins bem-vindos para peças pequenas",
   },
 
@@ -110,7 +110,7 @@ export const pt = {
       {
         number: "1",
         title: "Falamos.",
-        body: "Agenda uma chamada. Partilha o teu conceito, colocação e referências. Lex revê cada pedido pessoalmente e liga-te em 48 horas para planear a peça.",
+        body: "Agenda uma chamada. Partilha o teu conceito, colocação e referências. Lex revê cada pedido pessoalmente e liga-te em 48 horas para planear a peça e marcar a tua sessão.",
       },
       {
         number: "2",
@@ -284,7 +284,7 @@ export const pt = {
     items: [
       {
         q: "Como começo?",
-        a: "Aparece — walk-ins são bem-vindos para peças pequenas. Para trabalho personalizado, agenda uma chamada e o Lex entra em contacto em 48 horas para falar sobre a tua ideia. Sem compromisso, sem depósito.",
+        a: "Aparece — walk-ins são bem-vindos para peças pequenas. Para trabalho personalizado, agenda uma chamada e o Lex liga-te em 48 horas para falar sobre a tua ideia e marcar a sessão. Sem compromisso, sem depósito.",
       },
       {
         q: "Preciso de pagar um depósito?",

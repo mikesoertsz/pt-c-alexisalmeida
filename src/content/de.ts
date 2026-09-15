@@ -1,6 +1,6 @@
 export const de = {
   meta: {
-    title: "Lex Almeida, Custom Tattoo Artist, Porto",
+    title: "Lex Almeida, Individueller Tätowierer, Porto",
     description:
       "Kollektor-Qualität. Fine Line, Blackwork und Dark Art. 11 Jahre Erfahrung. Nur Custom-Arbeit. Porto, Portugal.",
   },
@@ -19,7 +19,7 @@ export const de = {
     logo: "Lex Almeida",
     work: "Arbeit",
     about: "Über",
-    booking: "Rückruf buchen",
+    booking: "Anruf buchen",
     faq: "FAQ",
     contact: "Kontakt",
     socialInstagramUrl: "https://www.instagram.com/alexis.tattoo.art/",
@@ -30,8 +30,8 @@ export const de = {
     headlineLines: ["Lex", "Tattoo"],
     location: "Porto & darüber hinaus.",
     sub: "Kollektor-Qualität. Fine Line, Blackwork und Dark Art. Walk-ins willkommen.",
-    cta: "Rückruf buchen",
-    appointmentNote: "Rückruf buchen, um dein Tattoo zu planen",
+    cta: "Anruf buchen",
+    appointmentNote: "Anruf buchen — Lex vereinbart deinen Termin",
     walkInNote: "Walk-ins willkommen für kleine Stücke",
   },
 
@@ -110,7 +110,7 @@ export const de = {
       {
         number: "1",
         title: "Wir reden.",
-        body: "Buch einen Rückruf. Teile dein Konzept, Platzierung und Referenzen. Lex prüft jede Anfrage persönlich und ruft dich innerhalb von 48 Stunden zurück, um die Arbeit zu planen.",
+        body: "Buch einen Anruf. Teile dein Konzept, Platzierung und Referenzen. Lex prüft jede Anfrage persönlich und ruft dich innerhalb von 48 Stunden zurück, um die Arbeit zu planen und deinen Termin zu vereinbaren.",
       },
       {
         number: "2",
@@ -128,7 +128,7 @@ export const de = {
   pricing: {
     preheading: "Preise",
     heading: "Preis pro Stück.",
-    body: "Jedes Angebot basiert auf der spezifischen Arbeit, Größe, Komplexität und Sitzungszeit. Ein verbindliches Angebot wird nach dem Rückruf-Gespräch gegeben.",
+    body: "Jedes Angebot basiert auf der spezifischen Arbeit, Größe, Komplexität und Sitzungszeit. Ein verbindliches Angebot wird im Gespräch gegeben.",
     tiers: [
       {
         name: "Klein",
@@ -157,7 +157,7 @@ export const de = {
       "Korrekturen innerhalb von 3 Monaten nach der Sitzung sind kostenlos.",
       "Wir akzeptieren Banküberweisung, Multibanco und Karte.",
     ],
-    consultationCta: "Rückruf buchen",
+    consultationCta: "Anruf buchen",
   },
 
   testimonials: {
@@ -211,15 +211,15 @@ export const de = {
 
   bookingSection: {
     headline: "Lass uns dein Stück planen.",
-    note: "Walk-ins willkommen. Rückruf buchen für Custom-Arbeit.",
-    cta: "Rückruf buchen",
+    note: "Walk-ins willkommen. Anruf buchen für Custom-Arbeit.",
+    cta: "Anruf buchen",
     openCalInNewTab: "Cal.com in neuem Tab öffnen",
   },
 
   contact: {
     preheading: "Studio",
     heading: "Adresse und Zeiten.",
-    lead: "Basis in Porto. Deutschland-Termine werden angekündigt, wenn Reiseblöcke geöffnet sind. Rückruf buchen, um den Zeitplan zu besprechen.",
+    lead: "Basis in Porto. Deutschland-Termine werden angekündigt, wenn Reiseblöcke geöffnet sind. Anruf buchen, um den Zeitplan zu besprechen.",
     addressLabel: "Standort",
     addressLines: "Rua do Paraíso 82\n4000-374 Porto\nPortugal",
     mapsPreviewTitle: "Lex Almeida Tattoo Studio auf Google Maps",
@@ -227,7 +227,7 @@ export const de = {
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Lex%20Almeida%20Tattoo&query_place_id=ChIJQTPn5ItlJA0R5Nn2vLzzKIQ",
     hoursLabel: "Zeiten",
-    hours: ["Mo–Fr: 10:00–18:00", "Walk-ins willkommen für kleine Stücke zu Öffnungszeiten", "Rückruf buchen für Custom-Arbeit"],
+    hours: ["Mo–Fr: 10:00–18:00", "Walk-ins willkommen für kleine Stücke zu Öffnungszeiten", "Anruf buchen für Custom-Arbeit"],
   },
 
   cookieConsent: {
