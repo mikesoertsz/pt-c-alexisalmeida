@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SERVICE_PAGE_KEYS, servicePagePath } from "@/content/pages/types";
 
 const LEGAL_PATHS = [
   "/legal/terms",
@@ -49,5 +50,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...homeEntries, ...legalEntries];
+  const serviceEntries = locales.flatMap((loc) =>
+    SERVICE_PAGE_KEYS.map((key) => ({
+      url: absoluteForPath(base, publicPath(loc, servicePagePath(key))),
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    }))
+  );
+
+  return [...homeEntries, ...serviceEntries, ...legalEntries];
 }

@@ -15,6 +15,7 @@ import { ContactSection } from "./ContactSection";
 import { BookingSection } from "./BookingSection";
 import { LocationBanner } from "./LocationBanner";
 import { TravelScheduleSection } from "./TravelScheduleSection";
+import { ServiceLinks } from "./ServiceLinks";
 import type { Locale } from "@/lib/locale";
 import { localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
@@ -113,6 +114,7 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
         <PhilosophyStrip slice={content.philosophyStrip} />
         <WorkGrid slice={content.workGrid} />
         <FlashGrid slice={content.flashGrid} />
+        <ServiceLinks locale={locale} />
         <TravelScheduleSection locale={locale} />
         <AboutArtist slice={content.about} />
         <Process slice={content.process} />

@@ -40,7 +40,7 @@ export async function generateMetadata({
   const ogImageAbsolute = baseUrl !== "" ? absoluteUrl(ogPath) : undefined;
 
   return {
-    title: metaTitle,
+    title: { absolute: metaTitle },
     description: metaDescription,
     alternates:
       baseUrl !== ""
