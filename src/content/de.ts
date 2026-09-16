@@ -27,7 +27,7 @@ export const de = {
 
   hero: {
     preheading: "Tattoo-Künstler · Porto & Deutschland",
-    headlineLines: ["Lex", "Tattoo"],
+    headlineLines: ["Fine-Line-, Blackwork- und", "Mikrorealismus-Tätowierer in Porto"],
     location: "Porto & darüber hinaus.",
     sub: "Kollektor-Qualität. Fine Line, Blackwork und Dark Art. Walk-ins willkommen.",
     cta: "Anruf buchen",

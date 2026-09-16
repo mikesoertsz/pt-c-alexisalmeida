@@ -61,7 +61,7 @@ export function Hero({ hero, locale }: HeroProps) {
           transition={{ duration: 0.65, ease, delay: 0.2 }}
         >
           {hero.headlineLines.map((line) => (
-            <span key={line} className="block text-[clamp(3.5rem,12vw,11rem)]">
+            <span key={line} className="block text-[clamp(2.5rem,6vw,6rem)] [text-wrap:balance]">
               {line}
             </span>
           ))}
