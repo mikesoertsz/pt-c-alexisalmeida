@@ -49,9 +49,9 @@ export const STUDIO_SAME_AS = [
 
 /**
  * Google Business Profile rating, read from Business Profile Manager.
- * Update reviewCount when the GBP count changes (last read 2026-09-13).
+ * Update reviewCount when the GBP count changes (last read 2026-09-18).
  */
 export const GOOGLE_REVIEWS = {
   ratingValue: 5,
-  reviewCount: 19,
+  reviewCount: 20,
 } as const;
