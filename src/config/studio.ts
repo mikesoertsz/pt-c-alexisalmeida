@@ -48,6 +48,25 @@ export const STUDIO_SAME_AS = [
 ] as const;
 
 /**
+ * Payment methods as stated in the site copy (landing page FAQ, legal pages):
+ * bank transfer, Multibanco and card. No cash claim, none is stated anywhere.
+ */
+export const STUDIO_PAYMENT_ACCEPTED = "Bank transfer, Multibanco, Card";
+export const STUDIO_CURRENCIES_ACCEPTED = "EUR";
+
+/**
+ * Stable schema.org @id for the studio entity, shared by the homepage
+ * TattooParlor node and every Service page provider so Google merges them
+ * into one entity instead of six anonymous copies. Undefined when no base URL
+ * is configured (local dev), in which case the @id is simply omitted.
+ */
+export function studioSchemaId(): string | undefined {
+  const raw = process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "";
+  const base = raw.trim().replace(/\/+$/, "");
+  return base === "" ? undefined : `${base}/#studio`;
+}
+
+/**
  * Google Business Profile rating, read from Business Profile Manager.
  * Update reviewCount when the GBP count changes (last read 2026-09-18).
  */

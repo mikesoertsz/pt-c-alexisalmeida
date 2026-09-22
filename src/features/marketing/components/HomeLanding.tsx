@@ -19,7 +19,16 @@ import { ServiceLinks } from "./ServiceLinks";
 import type { Locale } from "@/lib/locale";
 import { localizedPath } from "@/lib/locale";
 import type { ContentSchema } from "@/content/schema";
-import { STUDIO_GEO, STUDIO_TELEPHONE, STUDIO_SAME_AS, GOOGLE_REVIEWS } from "@/config/studio";
+import {
+  STUDIO_GEO,
+  STUDIO_TELEPHONE,
+  STUDIO_SAME_AS,
+  GOOGLE_REVIEWS,
+  STUDIO_PAYMENT_ACCEPTED,
+  STUDIO_CURRENCIES_ACCEPTED,
+  studioMapsOpenUrl,
+  studioSchemaId,
+} from "@/config/studio";
 import { absoluteUrl } from "@/lib/site-url";
 import { ogImagePath } from "@/config/branding";
 
@@ -33,10 +42,12 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
   const canonicalPath = localizedPath(locale, "/");
   const canonical = absoluteUrl(canonicalPath === "/" ? "/" : canonicalPath);
   const ogImageAbs = absoluteUrl(ogImagePath());
+  const studioId = studioSchemaId();
 
   const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "TattooParlor",
+    ...(studioId ? { "@id": studioId } : {}),
     name: content.nav.logo,
     description: content.meta.description,
     address: {
@@ -65,7 +76,10 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
     ],
     availableLanguage: ["English", "Portuguese", "German"],
     priceRange: "€€€",
+    paymentAccepted: STUDIO_PAYMENT_ACCEPTED,
+    currenciesAccepted: STUDIO_CURRENCIES_ACCEPTED,
     telephone: STUDIO_TELEPHONE,
+    hasMap: studioMapsOpenUrl(),
     sameAs: [content.nav.socialInstagramUrl, ...STUDIO_SAME_AS],
     aggregateRating: {
       "@type": "AggregateRating",

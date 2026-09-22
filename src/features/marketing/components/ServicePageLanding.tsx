@@ -14,7 +14,16 @@ import {
   type ServicePageKey,
   type ServicePagesBundle,
 } from "@/content/pages/types";
-import { STUDIO_GEO, STUDIO_TELEPHONE, STUDIO_SAME_AS, GOOGLE_REVIEWS } from "@/config/studio";
+import {
+  STUDIO_GEO,
+  STUDIO_TELEPHONE,
+  STUDIO_SAME_AS,
+  GOOGLE_REVIEWS,
+  STUDIO_PAYMENT_ACCEPTED,
+  STUDIO_CURRENCIES_ACCEPTED,
+  studioMapsOpenUrl,
+  studioSchemaId,
+} from "@/config/studio";
 import { absoluteUrl } from "@/lib/site-url";
 import { ogImagePath } from "@/config/branding";
 
@@ -38,9 +47,11 @@ export function ServicePageLanding({ locale, content, bundle, pageKey }: Service
   const pageUrl = absoluteUrl(pageHref);
   const ogImageAbs = absoluteUrl(ogImagePath());
   const priceFrom = SERVICE_PAGE_PRICE_FROM[pageKey];
+  const studioId = studioSchemaId();
 
   const provider: Record<string, unknown> = {
     "@type": "TattooParlor",
+    ...(studioId ? { "@id": studioId } : {}),
     name: content.nav.logo,
     address: {
       "@type": "PostalAddress",
@@ -55,6 +66,9 @@ export function ServicePageLanding({ locale, content, bundle, pageKey }: Service
       longitude: STUDIO_GEO.lng,
     },
     telephone: STUDIO_TELEPHONE,
+    hasMap: studioMapsOpenUrl(),
+    paymentAccepted: STUDIO_PAYMENT_ACCEPTED,
+    currenciesAccepted: STUDIO_CURRENCIES_ACCEPTED,
     sameAs: [content.nav.socialInstagramUrl, ...STUDIO_SAME_AS],
     aggregateRating: {
       "@type": "AggregateRating",

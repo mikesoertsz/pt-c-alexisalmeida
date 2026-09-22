@@ -9,6 +9,17 @@ const LEGAL_PATHS = [
   "/legal/cookies",
 ] as const;
 
+/**
+ * Fixed lastmod dates. A per-request `new Date()` stamped every URL as
+ * changed today on every crawl, which Google treats as noise and ignores.
+ * Bump the relevant date in the same commit that changes that content.
+ */
+const LAST_MODIFIED = {
+  home: new Date("2026-09-22"),
+  service: new Date("2026-09-22"),
+  legal: new Date("2026-08-19"),
+} as const;
+
 function normalizedBase(): string {
   const raw = process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_SITE_URL ?? "";
   return raw.replace(/\/+$/, "");
@@ -36,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const homeEntries = locales.map((loc) => ({
     url: absoluteForPath(base, publicPath(loc, "")),
-    lastModified: new Date(),
+    lastModified: LAST_MODIFIED.home,
     changeFrequency: "monthly" as const,
     priority: 1,
   }));
@@ -44,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const legalEntries = locales.flatMap((loc) =>
     LEGAL_PATHS.map((p) => ({
       url: absoluteForPath(base, publicPath(loc, p)),
-      lastModified: new Date(),
+      lastModified: LAST_MODIFIED.legal,
       changeFrequency: "yearly" as const,
       priority: 0.3,
     }))
@@ -53,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const serviceEntries = locales.flatMap((loc) =>
     SERVICE_PAGE_KEYS.map((key) => ({
       url: absoluteForPath(base, publicPath(loc, servicePagePath(key))),
-      lastModified: new Date(),
+      lastModified: LAST_MODIFIED.service,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     }))
