@@ -41,15 +41,15 @@ function termsPt(e: LegalEntity): LegalDocument {
         ],
       },
       {
-        heading: "3. Marcação e sinal",
+        heading: "3. Marcação",
         blocks: [
           {
             type: "p",
-            text: "A marcação pode ser solicitada através dos meios indicados no website (por exemplo widget de reservas ou contacto direto). A reserva fica condicionada à confirmação do estúdio e, quando aplicável, ao pagamento de um sinal.",
+            text: "A marcação pode ser solicitada através dos meios indicados no website (por exemplo widget de reservas ou contacto direto). A reserva fica confirmada quando o estúdio a confirma por escrito.",
           },
           {
             type: "p",
-            text: "O sinal (tipicamente 30% do valor acordado para a sessão) confirma a intenção de ambas as partes. Os detalhes do valor, data e política de sinal são confirmados por escrito (email ou mensagem) antes da prestação.",
+            text: "Não é pedido sinal. O preço estimado, a data e a hora são confirmados por escrito (email ou mensagem) antes da sessão.",
           },
         ],
       },
@@ -58,7 +58,7 @@ function termsPt(e: LegalEntity): LegalDocument {
         blocks: [
           {
             type: "p",
-            text: "O cancelamento pelo cliente e o tratamento do sinal seguem a política de reembolsos publicada em /legal/refunds. Em geral, o sinal não é reembolsável em dinheiro, mas pode ser transferido para nova data com aviso prévio mínimo de 48 horas, sujeito a disponibilidade.",
+            text: "As regras de cancelamento constam da política publicada em /legal/refunds. Não há sinal a reter; pedimos aviso com pelo menos 48 horas de antecedência para remarcar ou cancelar uma sessão.",
           },
         ],
       },
@@ -80,7 +80,7 @@ function termsPt(e: LegalEntity): LegalDocument {
         blocks: [
           {
             type: "p",
-            text: "O estúdio pode recusar ou interromper o serviço por motivos de saúde ou segurança, por desenho que viole a lei ou padrões profissionais, por incumprimento do cliente ou por comportamento abusivo. Nestes casos pode aplicar-se a retenção ou perda do sinal, conforme a política de reembolsos.",
+            text: "O estúdio pode recusar ou interromper o serviço por motivos de saúde ou segurança, por desenho que viole a lei ou padrões profissionais, por incumprimento do cliente ou por comportamento abusivo.",
           },
         ],
       },
@@ -132,11 +132,11 @@ function termsEn(e: LegalEntity): LegalDocument {
         ],
       },
       {
-        heading: "3. Booking and deposit",
+        heading: "3. Booking",
         blocks: [
           {
             type: "p",
-            text: "Bookings are made through the channels shown on this site. A booking is confirmed once we confirm in writing and, where required, a deposit is paid. Deposit percentage and balance terms are stated in our confirmation message.",
+            text: "Bookings are made through the channels shown on this site. A booking is confirmed once we confirm in writing. No deposit is taken; the estimated price is stated in our confirmation message.",
           },
         ],
       },
@@ -145,7 +145,7 @@ function termsEn(e: LegalEntity): LegalDocument {
         blocks: [
           {
             type: "p",
-            text: "Cancellation rules and deposit handling are set out in our refund policy at /legal/refunds. Generally the deposit is not refundable in cash but may be moved once with at least 48 hours’ notice subject to availability.",
+            text: "Cancellation rules are set out in /legal/refunds. There is no deposit to retain; we ask for at least 48 hours’ notice to move or cancel a session.",
           },
         ],
       },
@@ -167,7 +167,7 @@ function termsEn(e: LegalEntity): LegalDocument {
         blocks: [
           {
             type: "p",
-            text: "We may refuse or stop work for health/safety reasons, unlawful or unethical designs, breach of these terms, or abusive behaviour. Deposit treatment follows the refund policy.",
+            text: "We may refuse or stop work for health/safety reasons, unlawful or unethical designs, breach of these terms, or abusive behaviour.",
           },
         ],
       },
@@ -219,11 +219,11 @@ function termsDe(e: LegalEntity): LegalDocument {
         ],
       },
       {
-        heading: "3. Buchung und Anzahlung",
+        heading: "3. Buchung",
         blocks: [
           {
             type: "p",
-            text: "Buchungen erfolgen über die auf der Website genannten Kanäle. Mit schriftlicher Bestätigung und ggf. Anzahlung wird der Termin verbindlich. Details stehen in der Bestätigung.",
+            text: "Buchungen erfolgen über die auf der Website genannten Kanäle. Mit schriftlicher Bestätigung wird der Termin verbindlich. Es wird keine Anzahlung verlangt; der geschätzte Preis steht in der Bestätigung.",
           },
         ],
       },
@@ -232,7 +232,7 @@ function termsDe(e: LegalEntity): LegalDocument {
         blocks: [
           {
             type: "p",
-            text: "Siehe Erstattungsrichtlinie unter /legal/refunds. In der Regel ist die Anzahlung nicht in bar erstattungsfähig, kann aber einmalig mit mindestens 48 h Vorlauf verschoben werden, je nach Kapazität.",
+            text: "Siehe Stornorichtlinie unter /legal/refunds. Es gibt keine Anzahlung, die einbehalten wird; zum Verschieben oder Absagen bitten wir um mindestens 48 Stunden Vorlauf.",
           },
         ],
       },
@@ -254,7 +254,7 @@ function termsDe(e: LegalEntity): LegalDocument {
         blocks: [
           {
             type: "p",
-            text: "Wir können aus Gesundheits‑, Sicherheits‑ oder rechtlichen Gründen sowie bei Verstößen gegen diese Bedingungen ablehnen oder abbrechen. Folgen für die Anzahlung siehe Erstattungsrichtlinie.",
+            text: "Wir können aus Gesundheits‑, Sicherheits‑ oder rechtlichen Gründen sowie bei Verstößen gegen diese Bedingungen ablehnen oder abbrechen.",
           },
         ],
       },

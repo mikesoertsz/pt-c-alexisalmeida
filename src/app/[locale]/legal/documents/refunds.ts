@@ -12,16 +12,16 @@ function refundsPt(e: LegalEntity): LegalDocument {
   return {
     meta: {
       lastUpdated: UPDATED.pt,
-      documentTitle: "Política de reembolsos e sinais",
-      description: "Sinais, reembolsos e direitos do consumidor.",
+      documentTitle: "Política de reembolsos e cancelamentos",
+      description: "Pagamento, cancelamentos, reembolsos e direitos do consumidor.",
     },
     sections: [
       {
-        heading: "1. Sinais (pré-pagamentos)",
+        heading: "1. Pagamento e sinal",
         blocks: [
           {
             type: "p",
-            text: "O sinal (tipicamente 30% do valor acordado) confirma a reserva de tempo do artista. Salvo disposição legal imperativa em contrário ou acordo expresso diferente, o sinal não é reembolsável em dinheiro. Pode ser transferido para uma nova data até uma vez, mediante aviso prévio mínimo de 48 horas e desde que haja disponibilidade.",
+            text: "Não é pedido sinal. A sessão é paga no próprio dia, depois de o trabalho estar concluído, por transferência bancária, Multibanco ou cartão. Para remarcar ou cancelar, pedimos aviso com pelo menos 48 horas de antecedência.",
           },
         ],
       },
@@ -69,16 +69,16 @@ function refundsEn(e: LegalEntity): LegalDocument {
   return {
     meta: {
       lastUpdated: UPDATED.en,
-      documentTitle: "Refund and deposit policy",
-      description: "Deposits, refunds and consumer rules.",
+      documentTitle: "Refund and cancellation policy",
+      description: "Payment, cancellations, refunds and consumer rules.",
     },
     sections: [
       {
-        heading: "1. Deposits",
+        heading: "1. Payment and deposit",
         blocks: [
           {
             type: "p",
-            text: "A 30% deposit secures your slot and is generally non-refundable in cash. It may be moved once with at least 48 hours’ notice subject to availability.",
+            text: "No deposit is required. You pay on the day, once the work is done, by bank transfer, Multibanco or card. To move or cancel a session, please give at least 48 hours’ notice.",
           },
         ],
       },
@@ -121,16 +121,16 @@ function refundsDe(e: LegalEntity): LegalDocument {
   return {
     meta: {
       lastUpdated: UPDATED.de,
-      documentTitle: "Erstattungs- und Anzahlungsrichtlinie",
-      description: "Anzahlung, Rückzahlung, Fernabsatzrecht.",
+      documentTitle: "Erstattungs- und Stornorichtlinie",
+      description: "Zahlung, Storno, Rückzahlung, Fernabsatzrecht.",
     },
     sections: [
       {
-        heading: "1. Anzahlung",
+        heading: "1. Zahlung und Anzahlung",
         blocks: [
           {
             type: "p",
-            text: "Die übliche 30‑%‑Anzahlung ist Regel nicht bar erstattungsfähig; einmalige Umbuchung mit ≥48 h Vorlauf je nach freien Slots.",
+            text: "Es wird keine Anzahlung verlangt. Bezahlt wird am Tag der Sitzung, wenn die Arbeit fertig ist, per Überweisung, Multibanco oder Karte. Zum Verschieben oder Absagen bitten wir um mindestens 48 Stunden Vorlauf.",
           },
         ],
       },

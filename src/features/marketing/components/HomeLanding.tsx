@@ -123,7 +123,7 @@ export function HomeLanding({ locale, content }: HomeLandingProps) {
         whatsapp={content.whatsapp}
       />
       <main>
-        <Hero hero={content.hero} locale={locale} />
+        <Hero hero={content.hero} whatsapp={content.whatsapp} locale={locale} />
         <LocationBanner locale={locale} />
         <PhilosophyStrip slice={content.philosophyStrip} />
         <WorkGrid slice={content.workGrid} />

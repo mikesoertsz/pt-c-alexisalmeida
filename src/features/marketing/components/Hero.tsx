@@ -6,7 +6,11 @@ import type { ContentSchema } from "@/content/schema";
 import type { Locale } from "@/lib/locale";
 import { localizedPath } from "@/lib/locale";
 import ButtonStyled from "@/components/atoms/ButtonStyled/ButtonStyled";
-import { trackEvent } from "@/lib/analytics";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
+import { trackEvent, trackMetaEvent } from "@/lib/analytics";
+import { trackWhatsAppConversion } from "@/lib/google-ads";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
@@ -17,10 +21,19 @@ const HERO_IMAGE_ALT =
 
 interface HeroProps {
   hero: ContentSchema["hero"];
+  whatsapp: ContentSchema["whatsapp"];
   locale: Locale;
 }
 
-export function Hero({ hero, locale }: HeroProps) {
+export function Hero({ hero, whatsapp, locale }: HeroProps) {
+  const whatsappUrl = getWhatsAppUrl({ message: whatsapp.inquiryMessage });
+
+  function handleWhatsAppClick(): void {
+    trackEvent("cta_click", { event_category: "engagement", event_label: "hero_whatsapp" });
+    trackWhatsAppConversion();
+    trackMetaEvent("Contact", { content_name: "hero_whatsapp" });
+  }
+
   return (
     <section
       data-nav-tone="dark"
@@ -86,14 +99,25 @@ export function Hero({ hero, locale }: HeroProps) {
 
           <div className="flex flex-col items-start md:items-end gap-3">
             <ButtonStyled
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={whatsapp.fabAriaLabel}
+              className="gap-3 bg-brand-tangerine border-brand-tangerine text-brand-linen hover:bg-brand-tangerine/90 hover:border-brand-tangerine/90 hover:text-brand-linen"
+              onClick={handleWhatsAppClick}
+            >
+              <FaWhatsapp aria-hidden className="h-4 w-4" />
+              {whatsapp.fabLabel}
+            </ButtonStyled>
+            <Link
               href={localizedPath(locale, "/booking")}
-              className="bg-brand-tangerine border-brand-tangerine text-brand-linen hover:bg-brand-tangerine/90 hover:border-brand-tangerine/90 hover:text-brand-linen"
+              className="font-mono text-xs text-white drop-shadow-lg uppercase tracking-[0.12em] underline underline-offset-4 decoration-white/40 hover:decoration-brand-tangerine hover:text-brand-tangerine"
               onClick={() =>
                 trackEvent("cta_click", { event_category: "engagement", event_label: "hero_primary" })
               }
             >
               {hero.cta}
-            </ButtonStyled>
+            </Link>
             <p className="font-mono text-xs text-white/60 drop-shadow-lg uppercase tracking-[0.12em]">
               [ {hero.appointmentNote} ]
             </p>
