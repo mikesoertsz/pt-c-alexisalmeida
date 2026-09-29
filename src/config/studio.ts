@@ -68,9 +68,9 @@ export function studioSchemaId(): string | undefined {
 
 /**
  * Google Business Profile rating, read from Business Profile Manager.
- * Update reviewCount when the GBP count changes (last read 2026-09-18).
+ * Update reviewCount when the GBP count changes (last read 2026-09-29).
  */
 export const GOOGLE_REVIEWS = {
   ratingValue: 5,
-  reviewCount: 20,
+  reviewCount: 21,
 } as const;

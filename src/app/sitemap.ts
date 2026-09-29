@@ -15,8 +15,8 @@ const LEGAL_PATHS = [
  * Bump the relevant date in the same commit that changes that content.
  */
 const LAST_MODIFIED = {
-  home: new Date("2026-09-22"),
-  service: new Date("2026-09-22"),
+  home: new Date("2026-09-29"),
+  service: new Date("2026-09-29"),
   legal: new Date("2026-08-19"),
 } as const;
 
