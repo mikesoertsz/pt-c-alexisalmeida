@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { ContentSchema } from "@/content/schema";
@@ -73,10 +74,13 @@ export function Hero({ hero, whatsapp, locale }: HeroProps) {
           animate="visible"
           transition={{ duration: 0.65, ease, delay: 0.2 }}
         >
-          {hero.headlineLines.map((line) => (
-            <span key={line} className="block text-[clamp(2.5rem,6vw,6rem)] [text-wrap:balance]">
-              {line}
-            </span>
+          {hero.headlineLines.map((line, i) => (
+            <Fragment key={line}>
+              {i > 0 ? " " : null}
+              <span className="block text-[clamp(2.5rem,6vw,6rem)] [text-wrap:balance]">
+                {line}
+              </span>
+            </Fragment>
           ))}
         </motion.h1>
 
