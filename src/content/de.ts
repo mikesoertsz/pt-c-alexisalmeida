@@ -284,7 +284,7 @@ export const de = {
     items: [
       {
         q: "Wie fange ich an?",
-        a: "Einfach vorbeikommen — Walk-ins sind willkommen fur kleine Stucke. Fur Custom-Arbeit, buche einen Ruckruf und Lex meldet sich innerhalb von 48 Stunden. Keine Anzahlung, keine Verpflichtung.",
+        a: "Einfach vorbeikommen — Walk-ins sind willkommen für kleine Stücke. Für Custom-Arbeit, buche einen Rückruf und Lex meldet sich innerhalb von 48 Stunden. Keine Anzahlung, keine Verpflichtung.",
       },
       {
         q: "Muss ich eine Anzahlung leisten?",
@@ -292,19 +292,19 @@ export const de = {
       },
       {
         q: "Was, wenn ich nur eine grobe Idee habe?",
-        a: "Kein Problem — so ist es bei den meisten. Buch einen Ruckruf, teile was du dir vorstellst, und Lex hilft dir, es konkret zu machen. Du siehst und genehmigst die Zeichnung, bevor etwas auf deine Haut kommt.",
+        a: "Kein Problem — so ist es bei den meisten. Buch einen Rückruf, teile was du dir vorstellst, und Lex hilft dir, es konkret zu machen. Du siehst und genehmigst die Zeichnung, bevor etwas auf deine Haut kommt.",
       },
       {
         q: "Kann ich Referenzen mitbringen?",
-        a: "Ja, bring alles, was hilft — Instagram-Screenshots, Fotos, Skizzen. Lex kopiert keine Arbeiten anderer Kunstler, aber Referenzen sind ein guter Ausgangspunkt fur Richtung und Stil.",
+        a: "Ja, bring alles, was hilft — Instagram-Screenshots, Fotos, Skizzen. Lex kopiert keine Arbeiten anderer Künstler, aber Referenzen sind ein guter Ausgangspunkt für Richtung und Stil.",
       },
       {
         q: "Wie lange dauert die Heilung?",
-        a: "Die Oberflache heilt meist innerhalb von zwei Wochen. Die vollstandige Einheilung dauert noch einige Wochen. Du bekommst schriftliche Pflegeanweisungen vor dem Verlassen. Nachbehandlungen innerhalb von 3 Monaten sind kostenlos.",
+        a: "Die Oberfläche heilt meist innerhalb von zwei Wochen. Die vollständige Einheilung dauert noch einige Wochen. Du bekommst schriftliche Pflegeanweisungen vor dem Verlassen. Nachbehandlungen innerhalb von 3 Monaten sind kostenlos.",
       },
       {
         q: "In welchen Sprachen wird gearbeitet?",
-        a: "Englisch, Portugiesisch und Deutsch. Einfach deine Praferenz angeben, wenn du dich meldest.",
+        a: "Englisch, Portugiesisch und Deutsch. Einfach deine Präferenz angeben, wenn du dich meldest.",
       },
     ],
   },

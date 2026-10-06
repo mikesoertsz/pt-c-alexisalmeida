@@ -115,7 +115,7 @@ export const pt = {
       {
         number: "2",
         title: "Desenho.",
-        body: "A peça é desenhada de raiz. Vês e aprovás o desenho antes de qualquer contacto com a pele.",
+        body: "A peça é desenhada de raiz. Vês e aprovas o desenho antes de qualquer contacto com a pele.",
       },
       {
         number: "3",
@@ -292,7 +292,7 @@ export const pt = {
       },
       {
         q: "E se só tiver uma ideia vaga?",
-        a: "Não há problema — é assim na maioria dos casos. Agenda uma chamada, partilha o que tens em mente, e o Lex ajuda a dar forma à ideia. Vês e aprovás o desenho antes de qualquer contacto com a pele.",
+        a: "Não há problema — é assim na maioria dos casos. Agenda uma chamada, partilha o que tens em mente, e o Lex ajuda a dar forma à ideia. Vês e aprovas o desenho antes de qualquer contacto com a pele.",
       },
       {
         q: "Posso trazer referências?",
