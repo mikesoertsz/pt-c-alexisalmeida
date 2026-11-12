@@ -50,3 +50,6 @@ next-env.d.ts
 
 # Local Claude Code settings (may contain secrets)
 .claude/settings.local.json
+
+# graphify knowledge graph (built locally)
+graphify-out/
